@@ -13,11 +13,13 @@ struct Constants {
     
     // MARK: API Keys
     
+    static let apiKeyPlistName = "ApiKeys"
+    
     private struct apiKeyNames {
-
+        static let google = "GOOGLE_API_KEY"
     }
     
     struct apiKeys {
-        static let plistName = "ApiKeys"
+        static let google = getAPIKey(apiKeyNames.google)
     }
 }
