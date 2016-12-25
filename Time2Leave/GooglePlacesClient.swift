@@ -28,6 +28,7 @@ class GooglePlacesClient {
         let url = buildUrl(method: methods.autocomplete, requestParameters: requestParameters)
         
         HTTPClient.getRequest(url: url, headerFields: nil) { data, error in
+            // GUARD: Network error
             guard let data = data, error == nil else {
                 completionHandler(nil, error)
                 return
@@ -35,8 +36,38 @@ class GooglePlacesClient {
             
             let parsedResult = HTTPClient.parseData(data: data)
             
-            print(parsedResult.parsedData!)
-            // TODO: Use parsed Data to extract locations
+            // GUARD: Parsing error
+            guard let parsedData = parsedResult.parsedData, parsedResult.error == nil else {
+                completionHandler(nil, parsedResult.error)
+                return
+            }
+            
+            // GUARD: Response status
+            guard let status = parsedData[jsonResponseKeys.status] as? String, status == jsonResponseValues.okStatus else {
+                completionHandler(nil, HTTPClient.createError(domain: "GooglePlacesClient", error: errorMessages.apiError))
+                return
+            }
+            
+            guard let predictions = parsedData[jsonResponseKeys.predictions] as? [AnyObject] else {
+                completionHandler(nil, HTTPClient.createError(domain: "GooglePlacesClient", error: errorMessages.apiError))
+                return
+            }
+            
+            var locations = [String]()
+            
+            for prediction in predictions {
+
+                guard let description = prediction[jsonResponseKeys.description] as? String else {
+                    completionHandler(nil, HTTPClient.createError(domain: "GooglePlacesClient", error: errorMessages.apiError))
+                    return
+                }
+                
+                if !locations.contains(description) {
+                    locations.append(description)
+                }
+            }
+            
+            completionHandler(locations, nil)
         }
     }
     

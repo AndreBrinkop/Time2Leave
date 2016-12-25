@@ -61,5 +61,11 @@ extension GooglePlacesClient {
     struct jsonResponseValues {
         static let okStatus = "OK"
     }
+    
+    // MARK: Error Messages
+    
+    struct errorMessages {
+        static let apiError = "An error occurred while using the GooglePlaces API."
+    }
 
 }
