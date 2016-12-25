@@ -19,6 +19,7 @@
 		906828CF1E107B47009340E8 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828CE1E107B47009340E8 /* HTTPClient.swift */; };
 		906828D21E107C6D009340E8 /* GooglePlacesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828D11E107C6D009340E8 /* GooglePlacesClient.swift */; };
 		906828D41E107C77009340E8 /* GooglePlacesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828D31E107C77009340E8 /* GooglePlacesConstants.swift */; };
+		90F84D781E1090A5001856A3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F84D771E1090A5001856A3 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		906828CE1E107B47009340E8 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		906828D11E107C6D009340E8 /* GooglePlacesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesClient.swift; sourceTree = "<group>"; };
 		906828D31E107C77009340E8 /* GooglePlacesConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesConstants.swift; sourceTree = "<group>"; };
+		90F84D771E1090A5001856A3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				906828CD1E107B29009340E8 /* Clients */,
 				90227FBE1E0E7EE300A29128 /* Time2Leave.xcdatamodeld */,
+				90F84D771E1090A5001856A3 /* Location.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				906828CA1E10794C009340E8 /* Constants.swift in Sources */,
 				90227FBA1E0E7EE300A29128 /* ViewController.swift in Sources */,
 				906828CF1E107B47009340E8 /* HTTPClient.swift in Sources */,
+				90F84D781E1090A5001856A3 /* Location.swift in Sources */,
 				90227FC01E0E7EE300A29128 /* Time2Leave.xcdatamodeld in Sources */,
 				906828D21E107C6D009340E8 /* GooglePlacesClient.swift in Sources */,
 				906828C81E107932009340E8 /* ApiKeys.swift in Sources */,

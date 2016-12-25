@@ -11,7 +11,7 @@ import CoreLocation
 
 class GooglePlacesClient {
     
-    public static func autocomplete(input: String, location: CLLocationCoordinate2D, completionHandler: @escaping (_ locations: [String]?, _ error: Error?) -> Void) {
+    public static func autocomplete(input: String, location: CLLocationCoordinate2D, completionHandler: @escaping (_ locations: [Location]?, _ error: Error?) -> Void) {
         
         let searchRadius: String = String(Int(Constants.locationAutocomplete.searchRadiusInKilometers * 1000.0))
         
@@ -53,7 +53,7 @@ class GooglePlacesClient {
                 return
             }
             
-            var locations = [String]()
+            var locations = [Location]()
             
             for prediction in predictions {
 
@@ -62,8 +62,15 @@ class GooglePlacesClient {
                     return
                 }
                 
-                if !locations.contains(description) {
-                    locations.append(description)
+                guard let placeId = prediction[jsonResponseKeys.placeId] as? String else {
+                    completionHandler(nil, HTTPClient.createError(domain: "GooglePlacesClient", error: errorMessages.apiError))
+                    return
+                }
+                
+                let location = Location(description: description, id: placeId)
+                
+                if !(locations.contains { $0.description == description }) {
+                    locations.append(location)
                 }
             }
             
