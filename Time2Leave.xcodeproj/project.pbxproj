@@ -16,6 +16,7 @@
 		906828C81E107932009340E8 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828C71E107932009340E8 /* ApiKeys.swift */; };
 		906828CA1E10794C009340E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828C91E10794C009340E8 /* Constants.swift */; };
 		906828CC1E107957009340E8 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 906828CB1E107957009340E8 /* ApiKeys.plist */; };
+		906828CF1E107B47009340E8 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828CE1E107B47009340E8 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		906828C71E107932009340E8 /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		906828C91E10794C009340E8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		906828CB1E107957009340E8 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		906828CE1E107B47009340E8 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,14 @@
 			name = Constants;
 			sourceTree = "<group>";
 		};
+		906828CD1E107B29009340E8 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				906828CE1E107B47009340E8 /* HTTPClient.swift */,
+			);
+			name = Clients;
+			sourceTree = "<group>";
+		};
 		90D788F71E1076790075DCF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +103,7 @@
 		90D788F81E1076820075DCF7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				906828CD1E107B29009340E8 /* Clients */,
 				90227FBE1E0E7EE300A29128 /* Time2Leave.xcdatamodeld */,
 			);
 			name = Model;
@@ -184,6 +195,7 @@
 			files = (
 				906828CA1E10794C009340E8 /* Constants.swift in Sources */,
 				90227FBA1E0E7EE300A29128 /* ViewController.swift in Sources */,
+				906828CF1E107B47009340E8 /* HTTPClient.swift in Sources */,
 				90227FC01E0E7EE300A29128 /* Time2Leave.xcdatamodeld in Sources */,
 				906828C81E107932009340E8 /* ApiKeys.swift in Sources */,
 				90227FB81E0E7EE300A29128 /* AppDelegate.swift in Sources */,
