@@ -56,15 +56,39 @@
 		90227FB61E0E7EE300A29128 /* Time2Leave */ = {
 			isa = PBXGroup;
 			children = (
+				90D788F91E10769B0075DCF7 /* Assets */,
+				90D788F81E1076820075DCF7 /* Model */,
+				90D788F71E1076790075DCF7 /* Controller */,
 				90227FB71E0E7EE300A29128 /* AppDelegate.swift */,
+				90227FC61E0E7EE300A29128 /* Info.plist */,
+			);
+			path = Time2Leave;
+			sourceTree = "<group>";
+		};
+		90D788F71E1076790075DCF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				90227FB91E0E7EE300A29128 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		90D788F81E1076820075DCF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				90227FBE1E0E7EE300A29128 /* Time2Leave.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		90D788F91E10769B0075DCF7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
 				90227FBB1E0E7EE300A29128 /* Main.storyboard */,
 				90227FC11E0E7EE300A29128 /* Assets.xcassets */,
 				90227FC31E0E7EE300A29128 /* LaunchScreen.storyboard */,
-				90227FC61E0E7EE300A29128 /* Info.plist */,
-				90227FBE1E0E7EE300A29128 /* Time2Leave.xcdatamodeld */,
 			);
-			path = Time2Leave;
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +330,7 @@
 				90227FCB1E0E7EE300A29128 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
