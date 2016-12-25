@@ -11,6 +11,13 @@ import UIKit
 
 struct Constants {
     
+    // MARK: Location Autocomplete
+    
+    struct locationAutocomplete {
+        static let language = "en"
+        static let searchRadiusInKilometers = 150.0
+    }
+    
     // MARK: API Keys
     
     static let apiKeyPlistName = "ApiKeys"
