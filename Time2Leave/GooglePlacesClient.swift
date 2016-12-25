@@ -67,11 +67,7 @@ class GooglePlacesClient {
                     return
                 }
                 
-                let location = Location(description: description, id: placeId)
-                
-                if !(locations.contains { $0.description == description }) {
-                    locations.append(location)
-                }
+                locations.append(Location(description: description, id: placeId))
             }
             
             completionHandler(locations, nil)
