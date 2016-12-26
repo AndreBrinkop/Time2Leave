@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,6 +40,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N6J-8q-29D" id="PeV-gJ-cMR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could not find any results!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajh-D0-I6e">
+                                                    <rect key="frame" x="16" y="7" width="351" height="28"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ajh-D0-I6e" firstAttribute="leading" secondItem="PeV-gJ-cMR" secondAttribute="leadingMargin" constant="8" id="JIZ-gh-i05"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ajh-D0-I6e" secondAttribute="bottom" id="JSF-vc-IzC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ajh-D0-I6e" secondAttribute="trailing" id="P4a-cd-QhG"/>
+                                                <constraint firstItem="ajh-D0-I6e" firstAttribute="top" secondItem="PeV-gJ-cMR" secondAttribute="topMargin" constant="-1" id="cqj-s7-Jc7"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" id="YI2-jl-0sg">

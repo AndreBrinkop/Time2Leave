@@ -90,9 +90,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if showNoResultsCell && indexPath.section == autocompleteSection {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "noResultsCell")!
-            cell.textLabel?.text = "No Results"
-            return cell
+            return tableView.dequeueReusableCell(withIdentifier: "noResultsCell")!
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell")!
