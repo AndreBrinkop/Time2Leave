@@ -13,6 +13,17 @@ class GooglePlacesClient {
     
     public static func autocomplete(input: String, location: CLLocationCoordinate2D, completionHandler: @escaping (_ locations: [Location]?, _ error: Error?) -> Void) {
         
+        let completionHandlerOnMainThread: (_ locations: [Location]?, _ error: Error?) -> Void = { location, error in
+            DispatchQueue.main.async {
+                completionHandler(location, error)
+            }
+        }
+        
+        guard !input.isEmpty else {
+            completionHandlerOnMainThread([Location](), nil)
+            return
+        }
+        
         let searchRadius: String = String(Int(Constants.locationAutocomplete.searchRadiusInKilometers * 1000.0))
         
         let searchLocation: String = "\(location.latitude),\(location.longitude)"
@@ -28,9 +39,11 @@ class GooglePlacesClient {
         let url = buildUrl(method: methods.autocomplete, requestParameters: requestParameters)
         
         HTTPClient.getRequest(url: url, headerFields: nil) { data, error in
+            let apiError = HTTPClient.createError(domain: "GooglePlacesClient", error: errorMessages.apiError)
+            
             // GUARD: Network error
             guard let data = data, error == nil else {
-                completionHandler(nil, error)
+                completionHandlerOnMainThread(nil, error)
                 return
             }
             
@@ -38,39 +51,50 @@ class GooglePlacesClient {
             
             // GUARD: Parsing error
             guard let parsedData = parsedResult.parsedData, parsedResult.error == nil else {
-                completionHandler(nil, parsedResult.error)
+                completionHandlerOnMainThread(nil, parsedResult.error)
                 return
             }
             
-            // GUARD: Response status
-            guard let status = parsedData[jsonResponseKeys.status] as? String, status == jsonResponseValues.okStatus else {
-                completionHandler(nil, HTTPClient.createError(domain: "GooglePlacesClient", error: errorMessages.apiError))
-                return
-            }
-            
-            guard let predictions = parsedData[jsonResponseKeys.predictions] as? [AnyObject] else {
-                completionHandler(nil, HTTPClient.createError(domain: "GooglePlacesClient", error: errorMessages.apiError))
+            guard let status = parsedData[jsonResponseKeys.status] as? String else {
+                completionHandlerOnMainThread(nil, apiError)
                 return
             }
             
             var locations = [Location]()
             
+            // GUARD: Any results
+            guard status != jsonResponseValues.noResultsStatus else {
+                completionHandlerOnMainThread(locations, nil)
+                return
+            }
+            
+            // GUARD: Response status ok
+            guard status == jsonResponseValues.okStatus else {
+                completionHandlerOnMainThread(nil, apiError)
+                return
+            }
+            
+            guard let predictions = parsedData[jsonResponseKeys.predictions] as? [AnyObject] else {
+                completionHandlerOnMainThread(nil, apiError)
+                return
+            }
+            
             for prediction in predictions {
 
                 guard let description = prediction[jsonResponseKeys.description] as? String else {
-                    completionHandler(nil, HTTPClient.createError(domain: "GooglePlacesClient", error: errorMessages.apiError))
+                    completionHandlerOnMainThread(nil, apiError)
                     return
                 }
                 
                 guard let placeId = prediction[jsonResponseKeys.placeId] as? String else {
-                    completionHandler(nil, HTTPClient.createError(domain: "GooglePlacesClient", error: errorMessages.apiError))
+                    completionHandlerOnMainThread(nil, apiError)
                     return
                 }
                 
                 locations.append(Location(description: description, id: placeId))
             }
             
-            completionHandler(locations, nil)
+            completionHandlerOnMainThread(locations, nil)
         }
     }
     

@@ -60,6 +60,7 @@ extension GooglePlacesClient {
     
     struct jsonResponseValues {
         static let okStatus = "OK"
+        static let noResultsStatus = "ZERO_RESULTS"
     }
     
     // MARK: Error Messages
