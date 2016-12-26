@@ -19,6 +19,7 @@
 		906828CF1E107B47009340E8 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828CE1E107B47009340E8 /* HTTPClient.swift */; };
 		906828D21E107C6D009340E8 /* GooglePlacesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828D11E107C6D009340E8 /* GooglePlacesClient.swift */; };
 		906828D41E107C77009340E8 /* GooglePlacesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828D31E107C77009340E8 /* GooglePlacesConstants.swift */; };
+		906945F71E116623003D9C1E /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906945F61E116623003D9C1E /* LocationTableViewCell.swift */; };
 		90F84D781E1090A5001856A3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F84D771E1090A5001856A3 /* Location.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		906828CE1E107B47009340E8 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		906828D11E107C6D009340E8 /* GooglePlacesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesClient.swift; sourceTree = "<group>"; };
 		906828D31E107C77009340E8 /* GooglePlacesConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesConstants.swift; sourceTree = "<group>"; };
+		906945F61E116623003D9C1E /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationTableViewCell.swift; path = Time2Leave/LocationTableViewCell.swift; sourceTree = "<group>"; };
 		90F84D771E1090A5001856A3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 				906828C61E10791C009340E8 /* Constants */,
 				90D788F91E10769B0075DCF7 /* Assets */,
 				90D788F81E1076820075DCF7 /* Model */,
+				906945F51E1165FF003D9C1E /* View */,
 				90D788F71E1076790075DCF7 /* Controller */,
 				90227FB71E0E7EE300A29128 /* AppDelegate.swift */,
 				90227FC61E0E7EE300A29128 /* Info.plist */,
@@ -106,6 +109,15 @@
 				906828D31E107C77009340E8 /* GooglePlacesConstants.swift */,
 			);
 			name = GooglePlaces;
+			sourceTree = "<group>";
+		};
+		906945F51E1165FF003D9C1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				906945F61E116623003D9C1E /* LocationTableViewCell.swift */,
+			);
+			name = View;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		90D788F71E1076790075DCF7 /* Controller */ = {
@@ -216,6 +228,7 @@
 				906828CF1E107B47009340E8 /* HTTPClient.swift in Sources */,
 				90F84D781E1090A5001856A3 /* Location.swift in Sources */,
 				90227FC01E0E7EE300A29128 /* Time2Leave.xcdatamodeld in Sources */,
+				906945F71E116623003D9C1E /* LocationTableViewCell.swift in Sources */,
 				906828D21E107C6D009340E8 /* GooglePlacesClient.swift in Sources */,
 				906828C81E107932009340E8 /* ApiKeys.swift in Sources */,
 				90227FB81E0E7EE300A29128 /* AppDelegate.swift in Sources */,

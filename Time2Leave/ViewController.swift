@@ -93,15 +93,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return tableView.dequeueReusableCell(withIdentifier: "noResultsCell")!
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell") as! LocationTableViewCell
         
         switch indexPath.section {
         case autocompleteSection:
-            cell.textLabel?.text = autocompleteLocations[indexPath.row].description
+            cell.setLocation(autocompleteLocations[indexPath.row])
         case favoriteSection:
-            cell.textLabel?.text = favoriteLocations[indexPath.row].description
+            cell.setLocation(favoriteLocations[indexPath.row])
         default:
-            cell.textLabel?.text = ""
+            cell.setLocation(nil)
         }
     
         return cell

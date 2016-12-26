@@ -56,13 +56,44 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" id="YI2-jl-0sg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" id="YI2-jl-0sg" customClass="LocationTableViewCell" customModule="Time2Leave" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YI2-jl-0sg" id="PXh-8q-fnn">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sX1-fV-z4v" userLabel="Location">
+                                                    <rect key="frame" x="16" y="0.0" width="299.5" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HG7-C8-3wG">
+                                                    <rect key="frame" x="332" y="0.0" width="28" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="YgK-Bl-FDs"/>
+                                                    </constraints>
+                                                    <state key="normal" image="emptyStar"/>
+                                                    <connections>
+                                                        <action selector="favoriteButtonClicked:" destination="YI2-jl-0sg" eventType="touchUpInside" id="K7O-fz-CF7"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HG7-C8-3wG" firstAttribute="leading" secondItem="sX1-fV-z4v" secondAttribute="trailing" constant="16.5" id="35b-gK-EJg"/>
+                                                <constraint firstAttribute="bottom" secondItem="HG7-C8-3wG" secondAttribute="bottom" constant="-1" id="DaP-A4-P31"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="HG7-C8-3wG" secondAttribute="trailing" constant="7" id="Pnh-j4-E3n"/>
+                                                <constraint firstItem="sX1-fV-z4v" firstAttribute="leading" secondItem="PXh-8q-fnn" secondAttribute="leadingMargin" constant="8" id="Saw-CZ-bZM"/>
+                                                <constraint firstItem="HG7-C8-3wG" firstAttribute="top" secondItem="PXh-8q-fnn" secondAttribute="top" id="Tsm-V9-vsM"/>
+                                                <constraint firstItem="sX1-fV-z4v" firstAttribute="top" secondItem="PXh-8q-fnn" secondAttribute="top" id="jdE-bq-sMN"/>
+                                                <constraint firstAttribute="bottom" secondItem="sX1-fV-z4v" secondAttribute="bottom" id="mzD-Mm-sTY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="favoriteButton" destination="HG7-C8-3wG" id="H9D-r1-iCX"/>
+                                            <outlet property="locationLabel" destination="sX1-fV-z4v" id="HiE-c8-D6e"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -106,4 +137,7 @@
             <point key="canvasLocation" x="437.60000000000002" y="-1041.2293853073463"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="emptyStar" width="756" height="1188"/>
+    </resources>
 </document>
