@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iyA-IW-qQe">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Dummy" id="Jyh-M4-1h1" userLabel="Dummy Search Bar">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -56,43 +56,73 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" id="YI2-jl-0sg" customClass="LocationTableViewCell" customModule="Time2Leave" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="waitingForLocationCell" id="YI2-jl-0sg" customClass="WaitingForLocationCell" customModule="Time2Leave" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YI2-jl-0sg" id="PXh-8q-fnn">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sX1-fV-z4v" userLabel="Location">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for GPS location..  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sX1-fV-z4v" userLabel="Location">
+                                                    <rect key="frame" x="16" y="0.0" width="204" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zUe-jQ-pc8">
+                                                    <rect key="frame" x="220" y="0.0" width="20" height="43.5"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="zUe-jQ-pc8" secondAttribute="bottom" id="8wL-8Z-yD2"/>
+                                                <constraint firstItem="sX1-fV-z4v" firstAttribute="leading" secondItem="PXh-8q-fnn" secondAttribute="leadingMargin" constant="8" id="Saw-CZ-bZM"/>
+                                                <constraint firstItem="sX1-fV-z4v" firstAttribute="top" secondItem="PXh-8q-fnn" secondAttribute="top" id="jdE-bq-sMN"/>
+                                                <constraint firstAttribute="bottom" secondItem="sX1-fV-z4v" secondAttribute="bottom" id="mzD-Mm-sTY"/>
+                                                <constraint firstItem="zUe-jQ-pc8" firstAttribute="leading" secondItem="sX1-fV-z4v" secondAttribute="trailing" id="vEB-Bl-nue"/>
+                                                <constraint firstItem="zUe-jQ-pc8" firstAttribute="top" secondItem="PXh-8q-fnn" secondAttribute="top" id="zcS-M6-nLv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activitySpinner" destination="zUe-jQ-pc8" id="LGC-Ec-yov"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" id="GIs-Ko-PeG" customClass="LocationTableViewCell" customModule="Time2Leave" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GIs-Ko-PeG" id="DHz-IC-Sc6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pex-la-wQG" userLabel="Location">
                                                     <rect key="frame" x="16" y="0.0" width="299.5" height="43.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HG7-C8-3wG">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8D-sz-JU4">
                                                     <rect key="frame" x="332" y="0.0" width="28" height="44"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="28" id="YgK-Bl-FDs"/>
+                                                        <constraint firstAttribute="width" constant="28" id="v91-dv-lWg"/>
                                                     </constraints>
                                                     <state key="normal" image="emptyStar"/>
                                                     <connections>
-                                                        <action selector="favoriteButtonClicked:" destination="YI2-jl-0sg" eventType="touchUpInside" id="94t-Rz-210"/>
+                                                        <action selector="favoriteButtonClicked:" destination="GIs-Ko-PeG" eventType="touchUpInside" id="2aN-Ix-y5i"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="HG7-C8-3wG" firstAttribute="leading" secondItem="sX1-fV-z4v" secondAttribute="trailing" constant="16.5" id="35b-gK-EJg"/>
-                                                <constraint firstAttribute="bottom" secondItem="HG7-C8-3wG" secondAttribute="bottom" constant="-1" id="DaP-A4-P31"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="HG7-C8-3wG" secondAttribute="trailing" constant="7" id="Pnh-j4-E3n"/>
-                                                <constraint firstItem="sX1-fV-z4v" firstAttribute="leading" secondItem="PXh-8q-fnn" secondAttribute="leadingMargin" constant="8" id="Saw-CZ-bZM"/>
-                                                <constraint firstItem="HG7-C8-3wG" firstAttribute="top" secondItem="PXh-8q-fnn" secondAttribute="top" id="Tsm-V9-vsM"/>
-                                                <constraint firstItem="sX1-fV-z4v" firstAttribute="top" secondItem="PXh-8q-fnn" secondAttribute="top" id="jdE-bq-sMN"/>
-                                                <constraint firstAttribute="bottom" secondItem="sX1-fV-z4v" secondAttribute="bottom" id="mzD-Mm-sTY"/>
+                                                <constraint firstAttribute="bottom" secondItem="q8D-sz-JU4" secondAttribute="bottom" constant="-1" id="0vF-rH-PV4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="q8D-sz-JU4" secondAttribute="trailing" constant="7" id="72K-7E-QGE"/>
+                                                <constraint firstItem="pex-la-wQG" firstAttribute="top" secondItem="DHz-IC-Sc6" secondAttribute="top" id="7vr-6E-oO3"/>
+                                                <constraint firstItem="q8D-sz-JU4" firstAttribute="leading" secondItem="pex-la-wQG" secondAttribute="trailing" constant="16.5" id="Ajo-VF-tAZ"/>
+                                                <constraint firstItem="q8D-sz-JU4" firstAttribute="top" secondItem="DHz-IC-Sc6" secondAttribute="top" id="cCn-6m-mQR"/>
+                                                <constraint firstItem="pex-la-wQG" firstAttribute="leading" secondItem="DHz-IC-Sc6" secondAttribute="leadingMargin" constant="8" id="ewd-SK-bPp"/>
+                                                <constraint firstAttribute="bottom" secondItem="pex-la-wQG" secondAttribute="bottom" id="m8X-tn-1nF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="favoriteButton" destination="HG7-C8-3wG" id="H9D-r1-iCX"/>
-                                            <outlet property="locationLabel" destination="sX1-fV-z4v" id="HiE-c8-D6e"/>
+                                            <outlet property="favoriteButton" destination="q8D-sz-JU4" id="KXn-HC-oQM"/>
+                                            <outlet property="locationLabel" destination="pex-la-wQG" id="bXo-cV-sxu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -104,12 +134,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iyA-IW-qQe" firstAttribute="top" secondItem="aEg-1S-N36" secondAttribute="bottom" id="DS8-hm-hzr"/>
-                            <constraint firstItem="iyA-IW-qQe" firstAttribute="leading" secondItem="l0w-iW-hXg" secondAttribute="leading" id="Nug-EW-QYe"/>
-                            <constraint firstItem="GC3-Gm-KpH" firstAttribute="top" secondItem="iyA-IW-qQe" secondAttribute="bottom" id="bKK-8b-XRP"/>
-                            <constraint firstAttribute="trailing" secondItem="iyA-IW-qQe" secondAttribute="trailing" id="rcf-X9-uDf"/>
+                            <constraint firstItem="iyA-IW-qQe" firstAttribute="leading" secondItem="l0w-iW-hXg" secondAttribute="leading" id="9Sf-jr-2LG"/>
+                            <constraint firstAttribute="trailing" secondItem="iyA-IW-qQe" secondAttribute="trailing" id="JYx-6u-A7C"/>
+                            <constraint firstItem="iyA-IW-qQe" firstAttribute="top" secondItem="l0w-iW-hXg" secondAttribute="top" id="MKv-4L-jbH"/>
+                            <constraint firstAttribute="trailing" secondItem="iyA-IW-qQe" secondAttribute="trailing" id="ZLB-tD-5gG"/>
+                            <constraint firstItem="iyA-IW-qQe" firstAttribute="leading" secondItem="l0w-iW-hXg" secondAttribute="leading" id="fzK-jQ-Vj4"/>
+                            <constraint firstItem="GC3-Gm-KpH" firstAttribute="top" secondItem="iyA-IW-qQe" secondAttribute="bottom" id="iaP-yU-br7"/>
+                            <constraint firstItem="GC3-Gm-KpH" firstAttribute="top" secondItem="iyA-IW-qQe" secondAttribute="bottom" id="p7C-3g-mBX"/>
+                            <constraint firstItem="iyA-IW-qQe" firstAttribute="top" secondItem="l0w-iW-hXg" secondAttribute="top" id="zvt-2D-XZZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Select a destination.." id="Ch8-jd-ZHt"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Xw9-au-QPO" id="Wcz-0x-ZrA"/>
                         <outlet property="tableView" destination="iyA-IW-qQe" id="og5-dJ-WXk"/>
@@ -134,7 +169,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="437.60000000000002" y="-1041.2293853073463"/>
+            <point key="canvasLocation" x="1376.8" y="-1041.2293853073463"/>
         </scene>
     </scenes>
     <resources>

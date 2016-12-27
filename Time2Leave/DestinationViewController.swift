@@ -32,15 +32,17 @@ class DestinationViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var showNoResultsCell: Bool {
-        return searchController.isActive && autocompleteLocations.count == 0 && searchController.searchBar.text! != ""
+        return searchController.isActive && searchController.searchBar.text! != "" && autocompleteLocations.count == 0
+    }
+    
+    var showWaitingForLocationCell: Bool {
+        return searchController.isActive && userLocation == nil
     }
     
     // MARK: Location Alerts
     
     let noLocationFoundAlert = UIAlertController.init(title: "Need User Location", message: "Your location could not be found!", preferredStyle: .alert)
     let needLocationAlert = UIAlertController.init(title: "Need User Location", message: "Please activate the location services for this app!", preferredStyle: .alert)
-    let waitingForLocationAlert = UIAlertController.init(title: "Need User Location", message: "Waiting to receive user location..", preferredStyle: .alert)
-    var waitingForLocation = false
     
     // MARK: - Initialization
 
@@ -75,7 +77,7 @@ class DestinationViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
-        searchController.searchBar.delegate = self
+        searchController.delegate = self
     }
     
     func initializeLocationManager() {
@@ -101,23 +103,23 @@ class DestinationViewController: UIViewController {
     }
 }
 
-// MARK: - UISearchBarDelegate
-extension DestinationViewController: UISearchBarDelegate {
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        if userLocation == nil {
-            present(waitingForLocationAlert, animated: true)
-            waitingForLocation = true
-        }
-        return true
+// MARK: - UISearchControllerDelegate
+extension DestinationViewController: UISearchControllerDelegate {
+    func didPresentSearchController(_ searchController: UISearchController) {
+        tableView.reloadData()
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        tableView.reloadData()
     }
 }
 
 // MARK: - CLLocationManagerDelegate
 extension DestinationViewController: CLLocationManagerDelegate {
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         dismissErrorAlerts()
         userLocation = locations.last!
+        updateSearchResults(for: searchController)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -145,7 +147,6 @@ extension DestinationViewController: CLLocationManagerDelegate {
     }
     
     private func dismissErrorAlerts() {
-        waitingForLocationAlert.dismiss(animated: true, completion: nil)
         noLocationFoundAlert.dismiss(animated: true, completion: nil)
         needLocationAlert.dismiss(animated: true, completion: nil)
     }
@@ -156,7 +157,11 @@ extension DestinationViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let input = searchController.searchBar.text!
         
-        GooglePlacesClient.autocomplete(input: input, location: userLocation!.coordinate) { locations, error in
+        guard let userLocation = userLocation else {
+            return
+        }
+        
+        GooglePlacesClient.autocomplete(input: input, location: userLocation.coordinate) { locations, error in
             guard error == nil else {
                 // TODO: Handle Error
                 print(error!)
@@ -189,7 +194,7 @@ extension DestinationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case autocompleteSection:
-            if showNoResultsCell {
+            if showNoResultsCell || showWaitingForLocationCell {
                 return 1
             }
             return autocompleteLocations.count
@@ -203,6 +208,11 @@ extension DestinationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if showWaitingForLocationCell && indexPath.section == autocompleteSection {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "waitingForLocationCell") as! WaitingForLocationCell
+            cell.activitySpinner.startAnimating()
+            return cell
+        }
         if showNoResultsCell && indexPath.section == autocompleteSection {
             return tableView.dequeueReusableCell(withIdentifier: "noResultsCell")!
         }
