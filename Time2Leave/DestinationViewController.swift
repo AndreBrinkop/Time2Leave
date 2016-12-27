@@ -15,9 +15,9 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     // TODO: Remove Dummy Data
     var dummyLocation = CLLocationCoordinate2D(latitude: 52.373715, longitude: 9.731253)
     
-    @IBOutlet var tableView: UITableView!
+    // MARK: Properties
     
-    let searchController = UISearchController(searchResultsController: nil)
+    @IBOutlet var tableView: UITableView!
     
     let tableViewSectionCount = 2
     var autocompleteLocations = [Location]()
@@ -28,22 +28,19 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     let favoriteSectionName = "Favorite Locations"
     
     var fetchedResultsController: NSFetchedResultsController<FavoriteLocation>!
+    let searchController = UISearchController(searchResultsController: nil)
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var showNoResultsCell: Bool {
         return searchController.isActive && autocompleteLocations.count == 0 && searchController.searchBar.text! != ""
     }
+    
+    // MARK: Initialization
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initializeFetchedResultsController()
-        
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
-        
+        initializeSearchController()
     }
     
     func initializeFetchedResultsController() {
@@ -65,6 +62,31 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func initializeSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+    }
+    
+    // MARK: Toggle Favorite Location
+    
+    func toggleFavorite(location: Location) {
+        let context = appDelegate.persistentContainer.viewContext
+        
+        if !favoriteLocations.contains { $0.locationId == location.id } {
+            // add favorite
+            let _ = FavoriteLocation(context: context, location: location)
+        } else {
+            // delete favorite
+            let favoriteLocation = favoriteLocations.filter { $0.locationId == location.id }.first!
+            context.delete(favoriteLocation)
+        }
+        
+        appDelegate.saveContext()
+    }
+    
+    // MARK: Search Results Updating
 
     func updateSearchResults(for searchController: UISearchController) {
         let input = searchController.searchBar.text!
@@ -80,6 +102,8 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
             self.tableView.reloadData()
         }
     }
+    
+    // MARK: Table View Data Source
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if self.tableView(tableView, numberOfRowsInSection: section) == 0 {
@@ -127,7 +151,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         case favoriteSection:
             let indexPath = IndexPath.init(row: indexPath.row, section: 0)
             cell.setLocation(fetchedResultsController.object(at: indexPath).location, isFavorite: true)
-            cell.isFavorite = true
         default:
             cell.setLocation(nil)
         }
@@ -175,22 +198,5 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
             break
         }
     }
-    
-    func toggleFavorite(location: Location) {
-        let context = appDelegate.persistentContainer.viewContext
-        
-        if !favoriteLocations.contains { $0.locationId == location.id } {
-            // add favorite
-            let _ = FavoriteLocation(context: context, location: location)
-        } else {
-            // delete favorite
-            let favoriteLocation = favoriteLocations.filter { $0.locationId == location.id }.first!
-            context.delete(favoriteLocation)
-        }
-        
-        appDelegate.saveContext()
-    }
-
-
 }
 
