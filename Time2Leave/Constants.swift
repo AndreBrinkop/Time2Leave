@@ -8,10 +8,15 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 struct Constants {
     
-    // MARK: Location Autocomplete
+    // MARK: Location
+    
+    struct userLocation {
+        static let accuracy = kCLLocationAccuracyNearestTenMeters
+    }
     
     struct locationAutocomplete {
         static let language = "en"

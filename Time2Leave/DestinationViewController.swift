@@ -12,9 +12,6 @@ import CoreLocation
 
 class DestinationViewController: UIViewController {
     
-    // TODO: Remove Dummy Data
-    var dummyLocation = CLLocationCoordinate2D(latitude: 52.373715, longitude: 9.731253)
-    
     // MARK: - Properties
     
     @IBOutlet var tableView: UITableView!
@@ -27,7 +24,10 @@ class DestinationViewController: UIViewController {
     let favoriteSection = 1
     let favoriteSectionName = "Favorite Locations"
     
+    var userLocation: CLLocation?
+    
     var fetchedResultsController: NSFetchedResultsController<FavoriteLocation>!
+    let locationManager = CLLocationManager()
     let searchController = UISearchController(searchResultsController: nil)
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -35,12 +35,20 @@ class DestinationViewController: UIViewController {
         return searchController.isActive && autocompleteLocations.count == 0 && searchController.searchBar.text! != ""
     }
     
+    // MARK: Location Alerts
+    
+    let noLocationFoundAlert = UIAlertController.init(title: "Need User Location", message: "Your location could not be found!", preferredStyle: .alert)
+    let needLocationAlert = UIAlertController.init(title: "Need User Location", message: "Please activate the location services for this app!", preferredStyle: .alert)
+    let waitingForLocationAlert = UIAlertController.init(title: "Need User Location", message: "Waiting to receive user location..", preferredStyle: .alert)
+    var waitingForLocation = false
+    
     // MARK: - Initialization
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeFetchedResultsController()
         initializeSearchController()
+        initializeLocationManager()
     }
     
     func initializeFetchedResultsController() {
@@ -67,6 +75,12 @@ class DestinationViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.delegate = self
+    }
+    
+    func initializeLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = Constants.userLocation.accuracy
     }
     
     // MARK: - Actions
@@ -87,12 +101,62 @@ class DestinationViewController: UIViewController {
     }
 }
 
+// MARK: - UISearchBarDelegate
+extension DestinationViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        if userLocation == nil {
+            present(waitingForLocationAlert, animated: true)
+            waitingForLocation = true
+        }
+        return true
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension DestinationViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        dismissErrorAlerts()
+        userLocation = locations.last!
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        dismissErrorAlerts()
+        switch error {
+        case CLError.locationUnknown:
+            present(noLocationFoundAlert, animated: true)
+            locationManager.requestLocation()
+        default:
+            present(needLocationAlert, animated: true)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        dismissErrorAlerts()
+        if status == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        if status == .denied || status == .restricted {
+            present(needLocationAlert, animated: true)
+        }
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    private func dismissErrorAlerts() {
+        waitingForLocationAlert.dismiss(animated: true, completion: nil)
+        noLocationFoundAlert.dismiss(animated: true, completion: nil)
+        needLocationAlert.dismiss(animated: true, completion: nil)
+    }
+}
+
 // MARK: - UISearchResultsUpdating
 extension DestinationViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let input = searchController.searchBar.text!
         
-        GooglePlacesClient.autocomplete(input: input, location: dummyLocation) { locations, error in
+        GooglePlacesClient.autocomplete(input: input, location: userLocation!.coordinate) { locations, error in
             guard error == nil else {
                 // TODO: Handle Error
                 print(error!)
@@ -186,7 +250,6 @@ extension DestinationViewController: NSFetchedResultsControllerDelegate {
         // Force update of section headers
         tableView.beginUpdates()
         tableView.endUpdates()
-
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
