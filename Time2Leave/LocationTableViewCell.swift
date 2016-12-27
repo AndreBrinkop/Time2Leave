@@ -11,7 +11,7 @@ import CoreData
 
 class LocationTableViewCell: UITableViewCell {
 
-    // MARK: Properties
+    // MARK: - Properties
     
     @IBOutlet private var locationLabel: UILabel!
     @IBOutlet private var favoriteButton: UIButton!
@@ -32,7 +32,7 @@ class LocationTableViewCell: UITableViewCell {
         }
     }
     
-    // MARK: Configuration
+    // MARK: - Configuration
     
     func setLocation(_ location: Location?, isFavorite: Bool = false) {
         guard let location = location else {
@@ -45,7 +45,7 @@ class LocationTableViewCell: UITableViewCell {
         self.isFavorite = isFavorite
     }
     
-    // MARK: Favorite Button Click Action
+    // MARK: - IBActions
 
     @IBAction func favoriteButtonClicked(_ sender: Any) {
         destinationViewController.toggleFavorite(location: location)

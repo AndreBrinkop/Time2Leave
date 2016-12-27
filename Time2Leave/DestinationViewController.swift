@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 import CoreLocation
 
-class DestinationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, NSFetchedResultsControllerDelegate {
+class DestinationViewController: UIViewController {
     
     // TODO: Remove Dummy Data
     var dummyLocation = CLLocationCoordinate2D(latitude: 52.373715, longitude: 9.731253)
     
-    // MARK: Properties
+    // MARK: - Properties
     
     @IBOutlet var tableView: UITableView!
     
@@ -35,7 +35,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         return searchController.isActive && autocompleteLocations.count == 0 && searchController.searchBar.text! != ""
     }
     
-    // MARK: Initialization
+    // MARK: - Initialization
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +69,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.tableHeaderView = searchController.searchBar
     }
     
-    // MARK: Toggle Favorite Location
+    // MARK: - Actions
     
     func toggleFavorite(location: Location) {
         let context = appDelegate.persistentContainer.viewContext
@@ -85,9 +85,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         
         appDelegate.saveContext()
     }
-    
-    // MARK: Search Results Updating
+}
 
+// MARK: - UISearchResultsUpdating
+extension DestinationViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let input = searchController.searchBar.text!
         
@@ -102,9 +103,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
             self.tableView.reloadData()
         }
     }
-    
-    // MARK: Table View Data Source
+}
 
+// MARK: - UITableViewDataSource
+extension DestinationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if self.tableView(tableView, numberOfRowsInSection: section) == 0 {
             return nil
@@ -161,9 +163,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableViewSectionCount
     }
-    
-    // MARK: Fetched Results Controller Delegate
-    
+}
+
+// MARK: - NSFetchedResultsControllerDelegate
+extension DestinationViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }

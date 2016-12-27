@@ -12,7 +12,7 @@ import CoreData
 
 extension FavoriteLocation {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     var appDelegate: AppDelegate {
         get {
@@ -24,7 +24,7 @@ extension FavoriteLocation {
         return Location(description: locationDescription!, id: locationId!)
     }
     
-    // MARK: Initialization
+    // MARK: - Initialization
     
     convenience init(context: NSManagedObjectContext, location: Location) {
         guard let entity = NSEntityDescription.entity(forEntityName: "FavoriteLocation", in: context) else {
@@ -39,7 +39,7 @@ extension FavoriteLocation {
         appDelegate.saveContext()
     }
     
-    // MARK: Deletion
+    // MARK: - Deletion
     
     public func delete(context: NSManagedObjectContext) {
         context.delete(self)
