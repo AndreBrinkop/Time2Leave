@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90227FB81E0E7EE300A29128 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90227FB71E0E7EE300A29128 /* AppDelegate.swift */; };
-		90227FBA1E0E7EE300A29128 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90227FB91E0E7EE300A29128 /* ViewController.swift */; };
+		90227FBA1E0E7EE300A29128 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90227FB91E0E7EE300A29128 /* DestinationViewController.swift */; };
 		90227FBD1E0E7EE300A29128 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90227FBB1E0E7EE300A29128 /* Main.storyboard */; };
 		90227FC01E0E7EE300A29128 /* Time2Leave.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90227FBE1E0E7EE300A29128 /* Time2Leave.xcdatamodeld */; };
 		90227FC21E0E7EE300A29128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90227FC11E0E7EE300A29128 /* Assets.xcassets */; };
@@ -20,13 +20,14 @@
 		906828D21E107C6D009340E8 /* GooglePlacesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828D11E107C6D009340E8 /* GooglePlacesClient.swift */; };
 		906828D41E107C77009340E8 /* GooglePlacesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828D31E107C77009340E8 /* GooglePlacesConstants.swift */; };
 		906945F71E116623003D9C1E /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906945F61E116623003D9C1E /* LocationTableViewCell.swift */; };
+		906945F91E11792A003D9C1E /* FavoriteLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906945F81E11792A003D9C1E /* FavoriteLocation.swift */; };
 		90F84D781E1090A5001856A3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F84D771E1090A5001856A3 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		90227FB41E0E7EE300A29128 /* Time2Leave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Time2Leave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90227FB71E0E7EE300A29128 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		90227FB91E0E7EE300A29128 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		90227FB91E0E7EE300A29128 /* DestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
 		90227FBC1E0E7EE300A29128 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		90227FBF1E0E7EE300A29128 /* Time2Leave.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Time2Leave.xcdatamodel; sourceTree = "<group>"; };
 		90227FC11E0E7EE300A29128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +40,7 @@
 		906828D11E107C6D009340E8 /* GooglePlacesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesClient.swift; sourceTree = "<group>"; };
 		906828D31E107C77009340E8 /* GooglePlacesConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesConstants.swift; sourceTree = "<group>"; };
 		906945F61E116623003D9C1E /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationTableViewCell.swift; path = Time2Leave/LocationTableViewCell.swift; sourceTree = "<group>"; };
+		906945F81E11792A003D9C1E /* FavoriteLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteLocation.swift; sourceTree = "<group>"; };
 		90F84D771E1090A5001856A3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,7 +125,7 @@
 		90D788F71E1076790075DCF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				90227FB91E0E7EE300A29128 /* ViewController.swift */,
+				90227FB91E0E7EE300A29128 /* DestinationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -134,6 +136,7 @@
 				906828CD1E107B29009340E8 /* Clients */,
 				90227FBE1E0E7EE300A29128 /* Time2Leave.xcdatamodeld */,
 				90F84D771E1090A5001856A3 /* Location.swift */,
+				906945F81E11792A003D9C1E /* FavoriteLocation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -224,12 +227,13 @@
 			files = (
 				906828D41E107C77009340E8 /* GooglePlacesConstants.swift in Sources */,
 				906828CA1E10794C009340E8 /* Constants.swift in Sources */,
-				90227FBA1E0E7EE300A29128 /* ViewController.swift in Sources */,
+				90227FBA1E0E7EE300A29128 /* DestinationViewController.swift in Sources */,
 				906828CF1E107B47009340E8 /* HTTPClient.swift in Sources */,
 				90F84D781E1090A5001856A3 /* Location.swift in Sources */,
 				90227FC01E0E7EE300A29128 /* Time2Leave.xcdatamodeld in Sources */,
 				906945F71E116623003D9C1E /* LocationTableViewCell.swift in Sources */,
 				906828D21E107C6D009340E8 /* GooglePlacesClient.swift in Sources */,
+				906945F91E11792A003D9C1E /* FavoriteLocation.swift in Sources */,
 				906828C81E107932009340E8 /* ApiKeys.swift in Sources */,
 				90227FB81E0E7EE300A29128 /* AppDelegate.swift in Sources */,
 			);

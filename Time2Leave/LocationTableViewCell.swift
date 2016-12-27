@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LocationTableViewCell: UITableViewCell {
 
@@ -14,21 +15,26 @@ class LocationTableViewCell: UITableViewCell {
     
     @IBOutlet private var locationLabel: UILabel!
     @IBOutlet private var favoriteButton: UIButton!
+    var destinationViewController: DestinationViewController!
     
-    private var location: Location?
+    private(set) var location: Location!
+    private let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    private var isFavorite: Bool {
+    var isFavorite: Bool {
         get {
             return favoriteButton.imageView?.image == #imageLiteral(resourceName: "filledStar")
         }
         set(newValue) {
+            if newValue == isFavorite {
+                return
+            }
             favoriteButton.setImage(newValue ? #imageLiteral(resourceName: "filledStar") : #imageLiteral(resourceName: "emptyStar"), for: .normal)
         }
     }
     
     // MARK: Configuration
     
-    func setLocation(_ location: Location?) {
+    func setLocation(_ location: Location?, isFavorite: Bool = false) {
         guard let location = location else {
             locationLabel.text = ""
             return
@@ -36,11 +42,12 @@ class LocationTableViewCell: UITableViewCell {
         
         self.location = location
         locationLabel.text = location.description
+        self.isFavorite = isFavorite
     }
     
-    // MARK: Click Action
+    // MARK: Favorite Button Click Action
 
-    @IBAction func favoriteButtonClicked(_ sender: UIButton) {
-        isFavorite = !isFavorite
+    @IBAction func favoriteButtonClicked(_ sender: Any) {
+        destinationViewController.toggleFavorite(location: location)
     }
 }

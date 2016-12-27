@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Destination View Controller-->
         <scene sceneID="vAM-ce-IUj">
             <objects>
-                <viewController id="cKv-9o-u0y" customClass="ViewController" customModule="Time2Leave" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cKv-9o-u0y" customClass="DestinationViewController" customModule="Time2Leave" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aEg-1S-N36"/>
                         <viewControllerLayoutGuide type="bottom" id="GC3-Gm-KpH"/>
@@ -76,7 +76,7 @@
                                                     </constraints>
                                                     <state key="normal" image="emptyStar"/>
                                                     <connections>
-                                                        <action selector="favoriteButtonClicked:" destination="YI2-jl-0sg" eventType="touchUpInside" id="K7O-fz-CF7"/>
+                                                        <action selector="favoriteButtonClicked:" destination="YI2-jl-0sg" eventType="touchUpInside" id="94t-Rz-210"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
