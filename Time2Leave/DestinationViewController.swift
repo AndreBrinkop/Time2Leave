@@ -25,6 +25,7 @@ class DestinationViewController: UIViewController {
     let favoriteSectionName = "Favorite Locations"
     
     var userLocation: CLLocation?
+    var selectedDestination: Location?
     
     var fetchedResultsController: NSFetchedResultsController<FavoriteLocation>!
     let locationManager = CLLocationManager()
@@ -39,10 +40,13 @@ class DestinationViewController: UIViewController {
         return searchController.isActive && userLocation == nil
     }
     
-    // MARK: Location Alerts
+    // MARK: Alerts
     
-    let noLocationFoundAlert = UIAlertController.init(title: "Need User Location", message: "Your location could not be found!", preferredStyle: .alert)
-    let needLocationAlert = UIAlertController.init(title: "Need User Location", message: "Please activate the location services for this app!", preferredStyle: .alert)
+    private(set) var noLocationFoundAlert: UIAlertController!
+    private(set) var needLocationAlert: UIAlertController!
+    private(set) var waitingForLocationAfterSelectionAlert: UIAlertController!
+    
+    private(set) var networkProblemAlert: UIAlertController!
     
     // MARK: - Initialization
 
@@ -51,6 +55,7 @@ class DestinationViewController: UIViewController {
         initializeFetchedResultsController()
         initializeSearchController()
         initializeLocationManager()
+        initializeAlerts()
     }
     
     func initializeFetchedResultsController() {
@@ -68,7 +73,7 @@ class DestinationViewController: UIViewController {
                 favoriteLocations = response
             }
         } catch {
-            //appDelegate.showErrorMessage(title: "Failed to fetch stored Locations!", message: error.localizedDescription)
+            appDelegate.showErrorMessage(title: "Failed to retrieve favorite Locations!", message: error.localizedDescription)
         }
     }
     
@@ -83,6 +88,16 @@ class DestinationViewController: UIViewController {
     func initializeLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = Constants.userLocation.accuracy
+    }
+    
+    func initializeAlerts() {
+        noLocationFoundAlert = UIAlertController.init(title: "Need User Location", message: "Your location could not be found!", preferredStyle: .alert)
+        needLocationAlert = UIAlertController.init(title: "Need User Location", message: "Please activate the location services for this app!", preferredStyle: .alert)
+        waitingForLocationAfterSelectionAlert = UIAlertController.init(title: "Destination selected", message: "Waiting for GPS location to continue..", preferredStyle: .alert)
+        waitingForLocationAfterSelectionAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in self.selectedDestination = nil }))
+        
+        networkProblemAlert = UIAlertController.init(title: "Could not search for destinations", message: "Network problem", preferredStyle: .alert)
+        networkProblemAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     }
     
     // MARK: - Actions
@@ -117,13 +132,13 @@ extension DestinationViewController: UISearchControllerDelegate {
 // MARK: - CLLocationManagerDelegate
 extension DestinationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        dismissErrorAlerts()
+        dismissLocationErrorAlerts()
         userLocation = locations.last!
         updateSearchResults(for: searchController)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        dismissErrorAlerts()
+        dismissLocationErrorAlerts()
         switch error {
         case CLError.locationUnknown:
             present(noLocationFoundAlert, animated: true)
@@ -134,7 +149,7 @@ extension DestinationViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        dismissErrorAlerts()
+        dismissLocationErrorAlerts()
         if status == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
         }
@@ -146,9 +161,10 @@ extension DestinationViewController: CLLocationManagerDelegate {
         }
     }
     
-    private func dismissErrorAlerts() {
+    private func dismissLocationErrorAlerts() {
         noLocationFoundAlert.dismiss(animated: true, completion: nil)
         needLocationAlert.dismiss(animated: true, completion: nil)
+        waitingForLocationAfterSelectionAlert.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -163,8 +179,9 @@ extension DestinationViewController: UISearchResultsUpdating {
         
         GooglePlacesClient.autocomplete(input: input, location: userLocation.coordinate) { locations, error in
             guard error == nil else {
-                // TODO: Handle Error
-                print(error!)
+                self.searchController.searchBar.text = ""
+                self.networkProblemAlert.message = error?.localizedDescription
+                self.present(self.networkProblemAlert, animated: true)
                 return
             }
             
@@ -209,7 +226,7 @@ extension DestinationViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if showWaitingForLocationCell && indexPath.section == autocompleteSection {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "waitingForLocationCell") as! WaitingForLocationCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "waitingForLocationTableViewCell") as! WaitingForLocationTableViewCell
             cell.activitySpinner.startAnimating()
             return cell
         }

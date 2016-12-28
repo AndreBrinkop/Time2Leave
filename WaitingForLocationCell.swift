@@ -1,5 +1,5 @@
 //
-//  WaitingForLocationCell.swift
+//  WaitingForLocationTableViewCell.swift
 //  Time2Leave
 //
 //  Created by André Brinkop on 28.12.16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WaitingForLocationCell: UITableViewCell {
+class WaitingForLocationTableViewCell: UITableViewCell {
 
     @IBOutlet var activitySpinner: UIActivityIndicatorView!
 
