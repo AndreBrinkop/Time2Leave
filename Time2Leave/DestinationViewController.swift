@@ -116,6 +116,11 @@ class DestinationViewController: UIViewController {
         
         appDelegate.saveContext()
     }
+    
+    func foundPositionAndSelectedDestination() {
+        TripDetails.setOriginAndDestination(originCoordinates: userLocation!.coordinate, destination: selectedDestination!)
+        performSegue(withIdentifier: "destinationSelected", sender: self)
+    }
 }
 
 // MARK: - UISearchControllerDelegate
@@ -134,6 +139,11 @@ extension DestinationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         dismissLocationErrorAlerts()
         userLocation = locations.last!
+
+        if selectedDestination != nil {
+            foundPositionAndSelectedDestination()
+        }
+        
         updateSearchResults(for: searchController)
     }
     
@@ -254,6 +264,36 @@ extension DestinationViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableViewSectionCount
     }
+}
+
+// MARK: - UITableViewDelegate
+extension DestinationViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if let _ = tableView.cellForRow(at: indexPath) as? LocationTableViewCell {
+            return true
+        }
+        return false
+    }
+    
+    //tableViewselect
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let locationCell = tableView.cellForRow(at: indexPath) as? LocationTableViewCell else {
+            return
+        }
+        
+        selectedDestination = locationCell.location
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if userLocation == nil {
+            present(waitingForLocationAfterSelectionAlert, animated: true)
+            return
+        }
+        
+        foundPositionAndSelectedDestination()
+    }
+    
 }
 
 // MARK: - NSFetchedResultsControllerDelegate

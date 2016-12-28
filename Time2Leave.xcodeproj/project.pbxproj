@@ -22,6 +22,8 @@
 		906945F71E116623003D9C1E /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906945F61E116623003D9C1E /* LocationTableViewCell.swift */; };
 		906945F91E11792A003D9C1E /* FavoriteLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906945F81E11792A003D9C1E /* FavoriteLocation.swift */; };
 		906945FF1E13325C003D9C1E /* WaitingForLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906945FE1E13325C003D9C1E /* WaitingForLocationCell.swift */; };
+		906946011E133B80003D9C1E /* TripDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906946001E133B80003D9C1E /* TripDataViewController.swift */; };
+		906946031E141E86003D9C1E /* TripDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906946021E141E86003D9C1E /* TripDetails.swift */; };
 		90F84D781E1090A5001856A3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F84D771E1090A5001856A3 /* Location.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		906945F61E116623003D9C1E /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationTableViewCell.swift; path = Time2Leave/LocationTableViewCell.swift; sourceTree = "<group>"; };
 		906945F81E11792A003D9C1E /* FavoriteLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteLocation.swift; sourceTree = "<group>"; };
 		906945FE1E13325C003D9C1E /* WaitingForLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingForLocationCell.swift; sourceTree = "<group>"; };
+		906946001E133B80003D9C1E /* TripDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDataViewController.swift; sourceTree = "<group>"; };
+		906946021E141E86003D9C1E /* TripDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetails.swift; sourceTree = "<group>"; };
 		90F84D771E1090A5001856A3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				90227FB91E0E7EE300A29128 /* DestinationViewController.swift */,
+				906946001E133B80003D9C1E /* TripDataViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 				90227FBE1E0E7EE300A29128 /* Time2Leave.xcdatamodeld */,
 				90F84D771E1090A5001856A3 /* Location.swift */,
 				906945F81E11792A003D9C1E /* FavoriteLocation.swift */,
+				906946021E141E86003D9C1E /* TripDetails.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -229,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				906828D41E107C77009340E8 /* GooglePlacesConstants.swift in Sources */,
+				906946031E141E86003D9C1E /* TripDetails.swift in Sources */,
 				906828CA1E10794C009340E8 /* Constants.swift in Sources */,
 				906945FF1E13325C003D9C1E /* WaitingForLocationCell.swift in Sources */,
 				90227FBA1E0E7EE300A29128 /* DestinationViewController.swift in Sources */,
@@ -239,6 +246,7 @@
 				906828D21E107C6D009340E8 /* GooglePlacesClient.swift in Sources */,
 				906945F91E11792A003D9C1E /* FavoriteLocation.swift in Sources */,
 				906828C81E107932009340E8 /* ApiKeys.swift in Sources */,
+				906946011E133B80003D9C1E /* TripDataViewController.swift in Sources */,
 				90227FB81E0E7EE300A29128 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
