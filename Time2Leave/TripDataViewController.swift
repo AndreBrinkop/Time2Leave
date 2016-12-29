@@ -17,7 +17,29 @@ class TripDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(TripDetails.destination!, TripDetails.originCoordinates!)
+        tripDatePicker.minimumDate = Date()
+        currentPositionLabel.text = TripDetails.destination!.description
     }
 
+    @IBAction func setTripDatePickerToSpecificTime(_ sender: UIButton) {
+        
+        var offsetFromCurrentTime: TimeInterval?
+        
+        switch sender.tag {
+        case 0: // now
+            offsetFromCurrentTime = 0.0
+        case 1: // in 15 minutes
+            offsetFromCurrentTime = 60.0 * 15.0
+        case 2: // in 1 hour
+            offsetFromCurrentTime = 60.0 * 60.0
+        default:
+            return
+        }
+        
+        let newDate = Date().addingTimeInterval(offsetFromCurrentTime!)
+        tripDatePicker.setDate(newDate, animated: true)
+        
+    }
+    
+    
 }
