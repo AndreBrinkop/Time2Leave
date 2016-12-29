@@ -11,18 +11,24 @@ import CoreLocation
 
 class TripDataViewController: UIViewController {
 
+    // MARK: - Properties
+    
     @IBOutlet var tripTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet var departureArrivalSegmentedControl: UISegmentedControl!
     @IBOutlet var tripDatePicker: UIDatePicker!
     @IBOutlet var currentPositionLabel: UILabel!
+    
+    // MARK: - Initialization
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tripDatePicker.minimumDate = Date()
         currentPositionLabel.text = TripDetails.destination!.description
     }
+    
+    // MARK: - Actions
 
     @IBAction func setTripDatePickerToSpecificTime(_ sender: UIButton) {
-        
         var offsetFromCurrentTime: TimeInterval?
         
         switch sender.tag {
@@ -38,7 +44,6 @@ class TripDataViewController: UIViewController {
         
         let newDate = Date().addingTimeInterval(offsetFromCurrentTime!)
         tripDatePicker.setDate(newDate, animated: true)
-        
     }
     
     

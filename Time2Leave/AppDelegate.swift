@@ -13,9 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        window?.tintColor = Color.defaultColor
+    }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        self.saveContext()
+        saveContext()
     }
 
     // MARK: - Core Data stack
