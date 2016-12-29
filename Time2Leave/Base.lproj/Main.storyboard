@@ -203,19 +203,19 @@
                                                 </segments>
                                             </segmentedControl>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KaX-GS-CpH">
-                                                <rect key="frame" x="84" y="38" width="177.5" height="100"/>
+                                                <rect key="frame" x="84" y="38" width="178" height="100"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zgp-dA-5AG">
-                                                        <rect key="frame" x="0.0" y="27" width="50" height="46"/>
+                                                        <rect key="frame" x="0.0" y="27" width="50" height="47"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWW-rt-hFt">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="21"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBp-Mv-kaG">
-                                                                <rect key="frame" x="0.0" y="25.5" width="50" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="26" width="50" height="21"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -226,16 +226,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4T2-fO-pow">
-                                                        <rect key="frame" x="54" y="27" width="123.5" height="46"/>
+                                                        <rect key="frame" x="54" y="27" width="124" height="47"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Current Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjY-Y7-JDo">
-                                                                <rect key="frame" x="0.0" y="0.0" width="123.5" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="124" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zy7-W7-owk">
-                                                                <rect key="frame" x="0.0" y="25.5" width="123.5" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="26" width="124" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -258,7 +258,7 @@
                                                 </segments>
                                             </segmentedControl>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zh2-Xn-aJC">
-                                                <rect key="frame" x="12.5" y="186" width="320" height="169"/>
+                                                <rect key="frame" x="13" y="186" width="320" height="169"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="504664169.37213802">
                                                     <!--2016-12-29 00:29:29 +0000-->
                                                 </date>
@@ -267,7 +267,7 @@
                                                 <rect key="frame" x="0.0" y="365" width="345" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09G-Mv-jgF" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="112" height="30"/>
                                                         <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Now">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -277,7 +277,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5p-6q-8Z3" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="116.5" y="0.0" width="112" height="30"/>
+                                                        <rect key="frame" x="117" y="0.0" width="111" height="30"/>
                                                         <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="In 15 minutes">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -287,7 +287,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAW-yS-qq1" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="233.5" y="0.0" width="111.5" height="30"/>
+                                                        <rect key="frame" x="233" y="0.0" width="112" height="30"/>
                                                         <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="In 1 hour">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

@@ -16,6 +16,7 @@ struct Constants {
     
     struct userLocation {
         static let accuracy = kCLLocationAccuracyNearestTenMeters
+        static let validInSeconds = 60.0 * 2.5
     }
     
     struct locationAutocomplete {
@@ -33,5 +34,13 @@ struct Constants {
     
     struct apiKeys {
         static let google = getAPIKey(apiKeyNames.google)
+    }
+    
+    // MARK: User Defaults
+    
+    struct userDefaults {
+        static let userLocationLatitude = "USER_LOCATION_LATITUDE"
+        static let userLocationLongitude = "USER_LOCATION_LONGITUDE"
+        static let userLocationTimestamp = "USER_LOCATION_TIMESTAMP"
     }
 }

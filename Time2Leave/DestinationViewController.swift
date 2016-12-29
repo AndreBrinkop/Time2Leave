@@ -56,6 +56,8 @@ class DestinationViewController: UIViewController {
         initializeSearchController()
         initializeLocationManager()
         initializeAlerts()
+        
+        loadUserLocation()
     }
     
     func initializeFetchedResultsController() {
@@ -121,6 +123,35 @@ class DestinationViewController: UIViewController {
         TripDetails.setOriginAndDestination(originCoordinates: userLocation!.coordinate, destination: selectedDestination!)
         performSegue(withIdentifier: "destinationSelected", sender: self)
     }
+    
+    // MARK: Save and Load User Location
+    
+    func setUserLocation(userLocation: CLLocation) {
+        self.userLocation = userLocation
+        
+        // Save Location
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(userLocation.coordinate.latitude, forKey: Constants.userDefaults.userLocationLatitude)
+        userDefaults.set(userLocation.coordinate.longitude, forKey: Constants.userDefaults.userLocationLongitude)
+        userDefaults.set(userLocation.timestamp, forKey: Constants.userDefaults.userLocationTimestamp)
+
+    }
+    
+    func loadUserLocation() {
+        let userDefaults = UserDefaults.standard
+        guard let latitude = userDefaults.object(forKey: Constants.userDefaults.userLocationLatitude) as? CLLocationDegrees,
+            let longitude = userDefaults.object(forKey: Constants.userDefaults.userLocationLongitude) as? CLLocationDegrees,
+            let timestamp = userDefaults.object(forKey: Constants.userDefaults.userLocationTimestamp) as? Date else  {
+                return
+        }
+        
+        // Is saved location still valid
+        if Date() < timestamp.addingTimeInterval(Constants.userLocation.validInSeconds) {
+            print("valid")
+            let userLocation = CLLocation(latitude: latitude, longitude: longitude)
+            self.userLocation = userLocation
+        }
+    }
 }
 
 // MARK: - UISearchControllerDelegate
@@ -138,7 +169,7 @@ extension DestinationViewController: UISearchControllerDelegate {
 extension DestinationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         dismissLocationErrorAlerts()
-        userLocation = locations.last!
+        setUserLocation(userLocation: locations.last!)
 
         if selectedDestination != nil {
             foundPositionAndSelectedDestination()
