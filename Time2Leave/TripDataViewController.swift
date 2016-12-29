@@ -11,6 +11,10 @@ import CoreLocation
 
 class TripDataViewController: UIViewController {
 
+    @IBOutlet var tripTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet var tripDatePicker: UIDatePicker!
+    @IBOutlet var currentPositionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(TripDetails.destination!, TripDetails.originCoordinates!)
