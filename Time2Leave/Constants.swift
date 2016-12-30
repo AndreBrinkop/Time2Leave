@@ -27,6 +27,12 @@ struct Constants {
         static let language = "en"
     }
     
+    // MARK: UI
+    
+    struct userInterface {
+        static let mapRegionSpanFactor = 1.25
+    }
+    
     // MARK: API Keys
     
     static let apiKeyPlistName = "ApiKeys"

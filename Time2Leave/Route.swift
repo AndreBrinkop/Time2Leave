@@ -8,14 +8,14 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 struct Route {
-    
     var summary: String
     var copyrights: String?
     var warning: [String]?
     
     var polylineCoordinates: [CLLocationCoordinate2D]
-    var polylineBounds: Any? // TODO
+    var polylineBounds: MKCoordinateRegion
 
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 import Polyline
 
 class GoogleDirectionsClient {
@@ -99,21 +100,19 @@ class GoogleDirectionsClient {
         }
         
         guard let bounds = route[jsonResponseKeys.bounds] as? [String : AnyObject],
-            let northeastBound = bounds[jsonResponseKeys.northeastBound] as? [String : AnyObject],
-            let northeastBoundLat = northeastBound[jsonResponseKeys.latitude] as? Double,
-            let northeastBoundLong = northeastBound[jsonResponseKeys.longitude] as? Double,
-            let southwestBound = bounds[jsonResponseKeys.southwestBound] as? [String : AnyObject],
-            let southwestBoundLat = southwestBound[jsonResponseKeys.latitude] as? Double,
-            let southwestBoundLong = southwestBound[jsonResponseKeys.longitude] as? Double
+            let northeastBoundObject = bounds[jsonResponseKeys.northeastBound] as? [String : AnyObject],
+            let northeastBoundLat = northeastBoundObject[jsonResponseKeys.latitude] as? Double,
+            let northeastBoundLong = northeastBoundObject[jsonResponseKeys.longitude] as? Double,
+            let southwestBoundObject = bounds[jsonResponseKeys.southwestBound] as? [String : AnyObject],
+            let southwestBoundLat = southwestBoundObject[jsonResponseKeys.latitude] as? Double,
+            let southwestBoundLong = southwestBoundObject[jsonResponseKeys.longitude] as? Double
             else {
                 return nil
         }
         
-        // TODO: Use Bounds
-        print(northeastBoundLat, northeastBoundLong, southwestBoundLat, southwestBoundLong)
-        
-        // TODO: Parse and Calculate Departure and Arrival Time
-        
+        let northeastBound = CLLocationCoordinate2D(latitude: northeastBoundLat, longitude: northeastBoundLong)
+        let southwestBound = CLLocationCoordinate2D(latitude: southwestBoundLat, longitude: southwestBoundLong)
+
         guard let overview = route[jsonResponseKeys.overview] as? [String : AnyObject],
             let polyline = overview[jsonResponseKeys.polyline] as? String,
             let polylineCoordinates = Polyline.init(encodedPolyline: polyline).coordinates
@@ -121,6 +120,23 @@ class GoogleDirectionsClient {
                 return nil
         }
         
-        return Route(summary: summary, copyrights: copyrights, warning: warnings, polylineCoordinates: polylineCoordinates, polylineBounds: nil)
+        // TODO: Parse and Calculate Departure and Arrival Time
+        
+        let polylineBounds = createCoordinateRegion(firstBound: northeastBound, secondBound: southwestBound)
+        return Route(summary: summary, copyrights: copyrights, warning: warnings, polylineCoordinates: polylineCoordinates, polylineBounds: polylineBounds)
+    }
+    
+    // MARK: - Helper methods
+    
+    private static func createCoordinateRegion(firstBound: CLLocationCoordinate2D, secondBound: CLLocationCoordinate2D) -> MKCoordinateRegion {
+        let centerLat = (secondBound.latitude - firstBound.latitude) / 2.0 + firstBound.latitude
+        let centerLong = (secondBound.longitude - firstBound.longitude) / 2.0 + firstBound.longitude
+        let center = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong)
+        
+        let deltaLat = abs(firstBound.latitude - secondBound.latitude) * Constants.userInterface.mapRegionSpanFactor
+        let deltaLong = abs(firstBound.longitude - secondBound.longitude) * Constants.userInterface.mapRegionSpanFactor
+        let span = MKCoordinateSpan(latitudeDelta: deltaLat, longitudeDelta: deltaLong)
+        
+        return MKCoordinateRegion(center: center, span: span)
     }
 }
