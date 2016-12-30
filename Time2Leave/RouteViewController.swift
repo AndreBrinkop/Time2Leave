@@ -23,10 +23,10 @@ class RouteViewController: UIViewController {
     }
     
     func initializeMapView() {
-        let polylineCoordinates = TripDetails.route!.polylineCoordinates
+        let polylineCoordinates = TripDetails.shared.route!.polylineCoordinates
         routeMapView.add(MKPolyline.init(coordinates: polylineCoordinates, count: polylineCoordinates.count))
         
-        let region = TripDetails.route!.polylineBounds
+        let region = TripDetails.shared.route!.polylineBounds
         routeMapView.setRegion(region, animated: false)
     }
 }

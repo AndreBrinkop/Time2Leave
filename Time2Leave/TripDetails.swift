@@ -9,18 +9,43 @@
 import Foundation
 import CoreLocation
 
-struct TripDetails {
-    private(set) static var originCoordinates: CLLocationCoordinate2D?
-    private(set) static var destination: Location?
+class TripDetails {
     
-    private(set) static var route: Route?
+    private init() { }
     
-    static func setOriginAndDestination(originCoordinates: CLLocationCoordinate2D, destination: Location) {
-        TripDetails.originCoordinates = originCoordinates
-        TripDetails.destination = destination
+    // MARK: - Properties
+    
+    private(set) var originCoordinates: CLLocationCoordinate2D?
+    var originCoordinatesString: String? {
+        if originCoordinates == nil { return nil }
+        return "\(originCoordinates!.latitude),\(originCoordinates!.longitude)"
     }
     
-    static func setRoute(_ route: Route) {
-        TripDetails.route = route
+    private(set) var destination: Location?
+    
+    private(set) var tripType: String? // TODO
+    private(set) var departureArrivalType: String? // TODO
+    private(set) var tripTime: Date? // TODO
+    
+    private(set) var route: Route?
+    
+    // MARK: Shared Instance
+    
+    static var shared: TripDetails {
+        get {
+            struct Singleton {
+                static var sharedInstance = TripDetails()
+            }
+            return Singleton.sharedInstance
+        }
+    }
+    
+    func setOriginAndDestination(originCoordinates: CLLocationCoordinate2D, destination: Location) {
+        self.originCoordinates = originCoordinates
+        self.destination = destination
+    }
+    
+    func setRoute(_ route: Route) {
+        self.route = route
     }
 }

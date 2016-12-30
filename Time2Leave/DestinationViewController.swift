@@ -120,7 +120,7 @@ class DestinationViewController: UIViewController {
     }
     
     func foundPositionAndSelectedDestination() {
-        TripDetails.setOriginAndDestination(originCoordinates: userLocation!.coordinate, destination: selectedDestination!)
+        TripDetails.shared.setOriginAndDestination(originCoordinates: userLocation!.coordinate, destination: selectedDestination!)
         performSegue(withIdentifier: "destinationSelected", sender: self)
     }
     

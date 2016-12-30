@@ -13,11 +13,11 @@ import Polyline
 
 class GoogleDirectionsClient {
     
-    public static func findRoutes( completionHandler: @escaping (_ route: Route?, _ error: Error?) -> Void) {
+    public static func findRoutes(tripDetails: TripDetails, completionHandler: @escaping (_ route: Route?, _ error: Error?) -> Void) {
+        let origin = tripDetails.originCoordinatesString!
+        let destination = parameterValues.placeIdPrefix + tripDetails.destination!.id
         
         // TODO: Dummy data
-        let origin = "53.540295,9.996468"
-        let destination = parameterValues.placeIdPrefix + "ChIJEbr9hmNwsEcR4FyslG2sJQQ"
         let mode = "driving"
         let departureTime = Int(Date().timeIntervalSince1970)
         

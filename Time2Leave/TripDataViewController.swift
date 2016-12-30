@@ -24,7 +24,7 @@ class TripDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tripDatePicker.minimumDate = Date()
-        currentPositionLabel.text = TripDetails.destination!.description
+        currentPositionLabel.text = TripDetails.shared.destination!.description
     }
     
     // MARK: - Actions
@@ -56,17 +56,17 @@ class TripDataViewController: UIViewController {
         continueButton.startSpinning()
         navigationItem.setHidesBackButton(true, animated: true)
         
-        GoogleDirectionsClient.findRoutes() { route, error in
+        GoogleDirectionsClient.findRoutes(tripDetails: TripDetails.shared) { route, error in
             self.continueButton.stopSpinning()
             self.navigationItem.setHidesBackButton(false, animated: true)
             
             guard let route = route, error == nil else {
                 // TODO: Handle error
-                print(error!)
+                print(error ?? "error")
                 return
             }
             
-            TripDetails.setRoute(route)
+            TripDetails.shared.setRoute(route)
             self.performSegue(withIdentifier: "showRoute", sender: self)
         }
     }
