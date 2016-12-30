@@ -37,6 +37,12 @@ class HTTPClient {
     
     static func httpRequest(url: URL, httpMethod: String, headerFields: [String : String]?,  httpBody: [String : AnyObject]?, completionHandler: @escaping (_ result: Data?, _ error: Error?) -> Void) {
         
+        let completionHandlerOnMainThread: (_ result: Data?, _ error: Error?) -> Void = { result, error in
+            DispatchQueue.main.async {
+                completionHandler(result, error)
+            }
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
         
@@ -50,7 +56,7 @@ class HTTPClient {
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: httpBody)
             } catch {
-                completionHandler(nil, createError(domain: "parseJSON", error: "Can not parse JSON body"))
+                completionHandlerOnMainThread(nil, createError(domain: "parseJSON", error: "Can not parse JSON body"))
                 return
             }
         }
@@ -60,11 +66,11 @@ class HTTPClient {
             networkActivityIndicator(isVisible: false)
             
             if let responseError = checkForError(data: data, response: response, error: error) {
-                completionHandler(nil, responseError)
+                completionHandlerOnMainThread(nil, responseError)
                 return
             }
             
-            completionHandler(data, nil)
+            completionHandlerOnMainThread(data, nil)
         }
         task.resume()
         networkActivityIndicator(isVisible: true)

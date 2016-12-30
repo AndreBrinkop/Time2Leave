@@ -20,8 +20,11 @@ struct Constants {
     }
     
     struct locationAutocomplete {
-        static let language = "en"
         static let searchRadiusInKilometers = 150.0
+    }
+    
+    struct apiConstants {
+        static let language = "en"
     }
     
     // MARK: API Keys
