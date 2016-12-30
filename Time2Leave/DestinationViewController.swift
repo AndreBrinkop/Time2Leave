@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import CoreLocation
-import Polyline
 
 class DestinationViewController: UIViewController {
     
@@ -53,11 +52,6 @@ class DestinationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        GoogleDirectionsClient.findRoutes() { result, error in
-            print(result, error)
-        }
-        
         initializeFetchedResultsController()
         initializeSearchController()
         initializeLocationManager()

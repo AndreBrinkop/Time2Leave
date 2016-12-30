@@ -46,5 +46,12 @@ class TripDataViewController: UIViewController {
         tripDatePicker.setDate(newDate, animated: true)
     }
     
-    
+    @IBAction func continueButtonClicked(_ sender: Any) {
+        let tripType = tripTypeSegmentedControl.selectedSegmentIndex
+        let tripDepartureArrival = departureArrivalSegmentedControl.selectedSegmentIndex
+        let tripDate = tripDatePicker.date
+        
+        // TODO: Start route search
+        print(tripType, tripDepartureArrival, tripDate)
+    }
 }
