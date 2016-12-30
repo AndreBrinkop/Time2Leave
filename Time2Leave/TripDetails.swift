@@ -13,8 +13,14 @@ struct TripDetails {
     private(set) static var originCoordinates: CLLocationCoordinate2D?
     private(set) static var destination: Location?
     
+    private(set) static var route: Route?
+    
     static func setOriginAndDestination(originCoordinates: CLLocationCoordinate2D, destination: Location) {
         TripDetails.originCoordinates = originCoordinates
         TripDetails.destination = destination
+    }
+    
+    static func setRoute(_ route: Route) {
+        TripDetails.route = route
     }
 }
