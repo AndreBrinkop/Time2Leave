@@ -1,0 +1,12 @@
+PODS:
+  - Polyline (4.0.0)
+
+DEPENDENCIES:
+  - Polyline (~> 4.0)
+
+SPEC CHECKSUMS:
+  Polyline: c6de7430bf6ff0bfff1f087343597b83b38fdb69
+
+PODFILE CHECKSUM: 2c3eec7e527dd3eb8c5870fe9e64bd5cf36d3a9f
+
+COCOAPODS: 1.1.1

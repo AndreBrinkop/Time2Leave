@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13BB247CBD7AA0D8BB791780 /* Pods_Time2Leave.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F63B8A3CF12D375B9B8FCBF /* Pods_Time2Leave.framework */; };
 		90227FB81E0E7EE300A29128 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90227FB71E0E7EE300A29128 /* AppDelegate.swift */; };
 		90227FBA1E0E7EE300A29128 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90227FB91E0E7EE300A29128 /* DestinationViewController.swift */; };
 		90227FBD1E0E7EE300A29128 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90227FBB1E0E7EE300A29128 /* Main.storyboard */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44C9B8AD5A66EAEE60BEE23B /* Pods-Time2Leave.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Time2Leave.release.xcconfig"; path = "Pods/Target Support Files/Pods-Time2Leave/Pods-Time2Leave.release.xcconfig"; sourceTree = "<group>"; };
+		7F63B8A3CF12D375B9B8FCBF /* Pods_Time2Leave.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Time2Leave.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90227FB41E0E7EE300A29128 /* Time2Leave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Time2Leave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90227FB71E0E7EE300A29128 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90227FB91E0E7EE300A29128 /* DestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 		909CC4731E15821300B98299 /* GoogleApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleApiHelper.swift; sourceTree = "<group>"; };
 		90AE32221E154B5C006D1C60 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		90F84D771E1090A5001856A3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		BF79E2D069F2E54F0FA2B8CE /* Pods-Time2Leave.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Time2Leave.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Time2Leave/Pods-Time2Leave.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,17 +69,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13BB247CBD7AA0D8BB791780 /* Pods_Time2Leave.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C71ABB14C26B398D2D5146C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F63B8A3CF12D375B9B8FCBF /* Pods_Time2Leave.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		90227FAB1E0E7EE300A29128 = {
 			isa = PBXGroup;
 			children = (
 				90227FB61E0E7EE300A29128 /* Time2Leave */,
 				90227FB51E0E7EE300A29128 /* Products */,
+				E89F55E78EA9A145259CE641 /* Pods */,
+				8C71ABB14C26B398D2D5146C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +198,15 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
+		E89F55E78EA9A145259CE641 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF79E2D069F2E54F0FA2B8CE /* Pods-Time2Leave.debug.xcconfig */,
+				44C9B8AD5A66EAEE60BEE23B /* Pods-Time2Leave.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,9 +214,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90227FC91E0E7EE300A29128 /* Build configuration list for PBXNativeTarget "Time2Leave" */;
 			buildPhases = (
+				286B1EC6BE03BCECFAFE387B /* [CP] Check Pods Manifest.lock */,
 				90227FB01E0E7EE300A29128 /* Sources */,
 				90227FB11E0E7EE300A29128 /* Frameworks */,
 				90227FB21E0E7EE300A29128 /* Resources */,
+				9D8010E0F34869348A1102D7 /* [CP] Embed Pods Frameworks */,
+				A6D23362BA22D2C15BC8D18F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,6 +278,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		286B1EC6BE03BCECFAFE387B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9D8010E0F34869348A1102D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Time2Leave/Pods-Time2Leave-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6D23362BA22D2C15BC8D18F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Time2Leave/Pods-Time2Leave-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		90227FB01E0E7EE300A29128 /* Sources */ = {
@@ -396,6 +471,7 @@
 		};
 		90227FCA1E0E7EE300A29128 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF79E2D069F2E54F0FA2B8CE /* Pods-Time2Leave.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J2YTLC2SAF;
@@ -411,6 +487,7 @@
 		};
 		90227FCB1E0E7EE300A29128 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44C9B8AD5A66EAEE60BEE23B /* Pods-Time2Leave.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J2YTLC2SAF;
