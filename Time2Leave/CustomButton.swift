@@ -10,22 +10,23 @@ import UIKit
 
 class CustomButton: UIButton {
     
-    // MARK: Constants
+    // MARK: - Constants
     
     private let titleLabelColor = UIColor.white
     
     private let cornerRadius: CGFloat = 5.0
     private let titleLabelFontSize: CGFloat = 17.0
     
-    // MARK: Properties
+    // MARK: - Properties
     
     private var buttonColor: UIColor = Color.defaultColor
     private var buttonClickColor: UIColor = Color.darkColor
     
     private var activityIndicator: UIActivityIndicatorView!
+    private var isSpinning: Bool = false
     
     
-    // MARK: Initialization
+    // MARK: - Initialization
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -64,7 +65,7 @@ class CustomButton: UIButton {
         self.addConstraint(yPositionConstraint)
     }
     
-    // MARK: Tracking
+    // MARK: - Tracking
     
     override func beginTracking(_ touch: UITouch, with withEvent: UIEvent?) -> Bool {
         backgroundColor = buttonClickColor
@@ -79,21 +80,31 @@ class CustomButton: UIButton {
         backgroundColor = buttonColor
     }
     
-    // MARK: Activity Indicator
+    // MARK: - Activity Indicator
     
     func startSpinning() {
+        if isSpinning {
+            return
+        }
+        isSpinning = true
+        
         DispatchQueue.main.async {
             self.titleLabel?.layer.opacity = 0.0
             self.activityIndicator.startAnimating()
+            self.isEnabled = false
         }
     }
     
     func stopSpinning() {
-        DispatchQueue.main.async {
-            self.titleLabel?.layer.opacity = 1.0
-            self.activityIndicator.stopAnimating()
+        if !isSpinning {
+            return
         }
         
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.titleLabel?.layer.opacity = 1.0
+            self.isEnabled = true
+            self.isSpinning = false
+        }
     }
-    
 }

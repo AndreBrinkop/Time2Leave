@@ -147,7 +147,6 @@ class DestinationViewController: UIViewController {
         
         // Is saved location still valid
         if Date() < timestamp.addingTimeInterval(Constants.userLocation.validInSeconds) {
-            print("valid")
             let userLocation = CLLocation(latitude: latitude, longitude: longitude)
             self.userLocation = userLocation
         }
@@ -169,9 +168,11 @@ extension DestinationViewController: UISearchControllerDelegate {
 extension DestinationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         dismissLocationErrorAlerts()
+        
+        let silentUpdate = selectedDestination != nil
         setUserLocation(userLocation: locations.last!)
 
-        if selectedDestination != nil {
+        if selectedDestination != nil, !silentUpdate {
             foundPositionAndSelectedDestination()
         }
         
