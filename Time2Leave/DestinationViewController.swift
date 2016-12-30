@@ -169,7 +169,7 @@ extension DestinationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         dismissLocationErrorAlerts()
         
-        let silentUpdate = selectedDestination != nil
+        let silentUpdate = userLocation != nil
         setUserLocation(userLocation: locations.last!)
 
         if selectedDestination != nil, !silentUpdate {
