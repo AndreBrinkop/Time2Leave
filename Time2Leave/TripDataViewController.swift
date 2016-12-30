@@ -17,6 +17,7 @@ class TripDataViewController: UIViewController {
     @IBOutlet var departureArrivalSegmentedControl: UISegmentedControl!
     @IBOutlet var tripDatePicker: UIDatePicker!
     @IBOutlet var currentPositionLabel: UILabel!
+    @IBOutlet var continueButton: CustomButton!
     
     // MARK: - Initialization
     
@@ -47,11 +48,26 @@ class TripDataViewController: UIViewController {
     }
     
     @IBAction func continueButtonClicked(_ sender: Any) {
-        let tripType = tripTypeSegmentedControl.selectedSegmentIndex
+        // TODO: Delegate trip informations to the GoogleDirectionsClient
+        /* let tripType = tripTypeSegmentedControl.selectedSegmentIndex
         let tripDepartureArrival = departureArrivalSegmentedControl.selectedSegmentIndex
-        let tripDate = tripDatePicker.date
+        let tripDate = tripDatePicker.date */
         
-        // TODO: Start route search
-        print(tripType, tripDepartureArrival, tripDate)
+        continueButton.startSpinning()
+        navigationItem.setHidesBackButton(true, animated: true)
+        
+        GoogleDirectionsClient.findRoutes() { route, error in
+            self.continueButton.stopSpinning()
+            self.navigationItem.setHidesBackButton(false, animated: true)
+            
+            guard let route = route, error == nil else {
+                // TODO: Handle error
+                print(error!)
+                return
+            }
+            
+            TripDetails.setRoute(route)
+            self.performSegue(withIdentifier: "showRoute", sender: self)
+        }
     }
 }
