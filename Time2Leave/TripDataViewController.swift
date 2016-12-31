@@ -48,10 +48,14 @@ class TripDataViewController: UIViewController {
     }
     
     @IBAction func continueButtonClicked(_ sender: Any) {
+        let tripType = getTripType(index: tripTypeSegmentedControl.selectedSegmentIndex)
+  
         // TODO: Delegate trip informations to the GoogleDirectionsClient
-        /* let tripType = tripTypeSegmentedControl.selectedSegmentIndex
+        /*
         let tripDepartureArrival = departureArrivalSegmentedControl.selectedSegmentIndex
         let tripDate = tripDatePicker.date */
+        
+        TripDetails.shared.setTripTypeAndTimeInformation(tripType: tripType)
         
         continueButton.startSpinning()
         navigationItem.setHidesBackButton(true, animated: true)
@@ -68,6 +72,23 @@ class TripDataViewController: UIViewController {
             
             TripDetails.shared.setRoute(route)
             self.performSegue(withIdentifier: "showRoute", sender: self)
+        }
+    }
+    
+    // MARK: - Helper Methods
+    
+    private func getTripType(index: Int) -> TripType {
+        switch index {
+        case 0:
+            return TripType.car
+        case 1:
+            return TripType.subway
+        case 2:
+            return TripType.bike
+        case 3:
+            return TripType.walk
+        default:
+            return TripType.car
         }
     }
 }

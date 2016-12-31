@@ -75,5 +75,4 @@ extension GoogleDirectionsClient {
     struct errorMessages {
         static let apiError = "An error occurred while using the GoogleDirections API."
     }
-    
 }

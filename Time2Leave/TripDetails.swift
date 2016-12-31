@@ -23,7 +23,7 @@ class TripDetails {
     
     private(set) var destination: Location?
     
-    private(set) var tripType: String? // TODO
+    private(set) var tripType: TripType? // TODO
     private(set) var departureArrivalType: String? // TODO
     private(set) var tripTime: Date? // TODO
     
@@ -43,6 +43,10 @@ class TripDetails {
     func setOriginAndDestination(originCoordinates: CLLocationCoordinate2D, destination: Location) {
         self.originCoordinates = originCoordinates
         self.destination = destination
+    }
+    
+    func setTripTypeAndTimeInformation(tripType: TripType) {
+        self.tripType = tripType
     }
     
     func setRoute(_ route: Route) {

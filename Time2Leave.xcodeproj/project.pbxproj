@@ -32,6 +32,7 @@
 		90AE32231E154B5C006D1C60 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AE32221E154B5C006D1C60 /* Color.swift */; };
 		90EA9BF21E16BB4700C5F26B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA9BF11E16BB4700C5F26B /* Route.swift */; };
 		90EA9BF61E16BFC500C5F26B /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA9BF51E16BFC500C5F26B /* RouteViewController.swift */; };
+		90EA9BFA1E172E4B00C5F26B /* TripType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA9BF91E172E4B00C5F26B /* TripType.swift */; };
 		90F84D781E1090A5001856A3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F84D771E1090A5001856A3 /* Location.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		90AE32221E154B5C006D1C60 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		90EA9BF11E16BB4700C5F26B /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		90EA9BF51E16BFC500C5F26B /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
+		90EA9BF91E172E4B00C5F26B /* TripType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripType.swift; sourceTree = "<group>"; };
 		90F84D771E1090A5001856A3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BF79E2D069F2E54F0FA2B8CE /* Pods-Time2Leave.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Time2Leave.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Time2Leave/Pods-Time2Leave.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 				906945F81E11792A003D9C1E /* FavoriteLocation.swift */,
 				906946021E141E86003D9C1E /* TripDetails.swift */,
 				90EA9BF11E16BB4700C5F26B /* Route.swift */,
+				90EA9BF91E172E4B00C5F26B /* TripType.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				90AE32231E154B5C006D1C60 /* Color.swift in Sources */,
 				909CC46B1E155A8B00B98299 /* WaitingForLocationCell.swift in Sources */,
 				906828CF1E107B47009340E8 /* HTTPClient.swift in Sources */,
+				90EA9BFA1E172E4B00C5F26B /* TripType.swift in Sources */,
 				909CC4721E15812A00B98299 /* GoogleDirectionsConstants.swift in Sources */,
 				90F84D781E1090A5001856A3 /* Location.swift in Sources */,
 				90227FC01E0E7EE300A29128 /* Time2Leave.xcdatamodeld in Sources */,
