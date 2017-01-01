@@ -82,27 +82,21 @@ class GoogleDirectionsClient {
     }
     
     private static func parseRoutesArray(_ routesArray: [AnyObject], tripDetails: TripDetails) -> [Route] {
-        // TODO: Consider using alternative routes
-        
         var routes = [Route]()
 
         for route in routesArray {
             guard let routeObject = route as? [String : AnyObject] else {
                 break
             }
-            
             guard let summary = routeObject[jsonResponseKeys.summary] as? String else {
                 break
             }
-            
             guard let copyrights = routeObject[jsonResponseKeys.copyrights] as? String else {
                 break
             }
-            
             guard let warnings = routeObject[jsonResponseKeys.warnings] as? [String] else {
                 break
             }
-            
             guard let bounds = routeObject[jsonResponseKeys.bounds] as? [String : AnyObject],
                 let northeastBoundObject = bounds[jsonResponseKeys.northeastBound] as? [String : AnyObject],
                 let northeastBoundLat = northeastBoundObject[jsonResponseKeys.latitude] as? Double,
@@ -121,7 +115,6 @@ class GoogleDirectionsClient {
                 let polylineCoordinates = Polyline.init(encodedPolyline: polyline).coordinates else {
                     break
             }
-            
             guard let leg = (routeObject[jsonResponseKeys.legs] as? [AnyObject])?.first,
                 let durationObject = leg[jsonResponseKeys.duration] as? [String : AnyObject],
                 let durationValue = durationObject[jsonResponseKeys.value] as? Int else {
@@ -129,7 +122,6 @@ class GoogleDirectionsClient {
             }
             
             let routeTimes: RouteTimes?
-            
             let polylineBounds = createCoordinateRegion(firstBound: northeastBound, secondBound: southwestBound)
             
             if tripDetails.tripType! == .subway {
@@ -137,17 +129,15 @@ class GoogleDirectionsClient {
                     let departureTimeStamp = departureTimeObject[jsonResponseKeys.value] as? Int else {
                         break
                 }
-                
                 guard let arrivalTimeObject = leg[jsonResponseKeys.arrivalTime] as? [String : AnyObject],
                     let arrivalTimeStamp = arrivalTimeObject[jsonResponseKeys.value] as? Int else {
                         break
                 }
                 
                 let timeIntervalFromGMT = TimeInterval(NSTimeZone.local.secondsFromGMT())
-                
                 let departureTime = Date(timeIntervalSince1970: TimeInterval(departureTimeStamp)).addingTimeInterval(timeIntervalFromGMT)
                 let arrivalTime = Date(timeIntervalSince1970: TimeInterval(arrivalTimeStamp)).addingTimeInterval(timeIntervalFromGMT)
-                
+
                 routeTimes = RouteTimes(departureTime: departureTime, arrivalTime: arrivalTime, travelTimeInSeconds: durationValue)
             } else {
                 routeTimes = RouteTimes(time: tripDetails.tripTime!, tripDepartureArrivalType: tripDetails.tripDepartureArrivalType!, travelTimeInSeconds: durationValue)

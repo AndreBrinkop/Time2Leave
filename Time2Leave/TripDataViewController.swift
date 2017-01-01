@@ -66,13 +66,12 @@ class TripDataViewController: UIViewController {
                 return
             }
             
-            
             // TODO: Is Empty Check
             if routes.isEmpty {
                 return
             }
-            
-            TripDetails.shared.setRoute(routes.first!)
+
+            TripDetails.shared.setRoutes(routes)
             self.performSegue(withIdentifier: "showRoute", sender: self)
         }
     }

@@ -27,7 +27,7 @@ class TripDetails {
     private(set) var tripDepartureArrivalType: TripDepartureArrivalType?
     private(set) var tripTime: Date?
     
-    private(set) var route: Route?
+    private(set) var routes: [Route]?
     
     // MARK: Shared Instance
     
@@ -51,7 +51,7 @@ class TripDetails {
         self.tripTime = tripTime
     }
     
-    func setRoute(_ route: Route) {
-        self.route = route
+    func setRoutes(_ routes: [Route]) {
+        self.routes = routes
     }
 }
