@@ -49,13 +49,10 @@ class TripDataViewController: UIViewController {
     
     @IBAction func continueButtonClicked(_ sender: Any) {
         let tripType = getTripType(index: tripTypeSegmentedControl.selectedSegmentIndex)
-  
-        // TODO: Delegate trip informations to the GoogleDirectionsClient
-        /*
-        let tripDepartureArrival = departureArrivalSegmentedControl.selectedSegmentIndex
-        let tripDate = tripDatePicker.date */
+        let tripDepartureArrivalType = TripDepartureArrivalType(rawValue: departureArrivalSegmentedControl.selectedSegmentIndex)!
+        let tripTime = tripDatePicker.date
         
-        TripDetails.shared.setTripTypeAndTimeInformation(tripType: tripType)
+        TripDetails.shared.setTripTypeAndTimeInformation(tripType: tripType, tripDepartureArrivalType: tripDepartureArrivalType, tripTime: tripTime)
         
         continueButton.startSpinning()
         navigationItem.setHidesBackButton(true, animated: true)

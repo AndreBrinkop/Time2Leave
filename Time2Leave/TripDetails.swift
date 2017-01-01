@@ -23,9 +23,9 @@ class TripDetails {
     
     private(set) var destination: Location?
     
-    private(set) var tripType: TripType? // TODO
-    private(set) var departureArrivalType: String? // TODO
-    private(set) var tripTime: Date? // TODO
+    private(set) var tripType: TripType?
+    private(set) var tripDepartureArrivalType: TripDepartureArrivalType?
+    private(set) var tripTime: Date?
     
     private(set) var route: Route?
     
@@ -45,8 +45,10 @@ class TripDetails {
         self.destination = destination
     }
     
-    func setTripTypeAndTimeInformation(tripType: TripType) {
+    func setTripTypeAndTimeInformation(tripType: TripType, tripDepartureArrivalType: TripDepartureArrivalType, tripTime: Date) {
         self.tripType = tripType
+        self.tripDepartureArrivalType = tripDepartureArrivalType
+        self.tripTime = tripTime
     }
     
     func setRoute(_ route: Route) {

@@ -33,6 +33,7 @@
 		90EA9BF21E16BB4700C5F26B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA9BF11E16BB4700C5F26B /* Route.swift */; };
 		90EA9BF61E16BFC500C5F26B /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA9BF51E16BFC500C5F26B /* RouteViewController.swift */; };
 		90EA9BFA1E172E4B00C5F26B /* TripType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA9BF91E172E4B00C5F26B /* TripType.swift */; };
+		90EA9BFC1E1954B300C5F26B /* TripDepartureArrivalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA9BFB1E1954B300C5F26B /* TripDepartureArrivalType.swift */; };
 		90F84D781E1090A5001856A3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F84D771E1090A5001856A3 /* Location.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		90EA9BF11E16BB4700C5F26B /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		90EA9BF51E16BFC500C5F26B /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		90EA9BF91E172E4B00C5F26B /* TripType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripType.swift; sourceTree = "<group>"; };
+		90EA9BFB1E1954B300C5F26B /* TripDepartureArrivalType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDepartureArrivalType.swift; sourceTree = "<group>"; };
 		90F84D771E1090A5001856A3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BF79E2D069F2E54F0FA2B8CE /* Pods-Time2Leave.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Time2Leave.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Time2Leave/Pods-Time2Leave.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +194,7 @@
 				906945F81E11792A003D9C1E /* FavoriteLocation.swift */,
 				906946021E141E86003D9C1E /* TripDetails.swift */,
 				90EA9BF11E16BB4700C5F26B /* Route.swift */,
+				90EA9BFB1E1954B300C5F26B /* TripDepartureArrivalType.swift */,
 				90EA9BF91E172E4B00C5F26B /* TripType.swift */,
 			);
 			name = Model;
@@ -342,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				906828D41E107C77009340E8 /* GooglePlacesConstants.swift in Sources */,
+				90EA9BFC1E1954B300C5F26B /* TripDepartureArrivalType.swift in Sources */,
 				906946031E141E86003D9C1E /* TripDetails.swift in Sources */,
 				906828CA1E10794C009340E8 /* Constants.swift in Sources */,
 				90227FBA1E0E7EE300A29128 /* DestinationViewController.swift in Sources */,

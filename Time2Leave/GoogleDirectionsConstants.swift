@@ -29,7 +29,6 @@ extension GoogleDirectionsClient {
         static let mode = "mode"
         static let arrivalTime = "arrival_time" // in sec since 01.01.1970 00:00 UTC
         static let departureTime = "departure_time" // in sec since 01.01.1970 00:00 UTC
-        static let trafficModel = "traffic_model"
         
         static let language = "language" // e.g. en
         
@@ -41,8 +40,6 @@ extension GoogleDirectionsClient {
         static let jsonOutput = "json"
         static let apiKey = Constants.apiKeys.google
         static let placeIdPrefix = "place_id:"
-        
-        static let trafficModelBestGuess = "best_guess"
     }
     
     // MARK: JSONResponseKeys

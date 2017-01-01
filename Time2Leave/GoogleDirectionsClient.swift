@@ -17,9 +17,13 @@ class GoogleDirectionsClient {
         let origin = tripDetails.originCoordinatesString!
         let destination = parameterValues.placeIdPrefix + tripDetails.destination!.id
         let mode = tripDetails.tripType!.rawValue
+        let time = Int(tripDetails.tripTime!.timeIntervalSince1970)
+        
+        var parameterKeysTime = parameterKeys.arrivalTime
 
-        // TODO: Dummy data
-        let departureTime = Int(Date().timeIntervalSince1970)
+        if tripDetails.tripDepartureArrivalType! == .departure {
+            parameterKeysTime = parameterKeys.departureTime
+        }
         
         let requestParameters = [
             parameterKeys.origin : origin,
@@ -27,9 +31,7 @@ class GoogleDirectionsClient {
             parameterKeys.apiKey : parameterValues.apiKey,
             parameterKeys.mode : mode,
             parameterKeys.language : Constants.apiConstants.language,
-            //parameterKeys.arrivalTime,
-            parameterKeys.departureTime : departureTime,
-            parameterKeys.trafficModel : parameterValues.trafficModelBestGuess
+            parameterKeysTime : time,
         ] as [String : Any]
         
         let url = GoogleApiHelper.buildUrl(requestParameters: requestParameters, urlComponents: urlComponents)
