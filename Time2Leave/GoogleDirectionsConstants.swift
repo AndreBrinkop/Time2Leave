@@ -26,6 +26,7 @@ extension GoogleDirectionsClient {
         static let origin = "origin"
         static let destination = "destination"
         
+        static let alternatives = "alternatives"
         static let mode = "mode"
         static let arrivalTime = "arrival_time" // in sec since 01.01.1970 00:00 UTC
         static let departureTime = "departure_time" // in sec since 01.01.1970 00:00 UTC
@@ -40,6 +41,7 @@ extension GoogleDirectionsClient {
         static let jsonOutput = "json"
         static let apiKey = Constants.apiKeys.google
         static let placeIdPrefix = "place_id:"
+        static let returnAlternatives = "true"
     }
     
     // MARK: JSONResponseKeys
@@ -47,6 +49,12 @@ extension GoogleDirectionsClient {
     struct jsonResponseKeys {
         static let status = "status"
         static let routes = "routes"
+        static let legs = "legs"
+        static let duration = "duration"
+        static let arrivalTime = "arrival_time"
+        static let departureTime = "departure_time"
+        static let value = "value"
+
         static let bounds = "bounds"
         static let northeastBound = "northeast"
         static let southwestBound = "southwest"

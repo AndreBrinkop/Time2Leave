@@ -13,21 +13,23 @@ import Polyline
 
 class GoogleDirectionsClient {
     
-    public static func findRoutes(tripDetails: TripDetails, completionHandler: @escaping (_ route: Route?, _ error: Error?) -> Void) {
+    public static func findRoutes(tripDetails: TripDetails, completionHandler: @escaping (_ routes: [Route]?, _ error: Error?) -> Void) {
         let origin = tripDetails.originCoordinatesString!
         let destination = parameterValues.placeIdPrefix + tripDetails.destination!.id
         let mode = tripDetails.tripType!.rawValue
         let time = Int(tripDetails.tripTime!.timeIntervalSince1970)
         
-        var parameterKeysTime = parameterKeys.arrivalTime
+        var parameterKeysTime = parameterKeys.departureTime
 
-        if tripDetails.tripDepartureArrivalType! == .departure {
-            parameterKeysTime = parameterKeys.departureTime
+        // only use arrival time if the trip type is subway (api specification)
+        if tripDetails.tripDepartureArrivalType! == .arrival && tripDetails.tripType! == .subway {
+            parameterKeysTime = parameterKeys.arrivalTime
         }
         
         let requestParameters = [
             parameterKeys.origin : origin,
             parameterKeys.destination : destination,
+            parameterKeys.alternatives : parameterValues.returnAlternatives,
             parameterKeys.apiKey : parameterValues.apiKey,
             parameterKeys.mode : mode,
             parameterKeys.language : Constants.apiConstants.language,
@@ -75,56 +77,85 @@ class GoogleDirectionsClient {
                 return
             }
             
-            guard let route = parseRoutesArray(routesArray) else {
-                completionHandler(nil, apiError)
-                return
-            }
-            
-            completionHandler(route, nil)
+            completionHandler(parseRoutesArray(routesArray, tripDetails: tripDetails), nil)
         }
     }
     
-    private static func parseRoutesArray(_ routesArray: [AnyObject]) -> Route? {
+    private static func parseRoutesArray(_ routesArray: [AnyObject], tripDetails: TripDetails) -> [Route] {
         // TODO: Consider using alternative routes
-        let route = routesArray.first as! [String : AnyObject]
         
-        guard let summary = route[jsonResponseKeys.summary] as? String else {
-            return nil
-        }
-        
-        guard let copyrights = route[jsonResponseKeys.copyrights] as? String else {
-            return nil
-        }
-        
-        guard let warnings = route[jsonResponseKeys.warnings] as? [String] else {
-            return nil
-        }
-        
-        guard let bounds = route[jsonResponseKeys.bounds] as? [String : AnyObject],
-            let northeastBoundObject = bounds[jsonResponseKeys.northeastBound] as? [String : AnyObject],
-            let northeastBoundLat = northeastBoundObject[jsonResponseKeys.latitude] as? Double,
-            let northeastBoundLong = northeastBoundObject[jsonResponseKeys.longitude] as? Double,
-            let southwestBoundObject = bounds[jsonResponseKeys.southwestBound] as? [String : AnyObject],
-            let southwestBoundLat = southwestBoundObject[jsonResponseKeys.latitude] as? Double,
-            let southwestBoundLong = southwestBoundObject[jsonResponseKeys.longitude] as? Double
-            else {
-                return nil
-        }
-        
-        let northeastBound = CLLocationCoordinate2D(latitude: northeastBoundLat, longitude: northeastBoundLong)
-        let southwestBound = CLLocationCoordinate2D(latitude: southwestBoundLat, longitude: southwestBoundLong)
+        var routes = [Route]()
 
-        guard let overview = route[jsonResponseKeys.overview] as? [String : AnyObject],
-            let polyline = overview[jsonResponseKeys.polyline] as? String,
-            let polylineCoordinates = Polyline.init(encodedPolyline: polyline).coordinates
-            else {
-                return nil
+        for route in routesArray {
+            guard let routeObject = route as? [String : AnyObject] else {
+                break
+            }
+            
+            guard let summary = routeObject[jsonResponseKeys.summary] as? String else {
+                break
+            }
+            
+            guard let copyrights = routeObject[jsonResponseKeys.copyrights] as? String else {
+                break
+            }
+            
+            guard let warnings = routeObject[jsonResponseKeys.warnings] as? [String] else {
+                break
+            }
+            
+            guard let bounds = routeObject[jsonResponseKeys.bounds] as? [String : AnyObject],
+                let northeastBoundObject = bounds[jsonResponseKeys.northeastBound] as? [String : AnyObject],
+                let northeastBoundLat = northeastBoundObject[jsonResponseKeys.latitude] as? Double,
+                let northeastBoundLong = northeastBoundObject[jsonResponseKeys.longitude] as? Double,
+                let southwestBoundObject = bounds[jsonResponseKeys.southwestBound] as? [String : AnyObject],
+                let southwestBoundLat = southwestBoundObject[jsonResponseKeys.latitude] as? Double,
+                let southwestBoundLong = southwestBoundObject[jsonResponseKeys.longitude] as? Double else {
+                    break
+            }
+            
+            let northeastBound = CLLocationCoordinate2D(latitude: northeastBoundLat, longitude: northeastBoundLong)
+            let southwestBound = CLLocationCoordinate2D(latitude: southwestBoundLat, longitude: southwestBoundLong)
+            
+            guard let overview = routeObject[jsonResponseKeys.overview] as? [String : AnyObject],
+                let polyline = overview[jsonResponseKeys.polyline] as? String,
+                let polylineCoordinates = Polyline.init(encodedPolyline: polyline).coordinates else {
+                    break
+            }
+            
+            guard let leg = (routeObject[jsonResponseKeys.legs] as? [AnyObject])?.first,
+                let durationObject = leg[jsonResponseKeys.duration] as? [String : AnyObject],
+                let durationValue = durationObject[jsonResponseKeys.value] as? Int else {
+                    break
+            }
+            
+            let routeTimes: RouteTimes?
+            
+            let polylineBounds = createCoordinateRegion(firstBound: northeastBound, secondBound: southwestBound)
+            
+            if tripDetails.tripType! == .subway {
+                guard let departureTimeObject = leg[jsonResponseKeys.departureTime] as? [String : AnyObject],
+                    let departureTimeStamp = departureTimeObject[jsonResponseKeys.value] as? Int else {
+                        break
+                }
+                
+                guard let arrivalTimeObject = leg[jsonResponseKeys.arrivalTime] as? [String : AnyObject],
+                    let arrivalTimeStamp = arrivalTimeObject[jsonResponseKeys.value] as? Int else {
+                        break
+                }
+                
+                let timeIntervalFromGMT = TimeInterval(NSTimeZone.local.secondsFromGMT())
+                
+                let departureTime = Date(timeIntervalSince1970: TimeInterval(departureTimeStamp)).addingTimeInterval(timeIntervalFromGMT)
+                let arrivalTime = Date(timeIntervalSince1970: TimeInterval(arrivalTimeStamp)).addingTimeInterval(timeIntervalFromGMT)
+                
+                routeTimes = RouteTimes(departureTime: departureTime, arrivalTime: arrivalTime, travelTimeInSeconds: durationValue)
+            } else {
+                routeTimes = RouteTimes(time: tripDetails.tripTime!, tripDepartureArrivalType: tripDetails.tripDepartureArrivalType!, travelTimeInSeconds: durationValue)
+            }
+                 routes.append(Route(summary: summary, copyrights: copyrights, warning: warnings, times: routeTimes!, polylineCoordinates: polylineCoordinates, polylineBounds: polylineBounds))
         }
         
-        // TODO: Parse and Calculate Departure and Arrival Time
-        
-        let polylineBounds = createCoordinateRegion(firstBound: northeastBound, secondBound: southwestBound)
-        return Route(summary: summary, copyrights: copyrights, warning: warnings, polylineCoordinates: polylineCoordinates, polylineBounds: polylineBounds)
+        return routes
     }
     
     // MARK: - Helper methods

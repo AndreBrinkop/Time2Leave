@@ -15,6 +15,8 @@ struct Route {
     var copyrights: String?
     var warning: [String]?
     
+    var times: RouteTimes
+    
     var polylineCoordinates: [CLLocationCoordinate2D]
     var polylineBounds: MKCoordinateRegion
 

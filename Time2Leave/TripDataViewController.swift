@@ -50,24 +50,29 @@ class TripDataViewController: UIViewController {
     @IBAction func continueButtonClicked(_ sender: Any) {
         let tripType = getTripType(index: tripTypeSegmentedControl.selectedSegmentIndex)
         let tripDepartureArrivalType = TripDepartureArrivalType(rawValue: departureArrivalSegmentedControl.selectedSegmentIndex)!
-        let tripTime = tripDatePicker.date
-        
+        let tripTime = max(tripDatePicker.date, Date()).addingTimeInterval(TimeInterval(NSTimeZone.local.secondsFromGMT()))
         TripDetails.shared.setTripTypeAndTimeInformation(tripType: tripType, tripDepartureArrivalType: tripDepartureArrivalType, tripTime: tripTime)
         
         continueButton.startSpinning()
         navigationItem.setHidesBackButton(true, animated: true)
         
-        GoogleDirectionsClient.findRoutes(tripDetails: TripDetails.shared) { route, error in
+        GoogleDirectionsClient.findRoutes(tripDetails: TripDetails.shared) { routes, error in
             self.continueButton.stopSpinning()
             self.navigationItem.setHidesBackButton(false, animated: true)
             
-            guard let route = route, error == nil else {
+            guard let routes = routes, error == nil else {
                 // TODO: Handle error
                 print(error ?? "error")
                 return
             }
             
-            TripDetails.shared.setRoute(route)
+            
+            // TODO: Is Empty Check
+            if routes.isEmpty {
+                return
+            }
+            
+            TripDetails.shared.setRoute(routes.first!)
             self.performSegue(withIdentifier: "showRoute", sender: self)
         }
     }
