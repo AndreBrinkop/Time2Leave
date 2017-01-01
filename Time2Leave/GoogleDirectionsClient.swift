@@ -134,9 +134,8 @@ class GoogleDirectionsClient {
                         break
                 }
                 
-                let timeIntervalFromGMT = TimeInterval(NSTimeZone.local.secondsFromGMT())
-                let departureTime = Date(timeIntervalSince1970: TimeInterval(departureTimeStamp)).addingTimeInterval(timeIntervalFromGMT)
-                let arrivalTime = Date(timeIntervalSince1970: TimeInterval(arrivalTimeStamp)).addingTimeInterval(timeIntervalFromGMT)
+                let departureTime = Date(timeIntervalSince1970: TimeInterval(departureTimeStamp))
+                let arrivalTime = Date(timeIntervalSince1970: TimeInterval(arrivalTimeStamp))
 
                 routeTimes = RouteTimes(departureTime: departureTime, arrivalTime: arrivalTime, travelTimeInSeconds: durationValue)
             } else {

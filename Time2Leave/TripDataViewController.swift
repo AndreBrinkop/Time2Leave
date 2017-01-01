@@ -50,7 +50,7 @@ class TripDataViewController: UIViewController {
     @IBAction func continueButtonClicked(_ sender: Any) {
         let tripType = getTripType(index: tripTypeSegmentedControl.selectedSegmentIndex)
         let tripDepartureArrivalType = TripDepartureArrivalType(rawValue: departureArrivalSegmentedControl.selectedSegmentIndex)!
-        let tripTime = max(tripDatePicker.date, Date()).addingTimeInterval(TimeInterval(NSTimeZone.local.secondsFromGMT()))
+        let tripTime = max(tripDatePicker.date, Date())
         TripDetails.shared.setTripTypeAndTimeInformation(tripType: tripType, tripDepartureArrivalType: tripDepartureArrivalType, tripTime: tripTime)
         
         continueButton.startSpinning()
