@@ -50,6 +50,7 @@ class RoutesViewController: UIViewController {
     @IBAction func continueButtonClicked(_ sender: UIBarButtonItem) {
         // TODO: Segue to next page
         print("continue")
+        performSegue(withIdentifier: "routeSelected", sender: self)
     }
 }
 
