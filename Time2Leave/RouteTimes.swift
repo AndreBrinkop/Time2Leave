@@ -9,9 +9,23 @@
 import Foundation
 
 struct RouteTimes {
+    
+    // MARK: Properties
+    
     var departureTime: Date
     var arrivalTime: Date
     var travelTimeInSeconds: Int
+    
+    var travelTimeInHoursMinutesSeconds: (Int, Int, Int) {
+        return (travelTimeInSeconds / 3600, (travelTimeInSeconds % 3600) / 60, (travelTimeInSeconds % 3600) % 60)
+    }
+    
+    var travelTimeHumanReadable: String {
+        let time = travelTimeInHoursMinutesSeconds
+        return "\(time.0 < 10 ? "0" : "")\(time.0):\(time.1 < 10 ? "0" : "")\(time.2 < 10 ? "0" : "")\(time.1):\(time.2)"
+    }
+    
+    // MARK: - Initialization
     
     init(departureTime: Date, arrivalTime: Date, travelTimeInSeconds: Int) {
         self.departureTime = departureTime
