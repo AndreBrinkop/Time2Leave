@@ -62,7 +62,7 @@ class GoogleDirectionsClient {
             
             // GUARD: Any results
             guard status != jsonResponseValues.noResultsStatus else {
-                completionHandler(nil, nil)
+                completionHandler([Route](), nil)
                 return
             }
             

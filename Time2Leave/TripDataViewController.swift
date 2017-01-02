@@ -61,13 +61,12 @@ class TripDataViewController: UIViewController {
             self.navigationItem.setHidesBackButton(false, animated: true)
             
             guard let routes = routes, error == nil else {
-                // TODO: Handle error
-                print(error ?? "error")
+                self.showNoRoutesFoundAlert(message: error!.localizedDescription)
                 return
             }
-            
-            // TODO: Is Empty Check
+
             if routes.isEmpty {
+                self.showNoRoutesFoundAlert(message: "Please adjust your search parameters!")
                 return
             }
 
@@ -77,6 +76,12 @@ class TripDataViewController: UIViewController {
     }
     
     // MARK: - Helper Methods
+    
+    private func showNoRoutesFoundAlert(message: String) {
+        let noRoutesFoundAlert = UIAlertController.init(title: "No Search Result Found", message: message, preferredStyle: .alert)
+        noRoutesFoundAlert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(noRoutesFoundAlert, animated: true, completion: nil)
+    }
     
     private func getTripType(index: Int) -> TripType {
         switch index {
