@@ -20,9 +20,20 @@ struct RouteTimes {
         return (travelTimeInSeconds / 3600, (travelTimeInSeconds % 3600) / 60, (travelTimeInSeconds % 3600) % 60)
     }
     
+    var travelTimeInHoursMinutes: (Int, Int) {
+        var travelTime = travelTimeInHoursMinutesSeconds
+        if travelTime.2 >= 30 {
+            travelTime.1 += 1
+        }
+        if travelTime.1 >= 30 {
+            travelTime.0 += 1
+        }
+        return (travelTime.0, travelTime.1)
+    }
+    
     var travelTimeHumanReadable: String {
-        let time = travelTimeInHoursMinutesSeconds
-        return "\(time.0 < 10 ? "0" : "")\(time.0):\(time.1 < 10 ? "0" : "")\(time.2 < 10 ? "0" : "")\(time.1):\(time.2)"
+        let time = travelTimeInHoursMinutes
+        return "\(time.0 < 10 ? "0" : "")\(time.0):\(time.1 < 10 ? "0" : "")\(time.1)"
     }
     
     // MARK: - Initialization
