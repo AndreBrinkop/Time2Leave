@@ -9,11 +9,10 @@
 import UIKit
 import MapKit
 
-class RoutesViewController: UIViewController {
+class RoutesViewController: RouteMapViewController {
 
     // MARK: - Properties
     
-    @IBOutlet var routeMapView: MKMapView!
     @IBOutlet var routesTableView: UITableView!
     var selectedRoute: Route!
     
@@ -36,31 +35,15 @@ class RoutesViewController: UIViewController {
     
     func updateSelectedRoute(_ selectedRoute: Route) {
         self.selectedRoute = selectedRoute
-        
-        routeMapView.removeOverlays(routeMapView.overlays)
-        let polylineCoordinates = selectedRoute.polylineCoordinates
-        routeMapView.add(MKPolyline.init(coordinates: polylineCoordinates, count: polylineCoordinates.count))
-        
-        let region = selectedRoute.polylineBounds
-        routeMapView.setRegion(region, animated: false)
+        showRouteOnMap(selectedRoute)
     }
     
     // MARK: - Actions
     
     @IBAction func continueButtonClicked(_ sender: UIBarButtonItem) {
         // TODO: Segue to next page
-        print("continue")
+        TripDetails.shared.setSelectedRoute(selectedRoute)
         performSegue(withIdentifier: "routeSelected", sender: self)
-    }
-}
-
-// MARK: - MKMapViewDelegate
-extension RoutesViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let polylineRenderer = MKPolylineRenderer(overlay: overlay);
-        polylineRenderer.strokeColor = Color.darkColor.withAlphaComponent(0.7);
-        polylineRenderer.lineWidth = 5;
-        return polylineRenderer;
     }
 }
 

@@ -13,7 +13,20 @@ import MapKit
 struct Route {
     var summary: String
     var copyrights: String?
-    var warning: [String]?
+    var warnings: [String]?
+    var warningsString: String {
+        var warningsString = ""
+        guard let warnings = warnings else {
+            return warningsString
+        }
+        for warning in warnings {
+            if warning != warnings.first {
+                warningsString += ", "
+            }
+            warningsString += warning
+        }
+        return warningsString
+    }
     
     var times: RouteTimes
     

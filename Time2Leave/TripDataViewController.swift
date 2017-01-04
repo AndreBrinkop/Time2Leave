@@ -65,13 +65,22 @@ class TripDataViewController: UIViewController {
                 return
             }
 
-            if routes.isEmpty {
+            guard !routes.isEmpty else {
                 self.showNoRoutesFoundAlert(message: "Please adjust your search parameters!")
                 return
             }
-
+            
             TripDetails.shared.setRoutes(routes)
-            self.performSegue(withIdentifier: "showRoute", sender: self)
+            
+            guard routes.count > 1 else {
+                // Skip RoutesView
+                let routeDetailViewController = self.storyboard!.instantiateViewController(withIdentifier: "RouteDetailViewController")
+                TripDetails.shared.setSelectedRoute(routes.first!)
+                self.navigationController?.pushViewController(routeDetailViewController, animated: true)
+                return
+            }
+
+            self.performSegue(withIdentifier: "showRoutes", sender: self)
         }
     }
     

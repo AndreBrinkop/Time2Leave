@@ -20,15 +20,11 @@ class RouteTableViewCell: UITableViewCell {
     func initialize(route: Route) {
         self.route = route
         
-        let formatter = DateFormatter()
-        formatter.dateStyle = DateFormatter.Style.none
-        formatter.timeStyle = .short
+        let timeStrings = route.times.humanReadable
+        departureTimeLabel.text = timeStrings.0
+        arrivalTimeLabel.text = timeStrings.1
+        durationLabel.text = timeStrings.2
         
-        let times = route.times
-        departureTimeLabel.text = formatter.string(from: times.departureTime)
-        arrivalTimeLabel.text = formatter.string(from: times.arrivalTime)
-        
-        durationLabel.text = times.travelTimeHumanReadable
         summaryLabel.text = route.summary
     }
 }

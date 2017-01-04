@@ -28,6 +28,7 @@ class TripDetails {
     private(set) var tripTime: Date?
     
     private(set) var routes: [Route]?
+    private(set) var selectedRoute: Route?
     
     // MARK: Shared Instance
     
@@ -53,5 +54,9 @@ class TripDetails {
     
     func setRoutes(_ routes: [Route]) {
         self.routes = routes
+    }
+    
+    func setSelectedRoute(_ route: Route) {
+        self.selectedRoute = route
     }
 }

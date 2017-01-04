@@ -141,7 +141,7 @@ class GoogleDirectionsClient {
             } else {
                 routeTimes = RouteTimes(time: tripDetails.tripTime!, tripDepartureArrivalType: tripDetails.tripDepartureArrivalType!, travelTimeInSeconds: durationValue)
             }
-                 routes.append(Route(summary: summary, copyrights: copyrights, warning: warnings, times: routeTimes!, polylineCoordinates: polylineCoordinates, polylineBounds: polylineBounds))
+                 routes.append(Route(summary: summary, copyrights: copyrights, warnings: warnings, times: routeTimes!, polylineCoordinates: polylineCoordinates, polylineBounds: polylineBounds))
         }
         
         return routes
@@ -153,11 +153,9 @@ class GoogleDirectionsClient {
         let centerLat = (secondBound.latitude - firstBound.latitude) / 2.0 + firstBound.latitude
         let centerLong = (secondBound.longitude - firstBound.longitude) / 2.0 + firstBound.longitude
         let center = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong)
-        
-        let deltaLat = abs(firstBound.latitude - secondBound.latitude) * Constants.userInterface.mapRegionSpanFactor
-        let deltaLong = abs(firstBound.longitude - secondBound.longitude) * Constants.userInterface.mapRegionSpanFactor
+        let deltaLat = abs(firstBound.latitude - secondBound.latitude)
+        let deltaLong = abs(firstBound.longitude - secondBound.longitude)
         let span = MKCoordinateSpan(latitudeDelta: deltaLat, longitudeDelta: deltaLong)
-        
         return MKCoordinateRegion(center: center, span: span)
     }
 }

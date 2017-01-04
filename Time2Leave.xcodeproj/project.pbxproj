@@ -14,6 +14,8 @@
 		90227FC01E0E7EE300A29128 /* Time2Leave.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90227FBE1E0E7EE300A29128 /* Time2Leave.xcdatamodeld */; };
 		90227FC21E0E7EE300A29128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90227FC11E0E7EE300A29128 /* Assets.xcassets */; };
 		90227FC51E0E7EE300A29128 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90227FC31E0E7EE300A29128 /* LaunchScreen.storyboard */; };
+		9036F6D61E1B205800C59C39 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9036F6D51E1B205800C59C39 /* RouteDetailViewController.swift */; };
+		9056E1FB1E1D2EA00005590F /* RouteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056E1FA1E1D2EA00005590F /* RouteMapViewController.swift */; };
 		906828C81E107932009340E8 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828C71E107932009340E8 /* ApiKeys.swift */; };
 		906828CA1E10794C009340E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828C91E10794C009340E8 /* Constants.swift */; };
 		906828CC1E107957009340E8 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 906828CB1E107957009340E8 /* ApiKeys.plist */; };
@@ -50,6 +52,8 @@
 		90227FC11E0E7EE300A29128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90227FC41E0E7EE300A29128 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90227FC61E0E7EE300A29128 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9036F6D51E1B205800C59C39 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
+		9056E1FA1E1D2EA00005590F /* RouteMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteMapViewController.swift; sourceTree = "<group>"; };
 		906828C71E107932009340E8 /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		906828C91E10794C009340E8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		906828CB1E107957009340E8 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				90227FB91E0E7EE300A29128 /* DestinationViewController.swift */,
 				906946001E133B80003D9C1E /* TripDataViewController.swift */,
 				90EA9BF51E16BFC500C5F26B /* RoutesViewController.swift */,
+				9036F6D51E1B205800C59C39 /* RouteDetailViewController.swift */,
+				9056E1FA1E1D2EA00005590F /* RouteMapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				906828D41E107C77009340E8 /* GooglePlacesConstants.swift in Sources */,
 				90EA9BFC1E1954B300C5F26B /* TripDepartureArrivalType.swift in Sources */,
 				906946031E141E86003D9C1E /* TripDetails.swift in Sources */,
+				9036F6D61E1B205800C59C39 /* RouteDetailViewController.swift in Sources */,
 				906828CA1E10794C009340E8 /* Constants.swift in Sources */,
 				90EA9BFE1E199FEC00C5F26B /* RouteTimes.swift in Sources */,
 				90227FBA1E0E7EE300A29128 /* DestinationViewController.swift in Sources */,
@@ -374,6 +381,7 @@
 				909CC4741E15821300B98299 /* GoogleApiHelper.swift in Sources */,
 				906946011E133B80003D9C1E /* TripDataViewController.swift in Sources */,
 				90227FB81E0E7EE300A29128 /* AppDelegate.swift in Sources */,
+				9056E1FB1E1D2EA00005590F /* RouteMapViewController.swift in Sources */,
 				90EA9BF61E16BFC500C5F26B /* RoutesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

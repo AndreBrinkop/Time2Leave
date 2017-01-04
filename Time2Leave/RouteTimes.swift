@@ -16,6 +16,14 @@ struct RouteTimes {
     var arrivalTime: Date
     var travelTimeInSeconds: Int
     
+    var humanReadable: (String, String, String) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.none
+        formatter.timeStyle = .short
+        
+        return (formatter.string(from: departureTime), formatter.string(from: arrivalTime), travelTimeHumanReadable)
+    }
+    
     var travelTimeInHoursMinutesSeconds: (Int, Int, Int) {
         return (travelTimeInSeconds / 3600, (travelTimeInSeconds % 3600) / 60, (travelTimeInSeconds % 3600) % 60)
     }

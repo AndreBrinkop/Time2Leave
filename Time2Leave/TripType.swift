@@ -7,10 +7,24 @@
 //
 
 import Foundation
+import UIKit
 
 enum TripType : String {
     case car = "driving"
     case subway = "transit"
     case bike = "bicycling"
     case walk = "walking"
+    
+    var image: UIImage {
+        switch self {
+        case .car:
+            return #imageLiteral(resourceName: "car")
+        case .subway:
+            return #imageLiteral(resourceName: "subway")
+        case .bike:
+            return #imageLiteral(resourceName: "bike")
+        case .walk:
+            return #imageLiteral(resourceName: "walk")
+        }
+    }
 }
