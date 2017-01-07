@@ -18,6 +18,15 @@ extension GoogleDirectionsClient {
         GoogleApiHelper.urlComponents.path : "/maps/api/directions/",
         GoogleApiHelper.urlComponents.output : "json"
     ]
+    static let urlComponentsSchemeWithAppKey = "schemeWithApp"
+    
+    static let displayDirectionsUrlComponents = [
+        GoogleApiHelper.urlComponents.scheme : "http",
+        GoogleApiHelper.urlComponents.host : "maps.google.com",
+        GoogleApiHelper.urlComponents.path : "",
+        GoogleApiHelper.urlComponents.output : "",
+        urlComponentsSchemeWithAppKey : "comgooglemaps"
+    ]
     
     // MARK: ParameterKeys
     
@@ -33,6 +42,11 @@ extension GoogleDirectionsClient {
         
         static let language = "language" // e.g. en
         
+        struct displayDirections {
+            static let origin = "saddr"
+            static let destination = "daddr"
+            static let tripType = "directionsmode"
+        }
     }
     
     // MARK: ParameterValues

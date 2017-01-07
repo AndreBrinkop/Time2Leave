@@ -158,4 +158,21 @@ class GoogleDirectionsClient {
         let span = MKCoordinateSpan(latitudeDelta: deltaLat, longitudeDelta: deltaLong)
         return MKCoordinateRegion(center: center, span: span)
     }
+    
+    static func displayDirectionsInGoogleMaps(originCoordinatesString: String, destination: Location, tripType: TripType) {
+        let requestParameters = [
+            parameterKeys.displayDirections.origin : originCoordinatesString,
+            parameterKeys.displayDirections.destination : destination.description,
+            parameterKeys.displayDirections.tripType : tripType
+        ] as [String : Any]
+  
+        var urlComponents = displayDirectionsUrlComponents
+        if (UIApplication.shared.canOpenURL(URL(string: urlComponents[urlComponentsSchemeWithAppKey]! + "://")!)) {
+            // Google Maps App installed on device
+            urlComponents[GoogleApiHelper.urlComponents.scheme] = urlComponents[urlComponentsSchemeWithAppKey]
+        }
+        
+        let googleMapsUrl = GoogleApiHelper.buildUrl(requestParameters: requestParameters, urlComponents: displayDirectionsUrlComponents)
+        UIApplication.shared.open(googleMapsUrl, options: [:], completionHandler: nil)
+    }
 }
