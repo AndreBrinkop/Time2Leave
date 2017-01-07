@@ -23,7 +23,7 @@ extension GoogleDirectionsClient {
     static let displayDirectionsUrlComponents = [
         GoogleApiHelper.urlComponents.scheme : "http",
         GoogleApiHelper.urlComponents.host : "maps.google.com",
-        GoogleApiHelper.urlComponents.path : "",
+        GoogleApiHelper.urlComponents.path : "/",
         GoogleApiHelper.urlComponents.output : "",
         urlComponentsSchemeWithAppKey : "comgooglemaps"
     ]

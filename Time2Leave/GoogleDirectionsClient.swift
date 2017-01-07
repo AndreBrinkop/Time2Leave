@@ -163,7 +163,7 @@ class GoogleDirectionsClient {
         let requestParameters = [
             parameterKeys.displayDirections.origin : originCoordinatesString,
             parameterKeys.displayDirections.destination : destination.description,
-            parameterKeys.displayDirections.tripType : tripType
+            parameterKeys.displayDirections.tripType : tripType.rawValue
         ] as [String : Any]
   
         var urlComponents = displayDirectionsUrlComponents
@@ -172,7 +172,7 @@ class GoogleDirectionsClient {
             urlComponents[GoogleApiHelper.urlComponents.scheme] = urlComponents[urlComponentsSchemeWithAppKey]
         }
         
-        let googleMapsUrl = GoogleApiHelper.buildUrl(requestParameters: requestParameters, urlComponents: displayDirectionsUrlComponents)
+        let googleMapsUrl = GoogleApiHelper.buildUrl(requestParameters: requestParameters, urlComponents: urlComponents)
         UIApplication.shared.open(googleMapsUrl, options: [:], completionHandler: nil)
     }
 }

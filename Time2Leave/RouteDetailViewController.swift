@@ -25,6 +25,9 @@ class RouteDetailViewController: RouteMapViewController {
     
     @IBOutlet var reminderDatePicker: UIDatePicker!
     
+    @IBOutlet var reminderNotAvailableContainer: UIView!
+    @IBOutlet var reminderNotAvailableLabel: UILabel!
+    
     // MARK: - Properties
     
     var route: Route {
@@ -35,10 +38,9 @@ class RouteDetailViewController: RouteMapViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reminderDatePicker.minimumDate = Date()
         initializeUI()
     }
-    
+
     private func initializeUI() {
         tripTypeImageView.image = TripDetails.shared.tripType?.image
         destinationLabel.text = TripDetails.shared.destination!.description
@@ -53,7 +55,21 @@ class RouteDetailViewController: RouteMapViewController {
         
         routeWarningsLabel.text = route.warningsString
         routeCopyrightLabel.text = route.copyrights
+        
+        reminderDatePicker.minimumDate = Date()
+        reminderDatePicker.maximumDate = route.times.departureTime
+        
+        initializeReminderNotAvailableView()
     }
+    
+    private func initializeReminderNotAvailableView() {
+        if reminderDatePicker.minimumDate!.addingTimeInterval(Constants.userInterface.secondsToDepartureForReminderToBecomeAvailable) >= reminderDatePicker.maximumDate! {
+            reminderNotAvailableContainer.isHidden = false
+            reminderNotAvailableLabel.text = "To set a reminder the current time must be at least \(Int(Constants.userInterface.secondsToDepartureForReminderToBecomeAvailable / 60.0)) minutes before the departure time"
+        }
+    }
+    
+    // MARK: - Actions
     
     @IBAction func setReminderDatePickerToSpecificTime(_ sender: UIButton) {
         var absOffsetFromDepartureTime: TimeInterval?
@@ -71,5 +87,9 @@ class RouteDetailViewController: RouteMapViewController {
         
         let newDate = route.times.departureTime.addingTimeInterval(-absOffsetFromDepartureTime!)
         reminderDatePicker.setDate(newDate, animated: true)
+    }
+    
+    @IBAction func displayDirectionsInGoogleMaps(_ sender: Any) {
+        GoogleDirectionsClient.displayDirectionsInGoogleMaps(originCoordinatesString: TripDetails.shared.originCoordinatesString!, destination: TripDetails.shared.destination!, tripType: TripDetails.shared.tripType!)
     }
 }

@@ -31,6 +31,7 @@ struct Constants {
     
     struct userInterface {
         static let mapRegionSpanFactor = 1.25
+        static let secondsToDepartureForReminderToBecomeAvailable = 60.0 * 3.0
     }
     
     // MARK: API Keys
