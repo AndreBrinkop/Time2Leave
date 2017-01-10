@@ -24,12 +24,8 @@ struct RouteTimes {
         return (formatter.string(from: departureTime), formatter.string(from: arrivalTime), travelTimeHumanReadable)
     }
     
-    var travelTimeInHoursMinutesSeconds: (Int, Int, Int) {
-        return (travelTimeInSeconds / 3600, (travelTimeInSeconds % 3600) / 60, (travelTimeInSeconds % 3600) % 60)
-    }
-    
     var travelTimeInHoursMinutes: (Int, Int) {
-        var travelTime = travelTimeInHoursMinutesSeconds
+        var travelTime = DateHelper.timeInHoursMinutesSeconds(seconds: travelTimeInSeconds)
         if travelTime.2 >= 30 {
             travelTime.1 += 1
         }
@@ -66,21 +62,5 @@ struct RouteTimes {
         } else {
             self.init(departureTime: time.addingTimeInterval(TimeInterval(-travelTimeInSeconds)), arrivalTime: time, travelTimeInSeconds: travelTimeInSeconds)
         }
-    }
-    
-    // Mark: - Helper Methods
-    
-    static func humanReadableDate(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-        return formatter.string(from: date)
-    }
-    
-    static func humanReadableTime(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        return formatter.string(from: date)
     }
 }

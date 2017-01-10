@@ -14,6 +14,7 @@
 		90227FC01E0E7EE300A29128 /* Time2Leave.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90227FBE1E0E7EE300A29128 /* Time2Leave.xcdatamodeld */; };
 		90227FC21E0E7EE300A29128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90227FC11E0E7EE300A29128 /* Assets.xcassets */; };
 		90227FC51E0E7EE300A29128 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90227FC31E0E7EE300A29128 /* LaunchScreen.storyboard */; };
+		903576BA1E2533060091B3BE /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903576B91E2533060091B3BE /* DateHelper.swift */; };
 		9036F6D61E1B205800C59C39 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9036F6D51E1B205800C59C39 /* RouteDetailViewController.swift */; };
 		9056E1FB1E1D2EA00005590F /* RouteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056E1FA1E1D2EA00005590F /* RouteMapViewController.swift */; };
 		906828C81E107932009340E8 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906828C71E107932009340E8 /* ApiKeys.swift */; };
@@ -52,6 +53,7 @@
 		90227FC11E0E7EE300A29128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90227FC41E0E7EE300A29128 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90227FC61E0E7EE300A29128 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		903576B91E2533060091B3BE /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		9036F6D51E1B205800C59C39 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		9056E1FA1E1D2EA00005590F /* RouteMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteMapViewController.swift; sourceTree = "<group>"; };
 		906828C71E107932009340E8 /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				90227FB61E0E7EE300A29128 /* Time2Leave */,
+				903576B81E2532F30091B3BE /* Helper */,
 				90227FB51E0E7EE300A29128 /* Products */,
 				E89F55E78EA9A145259CE641 /* Pods */,
 				8C71ABB14C26B398D2D5146C /* Frameworks */,
@@ -132,6 +135,16 @@
 			path = Time2Leave;
 			sourceTree = "<group>";
 		};
+		903576B81E2532F30091B3BE /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				903576B91E2533060091B3BE /* DateHelper.swift */,
+				909CC4731E15821300B98299 /* GoogleApiHelper.swift */,
+			);
+			name = Helper;
+			path = Time2Leave;
+			sourceTree = "<group>";
+		};
 		906828C61E10791C009340E8 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +162,6 @@
 				909CC46E1E15810200B98299 /* GoogleDirections */,
 				906828D01E107C53009340E8 /* GooglePlaces */,
 				906828CE1E107B47009340E8 /* HTTPClient.swift */,
-				909CC4731E15821300B98299 /* GoogleApiHelper.swift */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -361,6 +373,7 @@
 				906946031E141E86003D9C1E /* TripDetails.swift in Sources */,
 				9036F6D61E1B205800C59C39 /* RouteDetailViewController.swift in Sources */,
 				906828CA1E10794C009340E8 /* Constants.swift in Sources */,
+				903576BA1E2533060091B3BE /* DateHelper.swift in Sources */,
 				90EA9BFE1E199FEC00C5F26B /* RouteTimes.swift in Sources */,
 				90227FBA1E0E7EE300A29128 /* DestinationViewController.swift in Sources */,
 				909CC46D1E155A9200B98299 /* CustomButton.swift in Sources */,
