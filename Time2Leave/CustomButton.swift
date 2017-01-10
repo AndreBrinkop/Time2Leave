@@ -30,7 +30,7 @@ class CustomButton: UIButton {
             if newValue {
                 self.alpha = 1.0
             } else {
-                self.alpha = 0.7
+                self.alpha = 0.5
             }
         }
     }

@@ -205,19 +205,19 @@
                                                 </segments>
                                             </segmentedControl>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KaX-GS-CpH">
-                                                <rect key="frame" x="84" y="38" width="177.5" height="100"/>
+                                                <rect key="frame" x="84" y="38" width="178" height="100"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zgp-dA-5AG">
-                                                        <rect key="frame" x="0.0" y="27" width="50" height="46"/>
+                                                        <rect key="frame" x="0.0" y="27" width="50" height="47"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWW-rt-hFt">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="21"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBp-Mv-kaG">
-                                                                <rect key="frame" x="0.0" y="25.5" width="50" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="26" width="50" height="21"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -228,16 +228,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4T2-fO-pow">
-                                                        <rect key="frame" x="54" y="27" width="123.5" height="46"/>
+                                                        <rect key="frame" x="54" y="27" width="124" height="47"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Current Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjY-Y7-JDo">
-                                                                <rect key="frame" x="0.0" y="0.0" width="123.5" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="124" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zy7-W7-owk">
-                                                                <rect key="frame" x="0.0" y="25.5" width="123.5" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="26" width="124" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -260,13 +260,13 @@
                                                 </segments>
                                             </segmentedControl>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departure at:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFJ-ve-woj">
-                                                <rect key="frame" x="123" y="186" width="99.5" height="17"/>
+                                                <rect key="frame" x="123" y="181" width="100" height="0.0"/>
                                                 <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zh2-Xn-aJC">
-                                                <rect key="frame" x="12.5" y="213" width="320" height="216"/>
+                                                <rect key="frame" x="13" y="186" width="320" height="243"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="504664169.37213802">
                                                     <!--2016-12-29 00:29:29 +0000-->
                                                 </date>
@@ -275,7 +275,7 @@
                                                 <rect key="frame" x="0.0" y="439" width="345" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09G-Mv-jgF" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="112" height="30"/>
                                                         <color key="backgroundColor" red="0.074509803920000006" green="0.28235294119999998" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Now">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -285,7 +285,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5p-6q-8Z3" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="116.5" y="0.0" width="112" height="30"/>
+                                                        <rect key="frame" x="117" y="0.0" width="111" height="30"/>
                                                         <color key="backgroundColor" red="0.074509803920000006" green="0.28235294119999998" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="In 15 minutes">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -295,7 +295,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAW-yS-qq1" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="233.5" y="0.0" width="111.5" height="30"/>
+                                                        <rect key="frame" x="233" y="0.0" width="112" height="30"/>
                                                         <color key="backgroundColor" red="0.074509803920000006" green="0.28235294119999998" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="In 1 hour">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -568,19 +568,19 @@
                                 </connections>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="do7-Yr-XMB">
-                                <rect key="frame" x="0.0" y="339.5" width="375" height="312.5"/>
+                                <rect key="frame" x="4" y="339.5" width="367" height="312.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rcq-HE-ESV" userLabel="Route Details Stack View">
-                                        <rect key="frame" x="8" y="8" width="359" height="70"/>
+                                        <rect key="frame" x="8" y="8" width="351" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Summary" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4s-Iv-C5c">
-                                                <rect key="frame" x="0.0" y="0.0" width="359" height="16"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="351" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="MBl-r9-EUP">
-                                                <rect key="frame" x="0.0" y="16" width="359" height="25"/>
+                                                <rect key="frame" x="0.0" y="16" width="351" height="25"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhK-go-Z3D">
                                                         <rect key="frame" x="0.0" y="0.0" width="49" height="25"/>
@@ -601,11 +601,11 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kW-xF-sDg">
-                                                        <rect key="frame" x="126" y="0.0" width="183" height="25"/>
+                                                        <rect key="frame" x="126" y="0.0" width="175" height="25"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11N-GG-xsS">
-                                                        <rect key="frame" x="313" y="0.0" width="46" height="25"/>
+                                                        <rect key="frame" x="305" y="0.0" width="46" height="25"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -617,13 +617,13 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warnings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FND-GO-hgN">
-                                                <rect key="frame" x="0.0" y="41" width="359" height="17"/>
+                                                <rect key="frame" x="0.0" y="41" width="351" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tm-Z1-m2P">
-                                                <rect key="frame" x="0.0" y="58" width="359" height="12"/>
+                                                <rect key="frame" x="0.0" y="58" width="351" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -631,19 +631,19 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="We7-Hc-7hN" userLabel="Reminder Stack View">
-                                        <rect key="frame" x="8" y="90" width="359" height="214.5"/>
+                                        <rect key="frame" x="8" y="90" width="351" height="214.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gBG-jR-uMh">
-                                                <rect key="frame" x="0.0" y="0.0" width="359" height="120.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gBG-jR-uMh" userLabel="Set Time Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="351" height="120.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQX-Cd-JeC" userLabel="Set Time">
-                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="351" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8Xe-rS-mdF">
-                                                        <rect key="frame" x="0.0" y="20.5" width="359" height="100"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="351" height="100"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="9RJ-K3-9dx"/>
                                                         </constraints>
@@ -654,10 +654,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nI6-Su-XcK" userLabel="Trip Date Picker Buttons">
-                                                <rect key="frame" x="0.0" y="135.5" width="359" height="30"/>
+                                                <rect key="frame" x="0.0" y="135.5" width="351" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0R-eh-Vxe" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="116.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="113.5" height="30"/>
                                                         <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="5 min before">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -667,7 +667,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0oX-LK-ZVF" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="121.5" y="0.0" width="116" height="30"/>
+                                                        <rect key="frame" x="118.5" y="0.0" width="114" height="30"/>
                                                         <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="15 min before">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -677,7 +677,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEo-U0-DnS" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="242.5" y="0.0" width="116.5" height="30"/>
+                                                        <rect key="frame" x="237.5" y="0.0" width="113.5" height="30"/>
                                                         <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="30 min before">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -689,7 +689,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOU-LY-atE" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="180.5" width="359" height="34"/>
+                                                <rect key="frame" x="0.0" y="180.5" width="351" height="34"/>
                                                 <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Set Reminder">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -707,31 +707,74 @@
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYJ-dz-tnM" userLabel="Reminder Overlay View">
-                                <rect key="frame" x="8" y="429" width="359" height="214.5"/>
+                                <rect key="frame" x="12" y="429" width="351" height="214.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To set a reminder the current time must be at least X minutes before the departure time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOH-Mj-ma1">
-                                        <rect key="frame" x="0.0" y="25" width="359" height="41"/>
+                                        <rect key="frame" x="0.0" y="25" width="351" height="41"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH2-TE-p1s" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="180.5" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="180.5" width="351" height="34"/>
                                         <color key="backgroundColor" red="0.074509803920000006" green="0.28235294119999998" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Display Directions in Google Maps"/>
                                         <connections>
                                             <action selector="displayDirectionsInGoogleMaps:" destination="mHQ-DO-u6a" eventType="touchUpInside" id="O3w-2S-fYa"/>
                                         </connections>
                                     </button>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMT-1m-row" userLabel="Reminder Set View">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="173"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QTr-e3-Dbj">
+                                                <rect key="frame" x="0.0" y="0.0" width="351" height="165"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDe-xj-IbS">
+                                                        <rect key="frame" x="31" y="0.0" width="289" height="41"/>
+                                                        <string key="text">Reminder set for 00:00 on 01.01.2000
+(00 minutes before departure)</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yR1-u0-DRr">
+                                                        <rect key="frame" x="134" y="41" width="83.5" height="94"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="29"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oC9-Vo-Bm1">
+                                                        <rect key="frame" x="117" y="135" width="117" height="30"/>
+                                                        <state key="normal" title="Cancel Reminder"/>
+                                                        <connections>
+                                                            <action selector="stopRunningTimer" destination="mHQ-DO-u6a" eventType="touchUpInside" id="3pC-Lq-jUz"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="QTr-e3-Dbj" secondAttribute="bottom" constant="8" id="Uaj-38-ZOG"/>
+                                            <constraint firstItem="QTr-e3-Dbj" firstAttribute="top" secondItem="MMT-1m-row" secondAttribute="top" id="sPD-MP-ROt"/>
+                                            <constraint firstAttribute="trailing" secondItem="QTr-e3-Dbj" secondAttribute="trailing" id="xk5-f3-2gn"/>
+                                            <constraint firstItem="QTr-e3-Dbj" firstAttribute="leading" secondItem="MMT-1m-row" secondAttribute="leading" id="zDm-vf-1XQ"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="oH2-TE-p1s" secondAttribute="trailing" constant="8" id="8JY-8r-Dj7"/>
-                                    <constraint firstItem="oH2-TE-p1s" firstAttribute="leading" secondItem="BYJ-dz-tnM" secondAttribute="leading" constant="8" id="Gau-CU-dTb"/>
+                                    <constraint firstAttribute="trailing" secondItem="oH2-TE-p1s" secondAttribute="trailing" id="8JY-8r-Dj7"/>
+                                    <constraint firstItem="oH2-TE-p1s" firstAttribute="leading" secondItem="BYJ-dz-tnM" secondAttribute="leading" id="Gau-CU-dTb"/>
                                     <constraint firstItem="OOH-Mj-ma1" firstAttribute="top" secondItem="BYJ-dz-tnM" secondAttribute="top" constant="25" id="K2P-wI-0Jp"/>
+                                    <constraint firstItem="MMT-1m-row" firstAttribute="top" secondItem="OOH-Mj-ma1" secondAttribute="bottom" constant="-66" id="Rry-VC-SIo"/>
+                                    <constraint firstItem="MMT-1m-row" firstAttribute="width" secondItem="OOH-Mj-ma1" secondAttribute="width" id="Txy-EH-rGG"/>
+                                    <constraint firstItem="OOH-Mj-ma1" firstAttribute="leading" secondItem="MMT-1m-row" secondAttribute="trailing" constant="-351" id="UqY-Eq-EsG"/>
                                     <constraint firstItem="OOH-Mj-ma1" firstAttribute="leading" secondItem="BYJ-dz-tnM" secondAttribute="leading" id="Xat-Vw-Hoc"/>
+                                    <constraint firstItem="oH2-TE-p1s" firstAttribute="top" secondItem="MMT-1m-row" secondAttribute="bottom" constant="7.5" id="jL8-W1-Rge"/>
                                     <constraint firstAttribute="trailing" secondItem="OOH-Mj-ma1" secondAttribute="trailing" id="k7Y-Cy-q2t"/>
+                                    <constraint firstItem="MMT-1m-row" firstAttribute="centerX" secondItem="BYJ-dz-tnM" secondAttribute="centerX" id="mYj-I9-B2D"/>
                                     <constraint firstAttribute="bottom" secondItem="oH2-TE-p1s" secondAttribute="bottom" id="nxB-dQ-36q"/>
                                 </constraints>
                             </view>
@@ -753,6 +796,7 @@
                             <constraint firstAttribute="trailing" secondItem="6j8-qN-gAJ" secondAttribute="trailing" priority="999" id="R9s-qu-F6i"/>
                             <constraint firstItem="Vrk-ao-XNz" firstAttribute="top" secondItem="do7-Yr-XMB" secondAttribute="bottom" constant="15" id="ZGU-GN-nob"/>
                             <constraint firstItem="6j8-qN-gAJ" firstAttribute="centerX" secondItem="n1B-dI-qfO" secondAttribute="centerX" id="bhI-1p-EQ0"/>
+                            <constraint firstItem="MMT-1m-row" firstAttribute="top" secondItem="We7-Hc-7hN" secondAttribute="top" id="eml-2m-LOh"/>
                             <constraint firstItem="do7-Yr-XMB" firstAttribute="top" secondItem="h0S-yn-hZe" secondAttribute="bottom" id="vHb-Wu-o3c"/>
                         </constraints>
                     </view>
@@ -760,9 +804,12 @@
                         <outlet property="arrivalTimeLabel" destination="sJb-Zm-KTA" id="bD7-cU-km8"/>
                         <outlet property="departureTimeLabel" destination="dhK-go-Z3D" id="AXC-jb-Ibf"/>
                         <outlet property="destinationLabel" destination="FVE-tB-Tcf" id="aqq-WZ-9Ci"/>
+                        <outlet property="reminderCountdownLabel" destination="yR1-u0-DRr" id="KyS-VJ-v9x"/>
                         <outlet property="reminderDatePicker" destination="8Xe-rS-mdF" id="gdO-fo-mNU"/>
-                        <outlet property="reminderNotAvailableContainer" destination="BYJ-dz-tnM" id="4w3-k7-DVY"/>
+                        <outlet property="reminderInformationLabel" destination="wDe-xj-IbS" id="5iE-ue-MMe"/>
                         <outlet property="reminderNotAvailableLabel" destination="OOH-Mj-ma1" id="cLI-Tb-0lg"/>
+                        <outlet property="reminderOverlay" destination="BYJ-dz-tnM" id="7YM-r6-ibF"/>
+                        <outlet property="reminderSetView" destination="MMT-1m-row" id="laH-B7-z4v"/>
                         <outlet property="routeCopyrightLabel" destination="7Tm-Z1-m2P" id="BBz-Ac-Ytp"/>
                         <outlet property="routeMapView" destination="h0S-yn-hZe" id="2fu-59-GBB"/>
                         <outlet property="routeSummaryLabel" destination="f4s-Iv-C5c" id="KfO-xS-gPy"/>
