@@ -56,7 +56,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N6J-8q-29D" id="PeV-gJ-cMR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could not find any results!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajh-D0-I6e">
@@ -78,7 +78,7 @@
                                         <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YI2-jl-0sg" id="PXh-8q-fnn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for GPS location..  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sX1-fV-z4v" userLabel="Location">
@@ -108,7 +108,7 @@
                                         <rect key="frame" x="0.0" y="160" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GIs-Ko-PeG" id="DHz-IC-Sc6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pex-la-wQG" userLabel="Location">
@@ -205,19 +205,19 @@
                                                 </segments>
                                             </segmentedControl>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KaX-GS-CpH">
-                                                <rect key="frame" x="84" y="38" width="178" height="100"/>
+                                                <rect key="frame" x="84" y="38" width="177.5" height="100"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zgp-dA-5AG">
-                                                        <rect key="frame" x="0.0" y="27" width="50" height="47"/>
+                                                        <rect key="frame" x="0.0" y="27" width="50" height="46"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWW-rt-hFt">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBp-Mv-kaG">
-                                                                <rect key="frame" x="0.0" y="26" width="50" height="21"/>
+                                                                <rect key="frame" x="0.0" y="25.5" width="50" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -228,16 +228,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4T2-fO-pow">
-                                                        <rect key="frame" x="54" y="27" width="124" height="47"/>
+                                                        <rect key="frame" x="54" y="27" width="123.5" height="46"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Current Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjY-Y7-JDo">
-                                                                <rect key="frame" x="0.0" y="0.0" width="124" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="123.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zy7-W7-owk">
-                                                                <rect key="frame" x="0.0" y="26" width="124" height="21"/>
+                                                                <rect key="frame" x="0.0" y="25.5" width="123.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -260,13 +260,13 @@
                                                 </segments>
                                             </segmentedControl>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departure at:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFJ-ve-woj">
-                                                <rect key="frame" x="123" y="181" width="100" height="0.0"/>
+                                                <rect key="frame" x="123" y="186" width="99.5" height="17"/>
                                                 <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zh2-Xn-aJC">
-                                                <rect key="frame" x="13" y="186" width="320" height="243"/>
+                                                <rect key="frame" x="12.5" y="213" width="320" height="216"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="504664169.37213802">
                                                     <!--2016-12-29 00:29:29 +0000-->
                                                 </date>
@@ -275,8 +275,8 @@
                                                 <rect key="frame" x="0.0" y="439" width="345" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09G-Mv-jgF" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="112" height="30"/>
-                                                        <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="30"/>
+                                                        <color key="backgroundColor" red="0.074509803920000006" green="0.28235294119999998" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Now">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -285,8 +285,8 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5p-6q-8Z3" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="117" y="0.0" width="111" height="30"/>
-                                                        <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="116.5" y="0.0" width="112" height="30"/>
+                                                        <color key="backgroundColor" red="0.074509803920000006" green="0.28235294119999998" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="In 15 minutes">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -295,8 +295,8 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAW-yS-qq1" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
-                                                        <rect key="frame" x="233" y="0.0" width="112" height="30"/>
-                                                        <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="233.5" y="0.0" width="111.5" height="30"/>
+                                                        <color key="backgroundColor" red="0.074509803920000006" green="0.28235294119999998" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="In 1 hour">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -322,7 +322,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIK-vF-5P6" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="519" width="345" height="34"/>
-                                        <color key="backgroundColor" red="0.035294117649999998" green="0.1960784314" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.074509803920000006" green="0.28235294119999998" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Continue">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -695,7 +695,7 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="continueButtonClicked:" destination="M01-jL-DG9" eventType="touchUpInside" id="DcU-o2-4Wv"/>
+                                                    <action selector="setReminderButtonClicked:" destination="mHQ-DO-u6a" eventType="touchUpInside" id="HAh-jO-C2C"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -706,8 +706,8 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYJ-dz-tnM" userLabel="Reminder Not Available View">
-                                <rect key="frame" x="7.5" y="429.5" width="359" height="214.5"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYJ-dz-tnM" userLabel="Reminder Overlay View">
+                                <rect key="frame" x="8" y="429" width="359" height="214.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To set a reminder the current time must be at least X minutes before the departure time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOH-Mj-ma1">
                                         <rect key="frame" x="0.0" y="25" width="359" height="41"/>
@@ -716,8 +716,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH2-TE-p1s">
-                                        <rect key="frame" x="62.5" y="74" width="234" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH2-TE-p1s" customClass="CustomButton" customModule="Time2Leave" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="180.5" width="343" height="34"/>
+                                        <color key="backgroundColor" red="0.074509803920000006" green="0.28235294119999998" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Display Directions in Google Maps"/>
                                         <connections>
                                             <action selector="displayDirectionsInGoogleMaps:" destination="mHQ-DO-u6a" eventType="touchUpInside" id="O3w-2S-fYa"/>
@@ -726,11 +727,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="oH2-TE-p1s" firstAttribute="top" secondItem="OOH-Mj-ma1" secondAttribute="bottom" constant="8" id="B2i-0c-Vk6"/>
+                                    <constraint firstAttribute="trailing" secondItem="oH2-TE-p1s" secondAttribute="trailing" constant="8" id="8JY-8r-Dj7"/>
+                                    <constraint firstItem="oH2-TE-p1s" firstAttribute="leading" secondItem="BYJ-dz-tnM" secondAttribute="leading" constant="8" id="Gau-CU-dTb"/>
                                     <constraint firstItem="OOH-Mj-ma1" firstAttribute="top" secondItem="BYJ-dz-tnM" secondAttribute="top" constant="25" id="K2P-wI-0Jp"/>
                                     <constraint firstItem="OOH-Mj-ma1" firstAttribute="leading" secondItem="BYJ-dz-tnM" secondAttribute="leading" id="Xat-Vw-Hoc"/>
                                     <constraint firstAttribute="trailing" secondItem="OOH-Mj-ma1" secondAttribute="trailing" id="k7Y-Cy-q2t"/>
-                                    <constraint firstItem="oH2-TE-p1s" firstAttribute="centerX" secondItem="OOH-Mj-ma1" secondAttribute="centerX" id="rh7-xw-YMN"/>
+                                    <constraint firstAttribute="bottom" secondItem="oH2-TE-p1s" secondAttribute="bottom" id="nxB-dQ-36q"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -767,6 +769,9 @@
                         <outlet property="routeWarningsLabel" destination="FND-GO-hgN" id="hDX-Lb-uKb"/>
                         <outlet property="tripDurationLabel" destination="11N-GG-xsS" id="d6P-t2-u5F"/>
                         <outlet property="tripTypeImageView" destination="srL-zF-jCb" id="PYx-Sd-xnO"/>
+                        <outletCollection property="datePickerButtons" destination="M0R-eh-Vxe" collectionClass="NSMutableArray" id="Yyb-5j-4DY"/>
+                        <outletCollection property="datePickerButtons" destination="0oX-LK-ZVF" collectionClass="NSMutableArray" id="PgW-dy-3EM"/>
+                        <outletCollection property="datePickerButtons" destination="AEo-U0-DnS" collectionClass="NSMutableArray" id="sfm-0S-8W7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aht-yj-4pz" userLabel="First Responder" sceneMemberID="firstResponder"/>

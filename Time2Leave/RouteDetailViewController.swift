@@ -24,6 +24,7 @@ class RouteDetailViewController: RouteMapViewController {
     @IBOutlet var routeCopyrightLabel: UILabel!
     
     @IBOutlet var reminderDatePicker: UIDatePicker!
+    @IBOutlet var datePickerButtons: [CustomButton]!
     
     @IBOutlet var reminderNotAvailableContainer: UIView!
     @IBOutlet var reminderNotAvailableLabel: UILabel!
@@ -56,8 +57,19 @@ class RouteDetailViewController: RouteMapViewController {
         routeWarningsLabel.text = route.warningsString
         routeCopyrightLabel.text = route.copyrights
         
-        reminderDatePicker.minimumDate = Date()
+        reminderDatePicker.minimumDate = Date().addingTimeInterval(60.0)
         reminderDatePicker.maximumDate = route.times.departureTime
+        
+        // Set Date Picker Buttons Enabled State
+        for datePickerButton in datePickerButtons {
+            guard let timeOffset = getTimeOffsetForDatePickerButton(button: datePickerButton) else {
+                break
+            }
+            
+            if Date() >= route.times.departureTime.addingTimeInterval(-timeOffset) {
+                datePickerButton.isEnabled = false
+            }
+        }
         
         initializeReminderNotAvailableView()
     }
@@ -72,24 +84,34 @@ class RouteDetailViewController: RouteMapViewController {
     // MARK: - Actions
     
     @IBAction func setReminderDatePickerToSpecificTime(_ sender: UIButton) {
-        var absOffsetFromDepartureTime: TimeInterval?
-        
-        switch sender.tag {
-        case 0: // 5min before
-            absOffsetFromDepartureTime = 60.0 * 5.0
-        case 1: // 15min before
-            absOffsetFromDepartureTime = 60.0 * 15.0
-        case 2: // 30min before
-            absOffsetFromDepartureTime = 60.0 * 30.0
-        default:
+        guard let absOffsetFromDepartureTime = getTimeOffsetForDatePickerButton(button: sender) else {
             return
         }
         
-        let newDate = route.times.departureTime.addingTimeInterval(-absOffsetFromDepartureTime!)
+        let newDate = route.times.departureTime.addingTimeInterval(-absOffsetFromDepartureTime)
         reminderDatePicker.setDate(newDate, animated: true)
+    }
+    
+    @IBAction func setReminderButtonClicked(_ sender: CustomButton) {
+        // TODO
     }
     
     @IBAction func displayDirectionsInGoogleMaps(_ sender: Any) {
         GoogleDirectionsClient.displayDirectionsInGoogleMaps(originCoordinatesString: TripDetails.shared.originCoordinatesString!, destination: TripDetails.shared.destination!, tripType: TripDetails.shared.tripType!)
+    }
+    
+    // MARK: - Helper methods
+    
+    private func getTimeOffsetForDatePickerButton(button: UIButton) -> TimeInterval? {
+        switch button.tag {
+        case 0: // 5min before
+            return 60.0 * 5.0
+        case 1: // 15min before
+            return 60.0 * 15.0
+        case 2: // 30min before
+            return 60.0 * 30.0
+        default:
+            return nil
+        }
     }
 }

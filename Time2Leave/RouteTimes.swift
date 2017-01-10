@@ -67,4 +67,20 @@ struct RouteTimes {
             self.init(departureTime: time.addingTimeInterval(TimeInterval(-travelTimeInSeconds)), arrivalTime: time, travelTimeInSeconds: travelTimeInSeconds)
         }
     }
+    
+    // Mark: - Helper Methods
+    
+    static func humanReadableDate(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        return formatter.string(from: date)
+    }
+    
+    static func humanReadableTime(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
 }

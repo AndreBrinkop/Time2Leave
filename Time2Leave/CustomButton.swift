@@ -25,6 +25,15 @@ class CustomButton: UIButton {
     private var activityIndicator: UIActivityIndicatorView!
     private var isSpinning: Bool = false
     
+    override var isEnabled: Bool {
+        willSet {
+            if newValue {
+                self.alpha = 1.0
+            } else {
+                self.alpha = 0.7
+            }
+        }
+    }
     
     // MARK: - Initialization
     
