@@ -53,4 +53,11 @@ struct Constants {
         static let userLocationLongitude = "USER_LOCATION_LONGITUDE"
         static let userLocationTimestamp = "USER_LOCATION_TIMESTAMP"
     }
+    
+    // MARK: Reminder
+    
+    struct reminder {
+        static let identifier = "reminderRequest"
+        static let contentCategoryIdentifier = "reminder"
+    }
 }

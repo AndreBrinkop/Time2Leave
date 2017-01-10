@@ -31,4 +31,13 @@ class DateHelper {
     static func timeInHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
         return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
+    
+    static func roundDateUpToNextMinute(_ date: Date) -> Date {
+        let seconds = Int(date.timeIntervalSinceReferenceDate)
+        if seconds % 60 == 0 {
+            return date
+        }
+        let newSeconds = (seconds / 60) * 60 + 60
+        return Date(timeIntervalSinceReferenceDate: TimeInterval(newSeconds))
+    }
 }
