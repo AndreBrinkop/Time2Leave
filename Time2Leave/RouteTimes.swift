@@ -48,6 +48,12 @@ struct RouteTimes {
         self.travelTimeInSeconds = travelTimeInSeconds
     }
     
+    init(departureTime: Date, arrivalTime: Date) {
+        self.departureTime = departureTime
+        self.arrivalTime = arrivalTime
+        self.travelTimeInSeconds = Int(arrivalTime.timeIntervalSince(departureTime))
+    }
+    
     init(departureTime: Date, travelTimeInSeconds: Int) {
         self.init(departureTime: departureTime, arrivalTime: departureTime.addingTimeInterval(TimeInterval(travelTimeInSeconds)), travelTimeInSeconds: travelTimeInSeconds)
     }

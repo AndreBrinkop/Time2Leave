@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FavoriteLocation" representedClassName="FavoriteLocation" syncable="YES" codeGenerationType="class">
         <attribute name="locationDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locationId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="SavedTripDetails" representedClassName="SavedTripDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="destinationDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="destinationId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="originLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="routeCopyrights" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routePolylineBoundsCenterLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="routePolylineBoundsCenterLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="routePolylineBoundsSpanLatitudeDelta" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="routePolylineBoundsSpanLongitudeDelta" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="routePolylineString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routeSummary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routeTimesArrival" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="routeTimesDeparture" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="routeWarnings" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="tripType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="FavoriteLocation" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="SavedTripDetails" positionX="-54" positionY="-36" width="128" height="270"/>
     </elements>
 </model>

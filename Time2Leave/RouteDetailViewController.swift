@@ -77,7 +77,7 @@ class RouteDetailViewController: RouteMapViewController {
             }
         }
         
-        refreshUI()
+        updateUI()
     }
     
     private func checkIfReminderIsAvailable() {
@@ -87,16 +87,16 @@ class RouteDetailViewController: RouteMapViewController {
         }
     }
     
-    // MARK: - Refresh User Interface
+    // MARK: - Update User Interface
     
-    func refreshUI() {
+    func updateUI() {
         reminderDatePicker.minimumDate = DateHelper.roundDateUpToNextMinute(Date())
         refreshTimer()
         checkIfReminderIsAvailable()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        refreshUI()
+        updateUI()
     }
     
     // MARK: - Date Picker Buttons Action
@@ -115,27 +115,31 @@ class RouteDetailViewController: RouteMapViewController {
     @IBAction func setReminderButtonClicked(_ sender: CustomButton) {
         let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
         let calendar = Calendar.current
-        let minutesBetweenReminderAndDeparture = calendar.dateComponents([.minute], from: reminderDatePicker.date, to: route.times.departureTime).minute!
+        let selectedDate = reminderDatePicker.date
+        let minutesBetweenReminderAndDeparture = calendar.dateComponents([.minute], from: selectedDate, to: route.times.departureTime).minute!
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
             DispatchQueue.main.async {
                 // GUARD: Allowed to display Notifications
                 guard granted == true, error == nil else {
                     self.displayInfoAlert(title: "Not allowed to show Notifications", message: "Please go to your device settings and allow \(appName) to display Notifications if you want to set a reminder for this route.")
+                    self.updateUI()
                     return
                 }
                 // GUARD: Is Notification time in the future
-                guard Date() < self.reminderDatePicker.date else {
+                guard Date() < selectedDate else {
                     self.displayInfoAlert(title: "Reminder needs to be in the future", message: "Please adjust your selected time.")
+                    self.updateUI()
                     return
                 }
                 // GUARD: Is Notification at least one minute before departure
                 guard minutesBetweenReminderAndDeparture > 0 else {
                     self.displayInfoAlert(title: "Reminder needs to be before your departure time", message: "Please adjust your selected time.")
+                    self.updateUI()
                     return
                 }
                 
-                self.createReminder(fireDate: self.reminderDatePicker.date, minutesBetweenReminderAndDeparture: minutesBetweenReminderAndDeparture)
+                self.createReminder(fireDate: selectedDate, minutesBetweenReminderAndDeparture: minutesBetweenReminderAndDeparture)
             }
         }
     }
@@ -167,6 +171,9 @@ class RouteDetailViewController: RouteMapViewController {
         UNUserNotificationCenter.current().add(
             reminderRequest, withCompletionHandler: nil)
         
+        // Save Trip Details
+        TripDetails.shared.saveMainTripDetails()
+        
         // Show Reminder Information
         let reminderInformationText = String(format: "Reminder set for %@ on %@\n(%d minutes before departure)",
                                              DateHelper.humanReadableTime(date: fireDate),
@@ -179,7 +186,7 @@ class RouteDetailViewController: RouteMapViewController {
 
         reminderFireDate = fireDate
         reminderCountdown = Timer.scheduledTimer(timeInterval: 1.0, target:self, selector: #selector(refreshTimer), userInfo: nil, repeats: true)
-        refreshUI()
+        updateUI()
     }
     
     func refreshTimer() {
