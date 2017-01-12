@@ -80,9 +80,32 @@ class TripDetails {
     }
     
     func loadMainTripDetails() {
+        guard let savedMainTripDetails = getSavedMainTripDetails() else {
+            return
+        }
+        
+        setMainTripDetails(loadedTripDetails: savedMainTripDetails)
+    }
+    
+    func deleteMainTripDetails() {
+        guard let savedMainTripDetails = getSavedMainTripDetails() else {
+            return
+        }
+        
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        context.delete(savedMainTripDetails)
+        appDelegate.saveContext()
+    }
+    
+    private func getSavedMainTripDetails() -> SavedTripDetails? {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return nil
         }
         
         let context = appDelegate.persistentContainer.viewContext
@@ -90,14 +113,14 @@ class TripDetails {
         
         do {
             guard let loadedTripDetails = (try context.fetch(request)).first else {
-                return
+                return nil
             }
-            setMainTripDetails(loadedTripDetails: loadedTripDetails)
             
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            return loadedTripDetails
+            
+        } catch {
+            return nil
         }
-        
     }
     
     func setMainTripDetails(loadedTripDetails: SavedTripDetails) {
