@@ -483,7 +483,7 @@
                     <connections>
                         <outlet property="routeMapView" destination="8My-dY-yyT" id="t52-We-hLe"/>
                         <outlet property="routesTableView" destination="y3v-Um-Lfy" id="e9z-Bi-tBe"/>
-                        <segue destination="mHQ-DO-u6a" kind="show" identifier="routeSelected" id="Y3Z-bH-YLk"/>
+                        <segue destination="mHQ-DO-u6a" kind="presentation" identifier="routeSelected" id="Y3Z-bH-YLk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2wX-LF-EUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -502,6 +502,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXl-2F-258">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="fmU-26-hFX"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="When do you want to leave?" id="0iw-LO-6PW">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="oXY-gU-5wi">
+                                            <connections>
+                                                <action selector="cancelButtonPressed:" destination="mHQ-DO-u6a" id="SPB-7d-yXc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="6j8-qN-gAJ" userLabel="Route Information Stack View">
                                 <rect key="frame" x="0.0" y="64" width="375" height="80"/>
                                 <subviews>
@@ -744,8 +759,8 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oC9-Vo-Bm1">
-                                                        <rect key="frame" x="117" y="135" width="117" height="30"/>
-                                                        <state key="normal" title="Cancel Reminder"/>
+                                                        <rect key="frame" x="124.5" y="135" width="102" height="30"/>
+                                                        <state key="normal" title="Stop Reminder"/>
                                                         <connections>
                                                             <action selector="deleteReminder" destination="mHQ-DO-u6a" eventType="touchUpInside" id="0Zc-JB-9qG"/>
                                                         </connections>
@@ -784,16 +799,19 @@
                             <constraint firstItem="BYJ-dz-tnM" firstAttribute="width" secondItem="We7-Hc-7hN" secondAttribute="width" id="24L-eL-9kB"/>
                             <constraint firstItem="BYJ-dz-tnM" firstAttribute="centerX" secondItem="We7-Hc-7hN" secondAttribute="centerX" id="2IS-Yb-jDM"/>
                             <constraint firstItem="do7-Yr-XMB" firstAttribute="leading" secondItem="n1B-dI-qfO" secondAttribute="leading" priority="999" id="3Dt-HN-3zy"/>
+                            <constraint firstItem="6j8-qN-gAJ" firstAttribute="top" secondItem="QXl-2F-258" secondAttribute="bottom" id="42a-oU-Axg"/>
                             <constraint firstItem="BYJ-dz-tnM" firstAttribute="centerY" secondItem="We7-Hc-7hN" secondAttribute="centerY" id="9gS-Wy-MCe"/>
-                            <constraint firstItem="6j8-qN-gAJ" firstAttribute="top" secondItem="GVA-bR-cl2" secondAttribute="bottom" id="BG8-cH-Xua"/>
                             <constraint firstItem="6j8-qN-gAJ" firstAttribute="leading" secondItem="n1B-dI-qfO" secondAttribute="leading" priority="999" id="C8P-tc-lBo"/>
                             <constraint firstItem="do7-Yr-XMB" firstAttribute="centerX" secondItem="n1B-dI-qfO" secondAttribute="centerX" id="Den-uP-UF1"/>
                             <constraint firstItem="h0S-yn-hZe" firstAttribute="leading" secondItem="n1B-dI-qfO" secondAttribute="leading" id="Fvn-uh-7q6"/>
+                            <constraint firstItem="QXl-2F-258" firstAttribute="top" secondItem="n1B-dI-qfO" secondAttribute="top" id="GJ8-8S-GhC"/>
                             <constraint firstAttribute="trailing" secondItem="do7-Yr-XMB" secondAttribute="trailing" priority="999" id="IuY-vv-GF3"/>
                             <constraint firstAttribute="trailing" secondItem="h0S-yn-hZe" secondAttribute="trailing" id="O9Z-QY-ERL"/>
                             <constraint firstItem="BYJ-dz-tnM" firstAttribute="height" secondItem="We7-Hc-7hN" secondAttribute="height" id="Od7-DG-7SW"/>
                             <constraint firstAttribute="trailing" secondItem="6j8-qN-gAJ" secondAttribute="trailing" priority="999" id="R9s-qu-F6i"/>
+                            <constraint firstAttribute="trailing" secondItem="QXl-2F-258" secondAttribute="trailing" id="Suh-Zs-9ic"/>
                             <constraint firstItem="Vrk-ao-XNz" firstAttribute="top" secondItem="do7-Yr-XMB" secondAttribute="bottom" constant="15" id="ZGU-GN-nob"/>
+                            <constraint firstItem="QXl-2F-258" firstAttribute="leading" secondItem="n1B-dI-qfO" secondAttribute="leading" id="aV5-8R-aQQ"/>
                             <constraint firstItem="6j8-qN-gAJ" firstAttribute="centerX" secondItem="n1B-dI-qfO" secondAttribute="centerX" id="bhI-1p-EQ0"/>
                             <constraint firstItem="MMT-1m-row" firstAttribute="top" secondItem="We7-Hc-7hN" secondAttribute="top" id="eml-2m-LOh"/>
                             <constraint firstItem="do7-Yr-XMB" firstAttribute="top" secondItem="h0S-yn-hZe" secondAttribute="bottom" id="vHb-Wu-o3c"/>

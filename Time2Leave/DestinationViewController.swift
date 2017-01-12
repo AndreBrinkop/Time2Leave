@@ -52,6 +52,13 @@ class DestinationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Show Route Details if a Reminder is running
+        if TripDetails.shared.selectedRoute != nil {
+            let routeDetailViewController = storyboard!.instantiateViewController(withIdentifier: "RouteDetailViewController")
+            present(routeDetailViewController, animated: true)
+        }
+        
         initializeFetchedResultsController()
         initializeSearchController()
         initializeLocationManager()

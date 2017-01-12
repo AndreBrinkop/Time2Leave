@@ -99,6 +99,31 @@ class RouteDetailViewController: RouteMapViewController {
         updateUI()
     }
     
+    // MARK: - Cancel Toolbar Button
+    
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        
+        UNUserNotificationCenter.current().getPendingNotificationRequests { notificationRequests in
+            
+            if notificationRequests.contains(where: { $0.identifier == Constants.reminder.identifier }) {
+                // Reminder is scheduled
+                let shouldCancelAlert = UIAlertController.init(title: "This will stop your running Reminder!", message: "Do you really want to continue?", preferredStyle: .alert)
+                shouldCancelAlert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
+                    self.cancelReminderAndDismiss()
+                })
+                shouldCancelAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                self.present(shouldCancelAlert, animated: true)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func cancelReminderAndDismiss() {
+        deleteReminder()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Date Picker Buttons Action
     
     @IBAction func setReminderDatePickerToSpecificTime(_ sender: UIButton) {
@@ -205,6 +230,9 @@ class RouteDetailViewController: RouteMapViewController {
         reminderFireDate = nil
         self.reminderOverlay.isHidden = true
         self.reminderSetView.isHidden = true
+        
+        // Delete Saved Trip Details
+        TripDetails.shared.deleteMainTripDetails()
         
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [Constants.reminder.identifier])
     }

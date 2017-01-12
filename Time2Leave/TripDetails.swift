@@ -115,9 +115,7 @@ class TripDetails {
             guard let loadedTripDetails = (try context.fetch(request)).first else {
                 return nil
             }
-            
             return loadedTripDetails
-            
         } catch {
             return nil
         }
