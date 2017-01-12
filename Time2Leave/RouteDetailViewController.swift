@@ -195,6 +195,7 @@ class RouteDetailViewController: RouteMapViewController {
         
         UNUserNotificationCenter.current().add(
             reminderRequest, withCompletionHandler: nil)
+        TripDetails.shared.setReminderDate(fireDate)
         
         // Save Trip Details
         TripDetails.shared.saveMainTripDetails()

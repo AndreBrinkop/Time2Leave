@@ -36,8 +36,9 @@ class TripDetails {
     
     private(set) var routes: [Route]?
     private(set) var selectedRoute: Route?
+    private(set) var reminderDate: Date?
     
-    // MARK: Shared Instance
+    // MARK: - Shared Instance
     
     static var shared: TripDetails {
         get {
@@ -47,6 +48,8 @@ class TripDetails {
             return Singleton.sharedInstance
         }
     }
+    
+    // MARK: - Model Setters
     
     func setOriginAndDestination(originCoordinates: CLLocationCoordinate2D, destination: Location) {
         self.originCoordinates = originCoordinates
@@ -66,6 +69,12 @@ class TripDetails {
     func setSelectedRoute(_ route: Route) {
         self.selectedRoute = route
     }
+    
+    func setReminderDate(_ reminderDate: Date) {
+        self.reminderDate = reminderDate
+    }
+    
+    // MARK: - Persistent Saving
     
     func saveMainTripDetails() {
         guard let appDelegate =
@@ -138,6 +147,6 @@ class TripDetails {
         let route = Route(summary: loadedTripDetails.routeSummary!, copyrights: loadedTripDetails.routeCopyrights, warnings: loadedTripDetails.routeWarnings as! [String]?, times: routeTimes, polylineCoordinates: polylineCoordinates, polylineBounds: polylineBounds)
         
         setSelectedRoute(route)
-
+        setReminderDate(loadedTripDetails.reminderDate as! Date)
     }
 }
