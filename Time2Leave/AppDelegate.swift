@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
+        UNUserNotificationCenter.current().delegate = self
         window?.tintColor = Color.defaultColor
     }
 
@@ -67,6 +69,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
         }
     }
+}
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler( [.alert, .sound])
+    }
+    
 }
 
