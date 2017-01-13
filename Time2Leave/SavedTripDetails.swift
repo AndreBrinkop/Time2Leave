@@ -55,6 +55,7 @@ extension SavedTripDetails {
         tripType = tripDetails.tripType?.rawValue
         
         reminderDate = tripDetails.reminderDate as NSDate?
+        reminderInformationText = tripDetails.reminderInformationText
         
         appDelegate.saveContext()
     }

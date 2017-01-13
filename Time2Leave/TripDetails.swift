@@ -36,6 +36,8 @@ class TripDetails {
     
     private(set) var routes: [Route]?
     private(set) var selectedRoute: Route?
+    
+    private(set) var reminderInformationText: String?
     private(set) var reminderDate: Date?
     
     // MARK: - Shared Instance
@@ -70,8 +72,9 @@ class TripDetails {
         self.selectedRoute = route
     }
     
-    func setReminderDate(_ reminderDate: Date) {
+    func setReminder(reminderDate: Date, reminderInformationText: String) {
         self.reminderDate = reminderDate
+        self.reminderInformationText = reminderInformationText
     }
     
     // MARK: - Persistent Saving
@@ -147,6 +150,6 @@ class TripDetails {
         let route = Route(summary: loadedTripDetails.routeSummary!, copyrights: loadedTripDetails.routeCopyrights, warnings: loadedTripDetails.routeWarnings as! [String]?, times: routeTimes, polylineCoordinates: polylineCoordinates, polylineBounds: polylineBounds)
         
         setSelectedRoute(route)
-        setReminderDate(loadedTripDetails.reminderDate as! Date)
+        setReminder(reminderDate: loadedTripDetails.reminderDate as! Date, reminderInformationText: loadedTripDetails.reminderInformationText!)
     }
 }

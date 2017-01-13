@@ -195,16 +195,18 @@ class RouteDetailViewController: RouteMapViewController {
         
         UNUserNotificationCenter.current().add(
             reminderRequest, withCompletionHandler: nil)
-        TripDetails.shared.setReminderDate(fireDate)
+        
+        let reminderInformationText = String(format: "Reminder set for %@ on %@\n(%d minutes before departure)",
+                                             DateHelper.humanReadableTime(date: fireDate),
+                                             DateHelper.humanReadableDate(date: fireDate),
+                                             minutesBetweenReminderAndDeparture)
+        
+        TripDetails.shared.setReminder(reminderDate: fireDate, reminderInformationText: reminderInformationText)
         
         // Save Trip Details
         TripDetails.shared.saveMainTripDetails()
         
         // Show Reminder Information
-        let reminderInformationText = String(format: "Reminder set for %@ on %@\n(%d minutes before departure)",
-                                             DateHelper.humanReadableTime(date: fireDate),
-                                             DateHelper.humanReadableDate(date: fireDate),
-                                             minutesBetweenReminderAndDeparture)
         
         reminderInformationLabel.text = reminderInformationText
         reminderOverlay.isHidden = false
