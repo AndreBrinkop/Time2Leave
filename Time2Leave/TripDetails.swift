@@ -16,8 +16,7 @@ import MapKit
 class TripDetails {
     
     private init() {
-        // TODO: Only load if still valid
-        loadMainTripDetails()
+        loadTripDetails()
     }
     
     // MARK: - Properties
@@ -84,7 +83,7 @@ class TripDetails {
     
     // MARK: - Persistent Saving
     
-    func saveMainTripDetails() {
+    func saveTripDetails() {
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -96,16 +95,16 @@ class TripDetails {
         appDelegate.saveContext()
     }
     
-    func loadMainTripDetails() {
-        guard let savedMainTripDetails = getSavedMainTripDetails() else {
+    func loadTripDetails() {
+        guard let savedTripDetails = getSavedTripDetails() else {
             return
         }
         
-        setMainTripDetails(loadedTripDetails: savedMainTripDetails)
+        setTripDetails(loadedTripDetails: savedTripDetails)
     }
     
-    func deleteMainTripDetails() {
-        guard let savedMainTripDetails = getSavedMainTripDetails() else {
+    func deleteTripDetails() {
+        guard let savedTripDetails = getSavedTripDetails() else {
             return
         }
         
@@ -115,11 +114,11 @@ class TripDetails {
         }
         
         let context = appDelegate.persistentContainer.viewContext
-        context.delete(savedMainTripDetails)
+        context.delete(savedTripDetails)
         appDelegate.saveContext()
     }
     
-    private func getSavedMainTripDetails() -> SavedTripDetails? {
+    private func getSavedTripDetails() -> SavedTripDetails? {
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return nil
@@ -138,7 +137,7 @@ class TripDetails {
         }
     }
     
-    func setMainTripDetails(loadedTripDetails: SavedTripDetails) {
+    func setTripDetails(loadedTripDetails: SavedTripDetails) {
         let originCoordinates = CLLocationCoordinate2D(latitude: loadedTripDetails.originLatitude, longitude: loadedTripDetails.originLongitude)
         let destination = Location(description: loadedTripDetails.destinationDescription!, id: loadedTripDetails.destinationId!)
         setOriginAndDestination(originCoordinates: originCoordinates, destination: destination)

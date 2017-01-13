@@ -35,8 +35,12 @@ class RouteDetailViewController: RouteMapViewController {
     
     // MARK: - Properties
     
+    var tripDetails: TripDetails {
+        return TripDetails.shared
+    }
+    
     var route: Route {
-        return TripDetails.shared.selectedRoute!
+        return tripDetails.selectedRoute!
     }
     var reminderCountdown: Timer?
     
@@ -48,8 +52,8 @@ class RouteDetailViewController: RouteMapViewController {
     }
 
     private func initializeUI() {
-        tripTypeImageView.image = TripDetails.shared.tripType?.image
-        destinationLabel.text = TripDetails.shared.destination!.description
+        tripTypeImageView.image = tripDetails.tripType?.image
+        destinationLabel.text = tripDetails.destination!.description
         
         showRouteOnMap(route)
         routeSummaryLabel.text = route.summary
@@ -79,9 +83,9 @@ class RouteDetailViewController: RouteMapViewController {
     }
     
     private func refreshReminderUI() {
-        if TripDetails.shared.reminderDate != nil && TripDetails.shared.reminderDate! > Date() && TripDetails.shared.reminderInformationText != nil {
+        if tripDetails.reminderDate != nil && tripDetails.reminderDate! > Date() && tripDetails.reminderInformationText != nil {
             // Show Reminder Information
-            reminderInformationLabel.text = TripDetails.shared.reminderInformationText
+            reminderInformationLabel.text = tripDetails.reminderInformationText
             reminderOverlay.isHidden = false
             reminderSetView.isHidden = false
             if reminderCountdown == nil {
@@ -189,7 +193,7 @@ class RouteDetailViewController: RouteMapViewController {
         // Create Reminder
         let reminderText = String(format: "You have to leave in %d minutes to arrive at \"%@\" at %@ on %@",
                                   minutesBetweenReminderAndDeparture,
-                                  TripDetails.shared.destination!.description,
+                                  tripDetails.destination!.description,
                                   DateHelper.humanReadableTime(date: reminderDatePicker.date),
                                   DateHelper.humanReadableDate(date: reminderDatePicker.date))
         
@@ -217,14 +221,14 @@ class RouteDetailViewController: RouteMapViewController {
                                              DateHelper.humanReadableDate(date: fireDate),
                                              minutesBetweenReminderAndDeparture)
         
-        TripDetails.shared.setReminder(reminderDate: fireDate, reminderInformationText: reminderInformationText)
+        tripDetails.setReminder(reminderDate: fireDate, reminderInformationText: reminderInformationText)
         
         // Save Trip Details
-        TripDetails.shared.saveMainTripDetails()
+        tripDetails.saveTripDetails()
     }
     
     func refreshTimer() {
-        guard let reminderFireDate = TripDetails.shared.reminderDate else {
+        guard let reminderFireDate = tripDetails.reminderDate else {
             return
         }
         guard reminderFireDate > Date() else {
@@ -235,11 +239,11 @@ class RouteDetailViewController: RouteMapViewController {
     }
     
     @IBAction func deleteReminder() {
-        TripDetails.shared.clearReminder()
+        tripDetails.clearReminder()
         reminderCountdown?.invalidate()
         
         // Delete Saved Trip Details
-        TripDetails.shared.deleteMainTripDetails()
+        tripDetails.deleteTripDetails()
         
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [Constants.reminder.identifier])
         updateUI()
@@ -248,7 +252,7 @@ class RouteDetailViewController: RouteMapViewController {
     // MARK: - Display Directions In Google Maps
     
     @IBAction func displayDirectionsInGoogleMaps(_ sender: Any) {
-        GoogleDirectionsClient.displayDirectionsInGoogleMaps(originCoordinatesString: TripDetails.shared.originCoordinatesString!, destination: TripDetails.shared.destination!, tripType: TripDetails.shared.tripType!)
+        GoogleDirectionsClient.displayDirectionsInGoogleMaps(originCoordinatesString: tripDetails.originCoordinatesString!, destination: tripDetails.destination!, tripType: tripDetails.tripType!)
     }
     
     // MARK: - Helper methods
