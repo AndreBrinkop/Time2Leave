@@ -88,7 +88,7 @@ class RouteDetailViewController: RouteMapViewController {
             reminderInformationLabel.text = tripDetails.reminderInformationText
             reminderOverlay.isHidden = false
             reminderSetView.isHidden = false
-            if reminderCountdown == nil {
+            if reminderCountdown == nil || reminderCountdown?.isValid == false {
                 reminderCountdown = Timer.scheduledTimer(timeInterval: 1.0, target:self, selector: #selector(refreshTimer), userInfo: nil, repeats: true)
             }
             return
