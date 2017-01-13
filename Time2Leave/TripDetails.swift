@@ -77,6 +77,11 @@ class TripDetails {
         self.reminderInformationText = reminderInformationText
     }
     
+    func clearReminder() {
+        self.reminderDate = nil
+        self.reminderInformationText = nil
+    }
+    
     // MARK: - Persistent Saving
     
     func saveMainTripDetails() {

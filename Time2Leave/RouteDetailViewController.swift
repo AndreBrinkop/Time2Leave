@@ -38,9 +38,7 @@ class RouteDetailViewController: RouteMapViewController {
     var route: Route {
         return TripDetails.shared.selectedRoute!
     }
-    
     var reminderCountdown: Timer?
-    var reminderFireDate: Date?
     
     // MARK: - Initialization
     
@@ -80,19 +78,36 @@ class RouteDetailViewController: RouteMapViewController {
         updateUI()
     }
     
-    private func checkIfReminderIsAvailable() {
+    private func refreshReminderUI() {
+        if TripDetails.shared.reminderDate != nil && TripDetails.shared.reminderDate! > Date() && TripDetails.shared.reminderInformationText != nil {
+            // Show Reminder Information
+            reminderInformationLabel.text = TripDetails.shared.reminderInformationText
+            reminderOverlay.isHidden = false
+            reminderSetView.isHidden = false
+            if reminderCountdown == nil {
+                reminderCountdown = Timer.scheduledTimer(timeInterval: 1.0, target:self, selector: #selector(refreshTimer), userInfo: nil, repeats: true)
+            }
+            return
+        }
+        
         if reminderDatePicker.minimumDate!.addingTimeInterval(Constants.userInterface.secondsToDepartureForReminderToBecomeAvailable) >= reminderDatePicker.maximumDate! {
+            // Show Reminder Not Available
             reminderOverlay.isHidden = false
             reminderNotAvailableLabel.text = "To set a reminder the current time must be at least \(Int(Constants.userInterface.secondsToDepartureForReminderToBecomeAvailable / 60.0)) minutes before the departure time"
+            return
         }
+        
+        // Show Set Reminder UI
+        reminderOverlay.isHidden = true
+        reminderSetView.isHidden = true
     }
     
     // MARK: - Update User Interface
     
     func updateUI() {
         reminderDatePicker.minimumDate = DateHelper.roundDateUpToNextMinute(Date())
+        refreshReminderUI()
         refreshTimer()
-        checkIfReminderIsAvailable()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -165,6 +180,7 @@ class RouteDetailViewController: RouteMapViewController {
                 }
                 
                 self.createReminder(fireDate: selectedDate, minutesBetweenReminderAndDeparture: minutesBetweenReminderAndDeparture)
+                self.updateUI()
             }
         }
     }
@@ -205,20 +221,10 @@ class RouteDetailViewController: RouteMapViewController {
         
         // Save Trip Details
         TripDetails.shared.saveMainTripDetails()
-        
-        // Show Reminder Information
-        
-        reminderInformationLabel.text = reminderInformationText
-        reminderOverlay.isHidden = false
-        reminderSetView.isHidden = false
-
-        reminderFireDate = fireDate
-        reminderCountdown = Timer.scheduledTimer(timeInterval: 1.0, target:self, selector: #selector(refreshTimer), userInfo: nil, repeats: true)
-        updateUI()
     }
     
     func refreshTimer() {
-        guard let reminderFireDate = reminderFireDate else {
+        guard let reminderFireDate = TripDetails.shared.reminderDate else {
             return
         }
         guard reminderFireDate > Date() else {
@@ -229,15 +235,14 @@ class RouteDetailViewController: RouteMapViewController {
     }
     
     @IBAction func deleteReminder() {
+        TripDetails.shared.clearReminder()
         reminderCountdown?.invalidate()
-        reminderFireDate = nil
-        self.reminderOverlay.isHidden = true
-        self.reminderSetView.isHidden = true
         
         // Delete Saved Trip Details
         TripDetails.shared.deleteMainTripDetails()
         
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [Constants.reminder.identifier])
+        updateUI()
     }
     
     // MARK: - Display Directions In Google Maps
