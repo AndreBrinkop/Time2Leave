@@ -33,11 +33,20 @@ class DateHelper {
     }
     
     static func roundDateUpToNextMinute(_ date: Date) -> Date {
+        return roundDateToNextMinute(date, roundUp: true)
+    }
+    
+    static func roundDateDownToNextMinute(_ date: Date) -> Date {
+        return roundDateToNextMinute(date, roundUp: false)
+    }
+    
+    static private func roundDateToNextMinute(_ date: Date, roundUp: Bool) -> Date {
         let seconds = Int(date.timeIntervalSinceReferenceDate)
         if seconds % 60 == 0 {
             return date
         }
-        let newSeconds = (seconds / 60) * 60 + 60
+        let offset = roundUp ? 60 : 0
+        let newSeconds = (seconds / 60) * 60 + offset
         return Date(timeIntervalSinceReferenceDate: TimeInterval(newSeconds))
     }
 }

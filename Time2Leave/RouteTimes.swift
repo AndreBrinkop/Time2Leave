@@ -14,7 +14,6 @@ struct RouteTimes {
     
     var departureTime: Date
     var arrivalTime: Date
-    var travelTimeInSeconds: Int
     
     var humanReadable: (String, String, String) {
         let formatter = DateFormatter()
@@ -25,13 +24,7 @@ struct RouteTimes {
     }
     
     var travelTimeInHoursMinutes: (Int, Int) {
-        var travelTime = DateHelper.timeInHoursMinutesSeconds(seconds: travelTimeInSeconds)
-        if travelTime.2 >= 30 {
-            travelTime.1 += 1
-        }
-        if travelTime.1 >= 30 {
-            travelTime.0 += 1
-        }
+        let travelTime = DateHelper.timeInHoursMinutesSeconds(seconds: Int(arrivalTime.timeIntervalSince(departureTime)))
         return (travelTime.0, travelTime.1)
     }
     
@@ -42,31 +35,16 @@ struct RouteTimes {
     
     // MARK: - Initialization
     
-    init(departureTime: Date, arrivalTime: Date, travelTimeInSeconds: Int) {
-        self.departureTime = departureTime
-        self.arrivalTime = arrivalTime
-        self.travelTimeInSeconds = travelTimeInSeconds
-    }
-    
     init(departureTime: Date, arrivalTime: Date) {
-        self.departureTime = departureTime
-        self.arrivalTime = arrivalTime
-        self.travelTimeInSeconds = Int(arrivalTime.timeIntervalSince(departureTime))
-    }
-    
-    init(departureTime: Date, travelTimeInSeconds: Int) {
-        self.init(departureTime: departureTime, arrivalTime: departureTime.addingTimeInterval(TimeInterval(travelTimeInSeconds)), travelTimeInSeconds: travelTimeInSeconds)
-    }
-    
-    init(arrivalTime: Date, travelTimeInSeconds: Int) {
-        self.init(departureTime: arrivalTime.addingTimeInterval(TimeInterval(-travelTimeInSeconds)), arrivalTime: arrivalTime, travelTimeInSeconds: travelTimeInSeconds)
+        self.departureTime = DateHelper.roundDateDownToNextMinute(departureTime)
+        self.arrivalTime = DateHelper.roundDateUpToNextMinute(arrivalTime)
     }
     
     init(time: Date, tripDepartureArrivalType: TripDepartureArrivalType, travelTimeInSeconds: Int) {
         if tripDepartureArrivalType == .departure {
-            self.init(departureTime: time, arrivalTime: time.addingTimeInterval(TimeInterval(travelTimeInSeconds)), travelTimeInSeconds: travelTimeInSeconds)
+            self.init(departureTime: time, arrivalTime: time.addingTimeInterval(TimeInterval(travelTimeInSeconds)))
         } else {
-            self.init(departureTime: time.addingTimeInterval(TimeInterval(-travelTimeInSeconds)), arrivalTime: time, travelTimeInSeconds: travelTimeInSeconds)
+            self.init(departureTime: time.addingTimeInterval(TimeInterval(-travelTimeInSeconds)), arrivalTime: time)
         }
     }
 }

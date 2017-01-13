@@ -137,7 +137,7 @@ class GoogleDirectionsClient {
                 let departureTime = Date(timeIntervalSince1970: TimeInterval(departureTimeStamp))
                 let arrivalTime = Date(timeIntervalSince1970: TimeInterval(arrivalTimeStamp))
 
-                routeTimes = RouteTimes(departureTime: departureTime, arrivalTime: arrivalTime, travelTimeInSeconds: durationValue)
+                routeTimes = RouteTimes(departureTime: departureTime, arrivalTime: arrivalTime)
             } else {
                 routeTimes = RouteTimes(time: tripDetails.tripTime!, tripDepartureArrivalType: tripDetails.tripDepartureArrivalType!, travelTimeInSeconds: durationValue)
             }
