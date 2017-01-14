@@ -48,6 +48,8 @@ class DestinationViewController: UIViewController {
     
     private(set) var networkProblemAlert: UIAlertController!
     
+    internal var isAlertShowing: Bool = false
+    
     // MARK: - Initialization
 
     override func viewDidLoad() {
@@ -103,10 +105,23 @@ class DestinationViewController: UIViewController {
         noLocationFoundAlert = UIAlertController.init(title: "Need User Location", message: "Your location could not be found!", preferredStyle: .alert)
         needLocationAlert = UIAlertController.init(title: "Need User Location", message: "Please activate the location services for this app!", preferredStyle: .alert)
         waitingForLocationAfterSelectionAlert = UIAlertController.init(title: "Destination selected", message: "Waiting for GPS location to continue..", preferredStyle: .alert)
-        waitingForLocationAfterSelectionAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in self.selectedDestination = nil }))
+        waitingForLocationAfterSelectionAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            self.selectedDestination = nil
+            self.isAlertShowing = false
+        }))
         
         networkProblemAlert = UIAlertController.init(title: "Could not search for destinations", message: "Network problem", preferredStyle: .alert)
-        networkProblemAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        networkProblemAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            self.isAlertShowing = false
+        }))
+    }
+    
+    func displayAlert(_ alert: UIAlertController) {
+        if isAlertShowing {
+            return
+        }
+        isAlertShowing = true
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Actions
@@ -190,10 +205,10 @@ extension DestinationViewController: CLLocationManagerDelegate {
         dismissLocationErrorAlerts()
         switch error {
         case CLError.locationUnknown:
-            present(noLocationFoundAlert, animated: true)
+            displayAlert(noLocationFoundAlert)
             locationManager.requestLocation()
         default:
-            present(needLocationAlert, animated: true)
+            displayAlert(needLocationAlert)
         }
     }
     
@@ -203,7 +218,7 @@ extension DestinationViewController: CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
         }
         if status == .denied || status == .restricted {
-            present(needLocationAlert, animated: true)
+            displayAlert(needLocationAlert)
         }
         if status == .authorizedWhenInUse {
             locationManager.requestLocation()
@@ -214,6 +229,7 @@ extension DestinationViewController: CLLocationManagerDelegate {
         noLocationFoundAlert.dismiss(animated: true, completion: nil)
         needLocationAlert.dismiss(animated: true, completion: nil)
         waitingForLocationAfterSelectionAlert.dismiss(animated: true, completion: nil)
+        isAlertShowing = false
     }
 }
 
@@ -230,7 +246,7 @@ extension DestinationViewController: UISearchResultsUpdating {
             guard error == nil else {
                 self.searchController.searchBar.text = ""
                 self.networkProblemAlert.message = error?.localizedDescription
-                self.present(self.networkProblemAlert, animated: true)
+                self.displayAlert(self.networkProblemAlert)
                 return
             }
             
@@ -326,7 +342,7 @@ extension DestinationViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if userLocation == nil {
-            present(waitingForLocationAfterSelectionAlert, animated: true)
+            displayAlert(waitingForLocationAfterSelectionAlert)
             return
         }
         
