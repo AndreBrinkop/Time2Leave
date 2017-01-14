@@ -4,7 +4,7 @@ Time2Leave is an iOS App that allows people to create reminders to leave so that
 
 ## Installation
 
-To build Time2Leave you need to create a file called **ApiKeys.plist** in the app folder that needs to contain an entry called **GOOGLE_API_KEY** that contains your Google API Key.
+To build Time2Leave you need to create a file called **ApiKeys.plist** in the app folder that needs to contain an entry called **GOOGLE_API_KEY** that contains your Google API Key. Please ensure that the Google Places API Web Service is activated in the Google Developers Console for your Google API Key.
 
 ## Usage
 
