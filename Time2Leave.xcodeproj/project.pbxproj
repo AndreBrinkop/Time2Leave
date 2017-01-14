@@ -28,6 +28,7 @@
 		906945F91E11792A003D9C1E /* FavoriteLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906945F81E11792A003D9C1E /* FavoriteLocation.swift */; };
 		906946011E133B80003D9C1E /* TripDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906946001E133B80003D9C1E /* TripDataViewController.swift */; };
 		906946031E141E86003D9C1E /* TripDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906946021E141E86003D9C1E /* TripDetails.swift */; };
+		9097D7AA1E2ACED30028CD91 /* UIViewController+InfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9097D7A91E2ACED30028CD91 /* UIViewController+InfoAlert.swift */; };
 		909CC46B1E155A8B00B98299 /* WaitingForLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909CC46A1E155A8B00B98299 /* WaitingForLocationCell.swift */; };
 		909CC46D1E155A9200B98299 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909CC46C1E155A9200B98299 /* CustomButton.swift */; };
 		909CC4701E15811D00B98299 /* GoogleDirectionsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909CC46F1E15811D00B98299 /* GoogleDirectionsClient.swift */; };
@@ -68,6 +69,7 @@
 		906945F81E11792A003D9C1E /* FavoriteLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteLocation.swift; sourceTree = "<group>"; };
 		906946001E133B80003D9C1E /* TripDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDataViewController.swift; sourceTree = "<group>"; };
 		906946021E141E86003D9C1E /* TripDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetails.swift; sourceTree = "<group>"; };
+		9097D7A91E2ACED30028CD91 /* UIViewController+InfoAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+InfoAlert.swift"; sourceTree = "<group>"; };
 		909CC46A1E155A8B00B98299 /* WaitingForLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaitingForLocationCell.swift; path = Time2Leave/WaitingForLocationCell.swift; sourceTree = "<group>"; };
 		909CC46C1E155A9200B98299 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = Time2Leave/CustomButton.swift; sourceTree = "<group>"; };
 		909CC46F1E15811D00B98299 /* GoogleDirectionsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDirectionsClient.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				90EA9BF51E16BFC500C5F26B /* RoutesViewController.swift */,
 				9036F6D51E1B205800C59C39 /* RouteDetailViewController.swift */,
 				9056E1FA1E1D2EA00005590F /* RouteMapViewController.swift */,
+				9097D7A91E2ACED30028CD91 /* UIViewController+InfoAlert.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				90227FBA1E0E7EE300A29128 /* DestinationViewController.swift in Sources */,
 				909CC46D1E155A9200B98299 /* CustomButton.swift in Sources */,
 				90AE32231E154B5C006D1C60 /* Color.swift in Sources */,
+				9097D7AA1E2ACED30028CD91 /* UIViewController+InfoAlert.swift in Sources */,
 				903576BC1E2568150091B3BE /* SavedTripDetails.swift in Sources */,
 				909CC46B1E155A8B00B98299 /* WaitingForLocationCell.swift in Sources */,
 				906828CF1E107B47009340E8 /* HTTPClient.swift in Sources */,

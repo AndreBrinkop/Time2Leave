@@ -44,12 +44,19 @@ class RouteDetailViewController: RouteMapViewController {
     }
     var reminderCountdown: Timer?
     
-    // MARK: - Initialization
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateUI()
+    }
+    
+    // MARK: - UI methods
 
     private func initializeUI() {
         tripTypeImageView.image = tripDetails.tripType?.image
@@ -114,9 +121,6 @@ class RouteDetailViewController: RouteMapViewController {
         refreshTimer()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        updateUI()
-    }
     
     // MARK: - Cancel Toolbar Button
     
@@ -140,7 +144,7 @@ class RouteDetailViewController: RouteMapViewController {
     
     func cancelReminderAndDismiss() {
         deleteReminder()
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Date Picker Buttons Action
@@ -253,17 +257,6 @@ class RouteDetailViewController: RouteMapViewController {
     
     @IBAction func displayDirectionsInGoogleMaps(_ sender: Any) {
         GoogleDirectionsClient.displayDirectionsInGoogleMaps(originCoordinatesString: tripDetails.originCoordinatesString!, destination: tripDetails.destination!, tripType: tripDetails.tripType!)
-    }
-    
-    // MARK: - Helper methods
-    
-    private func displayInfoAlert(title: String, message: String) {
-        let notificationsNotAvailableAlert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
-        notificationsNotAvailableAlert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-        
-        DispatchQueue.main.async {
-            self.present(notificationsNotAvailableAlert, animated: true)
-        }
     }
     
     private func getTimeOffsetForDatePickerButton(button: UIButton) -> TimeInterval? {
